@@ -1,4 +1,4 @@
-package com.szte.wmm.greenkiwi.ui.dashboard
+package com.szte.wmm.greenkiwi.ui.activities
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,20 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.szte.wmm.greenkiwi.R
 
-class DashboardFragment : Fragment() {
+class ActivitiesFragment : Fragment() {
 
-    private lateinit var dashboardViewModel: DashboardViewModel
+    private lateinit var activitiesViewModel: ActivitiesViewModel
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        dashboardViewModel =
-                ViewModelProviders.of(this).get(DashboardViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_dashboard, container, false)
-        val textView: TextView = root.findViewById(R.id.text_dashboard)
-        dashboardViewModel.text.observe(viewLifecycleOwner, Observer {
+        activitiesViewModel =
+                ViewModelProviders.of(this).get(ActivitiesViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_activities, container, false)
+        val textView: TextView = root.findViewById(R.id.text_activities)
+        activitiesViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root
