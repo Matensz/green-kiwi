@@ -1,0 +1,38 @@
+[
+  {
+    "activityId": 1,
+    "title": "Take a shower",
+    "description": "Take a shower instead of a bath, which uses much more water.",
+    "thumbnailUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR49WUodjRIUIhV1lPYl8lAuMySzCSmqNEWdQ&usqp=CAU",
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR49WUodjRIUIhV1lPYl8lAuMySzCSmqNEWdQ&usqp=CAU",
+    "point": 2,
+    "categoryName": 1
+  },
+  {
+    "activityId": 2,
+    "title": "Flush the toilet less often",
+    "description": "If you pee during shower, you can spare the water needed to flush the toilet.",
+    "thumbnailUrl": "https://cnet1.cbsistatic.com/img/1u5_4-DBs7mtLM57Ix4oyfIUxIY=/1200x675/2015/12/23/f7b47eaf-a13e-456c-93a4-7d6e72aa2332/toilet-bowl.jpg",
+    "imageUrl": "https://cnet1.cbsistatic.com/img/1u5_4-DBs7mtLM57Ix4oyfIUxIY=/1200x675/2015/12/23/f7b47eaf-a13e-456c-93a4-7d6e72aa2332/toilet-bowl.jpg",
+    "point": 2,
+    "categoryName": 1
+  },
+  {
+    "activityId": 3,
+    "title": "Become vegan for a day",
+    "description": "Don't eat meat or anything else related to animals, including dairy, and even honey.",
+    "thumbnailUrl": "https://www.studyfinds.org/wp-content/uploads/2020/01/AdobeStock_289529994-816x520.jpeg",
+    "imageUrl": "https://www.studyfinds.org/wp-content/uploads/2020/01/AdobeStock_289529994-816x520.jpeg/toilet-bowl.jpg",
+    "point": 2,
+    "categoryName": 3
+  },
+  {
+    "activityId": 4,
+    "title": "Become vegetarian for a day",
+    "description": "Don't eat meat (including fish!) for a day.",
+    "thumbnailUrl": "https://www.studyfinds.org/wp-content/uploads/2020/01/AdobeStock_289529994-816x520.jpeg",
+    "imageUrl": "https://www.studyfinds.org/wp-content/uploads/2020/01/AdobeStock_289529994-816x520.jpeg/toilet-bowl.jpg",
+    "point": 2,
+    "categoryName": 3
+  }
+]

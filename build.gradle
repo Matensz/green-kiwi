@@ -24,3 +24,9 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+ext {
+    gsonVersion = '2.8.6'
+    roomVersion = '2.2.5'
+    workVersion = '2.4.0'
+}
