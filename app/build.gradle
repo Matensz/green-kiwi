@@ -64,4 +64,7 @@ dependencies {
 
     // Gson
     implementation "com.google.code.gson:gson:$rootProject.gsonVersion"
+
+    // Material theme
+    implementation "com.google.android.material:material:$rootProject.materialVersion"
 }

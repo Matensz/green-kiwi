@@ -8,5 +8,7 @@ import com.szte.wmm.greenkiwi.ui.activities.ActivityAdapter
 @BindingAdapter("listData")
 fun bindRecyclerView(recyclerView: RecyclerView, data: List<Activity>?) {
     val adapter = recyclerView.adapter as ActivityAdapter
-    adapter.submitList(data)
+    adapter.submitList(data) {
+        recyclerView.scrollToPosition(0)
+    }
 }

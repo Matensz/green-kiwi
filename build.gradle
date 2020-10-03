@@ -27,6 +27,7 @@ task clean(type: Delete) {
 
 ext {
     gsonVersion = '2.8.6'
+    materialVersion = '1.2.1'
     roomVersion = '2.2.5'
     workVersion = '2.4.0'
 }
