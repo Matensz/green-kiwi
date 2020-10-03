@@ -4,28 +4,27 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.fragment.app.viewModels
+import com.szte.wmm.greenkiwi.InjectorUtils
 import com.szte.wmm.greenkiwi.R
+import com.szte.wmm.greenkiwi.databinding.FragmentActivitiesBinding
 
 class ActivitiesFragment : Fragment() {
 
-    private lateinit var activitiesViewModel: ActivitiesViewModel
+    private val activitiesViewModel: ActivitiesViewModel by viewModels {
+        InjectorUtils.getActivitiesViewModelFactory(this)
+    }
 
-    override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
-    ): View? {
-        activitiesViewModel =
-                ViewModelProviders.of(this).get(ActivitiesViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_activities, container, false)
-        val textView: TextView = root.findViewById(R.id.text_activities)
-        activitiesViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
-        return root
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+
+        val binding: FragmentActivitiesBinding = DataBindingUtil.inflate(
+            inflater, R.layout.fragment_activities, container, false)
+        binding.activitiesViewModel = activitiesViewModel
+        binding.setLifecycleOwner(this)
+        val adapter = ActivityAdapter()
+        binding.activitiesList.adapter = adapter
+        return binding.root
     }
 }
