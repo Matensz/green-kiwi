@@ -26,6 +26,7 @@ task clean(type: Delete) {
 }
 
 ext {
+    glideVersion = "4.10.0"
     gsonVersion = '2.8.6'
     materialVersion = '1.2.1'
     roomVersion = '2.2.5'
