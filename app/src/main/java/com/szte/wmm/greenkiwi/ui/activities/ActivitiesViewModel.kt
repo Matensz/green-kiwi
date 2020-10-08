@@ -22,6 +22,9 @@ class ActivitiesViewModel internal constructor(
     private val _categories = MutableLiveData<List<String>>()
     val categories: LiveData<List<String>>
         get() = _categories
+    private val _navigateToSelectedActivity = MutableLiveData<Activity>()
+    val navigateToSelectedActivity: LiveData<Activity>
+        get() = _navigateToSelectedActivity
     private var filter = FilterHolder()
 
     init {
@@ -50,5 +53,13 @@ class ActivitiesViewModel internal constructor(
             }
             return updateNeeded
         }
+    }
+
+    fun displayActivityDetails(activity: Activity) {
+        _navigateToSelectedActivity.value = activity
+    }
+
+    fun displayActivityDetailsComplete() {
+        _navigateToSelectedActivity.value = null
     }
 }

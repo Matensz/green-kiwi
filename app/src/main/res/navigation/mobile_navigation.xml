@@ -15,7 +15,11 @@
         android:id="@+id/navigation_activities"
         android:name="com.szte.wmm.greenkiwi.ui.activities.ActivitiesFragment"
         android:label="@string/title_activities"
-        tools:layout="@layout/fragment_activities" />
+        tools:layout="@layout/fragment_activities" >
+        <action
+            android:id="@+id/action_navigation_activities_to_navigation_activity_detail"
+            app:destination="@id/navigation_activity_detail" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_notifications"
@@ -28,4 +32,16 @@
         android:name="com.szte.wmm.greenkiwi.ui.settings.SettingsFragment"
         android:label="@string/title_settings"
         tools:layout="@layout/fragment_settings" />
+
+    <fragment
+        android:id="@+id/navigation_activity_detail"
+        android:name="com.szte.wmm.greenkiwi.ui.activitydetail.ActivityDetailFragment"
+        android:label="fragment_activity_detail">
+        <argument
+            android:name="selectedActivity"
+            app:argType="com.szte.wmm.greenkiwi.repository.domain.Activity" />
+        <action
+            android:id="@+id/action_navigation_activity_detail_to_navigation_activities"
+            app:destination="@id/navigation_activities" />
+    </fragment>
 </navigation>

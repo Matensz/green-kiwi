@@ -11,10 +11,14 @@ import com.szte.wmm.greenkiwi.repository.domain.Activity
 /**
  * Adapter for displaying the activities in as a list in a RecyclerView.
  */
-class ActivityAdapter : ListAdapter<Activity, ActivityAdapter.ActivityViewHolder>(DiffCallback) {
+class ActivityAdapter(private val onClickListener: OnClickListener) : ListAdapter<Activity, ActivityAdapter.ActivityViewHolder>(DiffCallback) {
 
     override fun onBindViewHolder(holder: ActivityViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        val activity = getItem(position)
+        holder.itemView.setOnClickListener {
+            onClickListener.onClick(activity)
+        }
+        holder.bind(activity)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ActivityViewHolder {
@@ -43,5 +47,9 @@ class ActivityAdapter : ListAdapter<Activity, ActivityAdapter.ActivityViewHolder
             binding.activity = activity
             binding.executePendingBindings()
         }
+    }
+
+    class OnClickListener(val clickListener: (activity: Activity) -> Unit) {
+        fun onClick(activity: Activity) = clickListener(activity)
     }
 }

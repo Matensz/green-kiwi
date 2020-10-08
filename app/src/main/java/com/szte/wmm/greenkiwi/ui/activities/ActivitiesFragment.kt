@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.chip.Chip
 import com.szte.wmm.greenkiwi.InjectorUtils
 import com.szte.wmm.greenkiwi.R
@@ -24,9 +25,16 @@ class ActivitiesFragment : Fragment() {
         val binding: FragmentActivitiesBinding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_activities, container, false)
         binding.activitiesViewModel = activitiesViewModel
-        binding.setLifecycleOwner(this)
-        val adapter = ActivityAdapter()
-        binding.activitiesList.adapter = adapter
+        binding.lifecycleOwner = this
+        binding.activitiesList.adapter = ActivityAdapter(ActivityAdapter.OnClickListener {
+            activitiesViewModel.displayActivityDetails(it)
+        })
+        activitiesViewModel.navigateToSelectedActivity.observe(this, Observer {
+            if (it != null) {
+                this.findNavController().navigate(ActivitiesFragmentDirections.actionNavigationActivitiesToNavigationActivityDetail(it))
+                activitiesViewModel.displayActivityDetailsComplete()
+            }
+        })
 
         activitiesViewModel.categories.observe(viewLifecycleOwner, object: Observer<List<String>> {
             override fun onChanged(data: List<String>?) {
