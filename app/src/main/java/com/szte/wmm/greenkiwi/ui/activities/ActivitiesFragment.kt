@@ -22,14 +22,14 @@ class ActivitiesFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-        val binding: FragmentActivitiesBinding = DataBindingUtil.inflate(
-            inflater, R.layout.fragment_activities, container, false)
+        val binding: FragmentActivitiesBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_activities, container, false)
         binding.activitiesViewModel = activitiesViewModel
         binding.lifecycleOwner = this
         binding.activitiesList.adapter = ActivityAdapter(ActivityAdapter.OnClickListener {
             activitiesViewModel.displayActivityDetails(it)
         })
-        activitiesViewModel.navigateToSelectedActivity.observe(this, Observer {
+
+        activitiesViewModel.navigateToSelectedActivity.observe(viewLifecycleOwner, Observer {
             if (it != null) {
                 this.findNavController().navigate(ActivitiesFragmentDirections.actionNavigationActivitiesToNavigationActivityDetail(it))
                 activitiesViewModel.displayActivityDetailsComplete()

@@ -8,6 +8,9 @@ xmlns:tools="http://schemas.android.com/tools">
         <variable
             name="activityViewModel"
             type="com.szte.wmm.greenkiwi.ui.activitydetail.ActivityDetailViewModel" />
+        <variable
+            name="callback"
+            type="com.szte.wmm.greenkiwi.ui.activitydetail.ActivityDetailFragment.Callback" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -146,6 +149,7 @@ xmlns:tools="http://schemas.android.com/tools">
                     android:layout_margin="10dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/activity_history_title"
+                    android:text="@{activityViewModel.lastAddedDate}"
                     tools:text="Yesterday" />
 
                 <View
@@ -190,7 +194,7 @@ xmlns:tools="http://schemas.android.com/tools">
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:onClick="@{() -> activityViewModel.addActivity(activityViewModel.selectedActivity.activityId)}"
+            android:onClick="@{() -> callback.add(activityViewModel.selectedActivity)}"
             android:tint="@android:color/white"
             app:shapeAppearance="@style/ShapeAppearance.GreenKiwi.FAB"
             app:layout_anchor="@id/appbar"
