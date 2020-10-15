@@ -9,6 +9,7 @@ import com.szte.wmm.greenkiwi.repository.UserSelectedActivitiesRepository
 import com.szte.wmm.greenkiwi.repository.domain.Activity
 import com.szte.wmm.greenkiwi.ui.activities.ActivitiesViewModelFactory
 import com.szte.wmm.greenkiwi.ui.activitydetail.ActivityDetailViewModelFactory
+import com.szte.wmm.greenkiwi.ui.home.HomeViewModelFactory
 
 /**
  * Static utility methods for dependency injection.
@@ -21,6 +22,10 @@ object InjectorUtils {
 
     private fun getUserSelectedActivitiesRepository(context: Context): UserSelectedActivitiesRepository {
         return UserSelectedActivitiesRepository.getInstance(ApplicationDatabase.getInstance(context.applicationContext).userSelectedActivitiesDao())
+    }
+
+    fun getHomeViewModelFactory(): HomeViewModelFactory {
+        return HomeViewModelFactory()
     }
 
     fun getActivitiesViewModelFactory(fragment: Fragment): ActivitiesViewModelFactory {
