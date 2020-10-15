@@ -7,7 +7,7 @@ import androidx.work.WorkerParameters
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.google.gson.stream.JsonReader
-import com.szte.wmm.greenkiwi.data.local.ActivitiesDatabase
+import com.szte.wmm.greenkiwi.data.local.ApplicationDatabase
 import com.szte.wmm.greenkiwi.data.local.model.Activity
 import kotlinx.coroutines.coroutineScope
 
@@ -26,7 +26,7 @@ class ActivityInitializerWorker(
                     val activityType = object : TypeToken<List<Activity>>() {}.type
                     val activityList: List<Activity> = Gson().fromJson(jsonReader, activityType)
 
-                    val database = ActivitiesDatabase.getInstance(applicationContext)
+                    val database = ApplicationDatabase.getInstance(applicationContext)
                     database.activitiesDao().insertAll(activityList)
 
                     Result.success()

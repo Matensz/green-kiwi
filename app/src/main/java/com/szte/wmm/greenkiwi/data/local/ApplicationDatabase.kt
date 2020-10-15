@@ -8,31 +8,33 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import com.szte.wmm.greenkiwi.data.local.model.Activity
+import com.szte.wmm.greenkiwi.data.local.model.UserSelectedActivity
 import com.szte.wmm.greenkiwi.worker.ActivityInitializerWorker
 
 /**
  * Room database object for the application.
  */
-@Database(entities = [Activity::class], version = 1, exportSchema = false)
-abstract class ActivitiesDatabase : RoomDatabase() {
+@Database(entities = [Activity::class, UserSelectedActivity::class], version = 1, exportSchema = false)
+abstract class ApplicationDatabase : RoomDatabase() {
 
     abstract fun activitiesDao(): ActivitiesDao
+    abstract fun userSelectedActivitiesDao(): UserSelectedActivitiesDao
 
     companion object {
         private const val DATABASE_NAME = "green-kiwi-db"
 
         // For Singleton instantiation
-        @Volatile private var instance: ActivitiesDatabase? = null
+        @Volatile private var instance: ApplicationDatabase? = null
 
-        fun getInstance(context: Context): ActivitiesDatabase {
+        fun getInstance(context: Context): ApplicationDatabase {
             return instance ?: synchronized(this) {
                 instance ?: buildDatabase(context).also { instance = it }
             }
         }
 
         // Create and pre-populate the database
-        private fun buildDatabase(context: Context): ActivitiesDatabase {
-            return Room.databaseBuilder(context, ActivitiesDatabase::class.java, DATABASE_NAME)
+        private fun buildDatabase(context: Context): ApplicationDatabase {
+            return Room.databaseBuilder(context, ApplicationDatabase::class.java, DATABASE_NAME)
                 .addCallback(object : RoomDatabase.Callback() {
                     override fun onCreate(db: SupportSQLiteDatabase) {
                         super.onCreate(db)
