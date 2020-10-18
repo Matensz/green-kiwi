@@ -7,11 +7,11 @@ import com.szte.wmm.greenkiwi.R
 
 class HomeViewModel : ViewModel() {
 
-    private val _text = MutableLiveData<Int>()
-    val text: LiveData<Int>
-        get() = _text
+    private val _expText = MutableLiveData<Int>()
+    val expText: LiveData<Int>
+        get() = _expText
 
     init {
-        _text.value = R.string.saved_user_points_key
+        _expText.value = R.string.saved_user_points_key
     }
 }

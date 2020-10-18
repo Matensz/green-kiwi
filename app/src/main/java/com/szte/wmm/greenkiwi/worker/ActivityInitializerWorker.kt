@@ -12,7 +12,7 @@ import com.szte.wmm.greenkiwi.data.local.model.Activity
 import kotlinx.coroutines.coroutineScope
 
 /**
- * Worker reading thedefault activities from a json file and populating it to the database.
+ * Worker reading the default activities from a json file and populating it to the database.
  */
 class ActivityInitializerWorker(
     context: Context,
