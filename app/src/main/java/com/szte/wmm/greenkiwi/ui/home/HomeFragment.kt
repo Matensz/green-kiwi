@@ -36,6 +36,10 @@ class HomeFragment : Fragment() {
             binding.collectedExpBar.layoutParams.width = calculateExpBar(it.currentExp, it.currentMaxExp)
         })
 
+        viewModel.petImage.observe(viewLifecycleOwner, Observer {
+            binding.petImage.setImageResource(it)
+        })
+
         return binding.root
     }
 

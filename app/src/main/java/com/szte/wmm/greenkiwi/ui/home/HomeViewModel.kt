@@ -3,6 +3,7 @@ package com.szte.wmm.greenkiwi.ui.home
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.szte.wmm.greenkiwi.R
 import kotlin.math.sqrt
 import kotlin.math.truncate
 
@@ -14,10 +15,14 @@ class HomeViewModel(currentPoints: Long, private val expBaseNumber: Int) : ViewM
     private val _experience = MutableLiveData<Experience>()
     val experience: LiveData<Experience>
         get() = _experience
+    private val _petImage = MutableLiveData<Int>()
+    val petImage: LiveData<Int>
+        get() = _petImage
 
     init {
         val levelUps = calculateLevelUpsInExpRange(currentPoints)
         _levelUps.value = levelUps
+        _petImage.value = getPetImageByLevel(levelUps + 1)
         val maxExpAtCurrentLevel = calculateMaxExpAtLevel(levelUps + 1)
         val maxExpAtPreviousLevel = calculateMaxExpAtLevel(levelUps)
         _experience.value = Experience(currentPoints - maxExpAtPreviousLevel, maxExpAtCurrentLevel - maxExpAtPreviousLevel)
@@ -29,6 +34,14 @@ class HomeViewModel(currentPoints: Long, private val expBaseNumber: Int) : ViewM
     }
 
     private fun calculateMaxExpAtLevel(level: Int) = expBaseNumber.toLong() * level * (1 + level)
+
+    private fun getPetImageByLevel(playerLevel: Int): Int {
+        return when(playerLevel) {
+            0, 1, 2 -> R.drawable.egg
+            3, 4 -> R.drawable.egg_cracked
+            else -> R.drawable.kiwi
+        }
+    }
 }
 
 /**
