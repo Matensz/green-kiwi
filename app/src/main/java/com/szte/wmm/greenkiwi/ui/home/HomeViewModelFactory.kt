@@ -6,12 +6,12 @@ import androidx.lifecycle.ViewModelProvider
 /**
  * ViewModelProvider.Factory implementation for creating HomeViewModel.
  */
-class HomeViewModelFactory : ViewModelProvider.Factory {
+class HomeViewModelFactory(private val currentPoints: Long, private val expBaseNumber: Int) : ViewModelProvider.Factory {
 
     @Suppress("unchecked_cast")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(HomeViewModel::class.java)) {
-            return HomeViewModel() as T
+            return HomeViewModel(currentPoints, expBaseNumber) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }
