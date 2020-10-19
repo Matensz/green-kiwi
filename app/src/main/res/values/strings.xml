@@ -9,4 +9,12 @@
     <string name="activity_added_message">Great job, activity added!</string>
     <string name="level_info">Level %d</string>
     <string name="exp_info">%d/%d EXP</string>
+
+    <!--Activities view category Chip names-->
+    <string name="water_and_energy">Water and energy</string>
+    <string name="less_waste">Less waste</string>
+    <string name="food_and_eating_habits">Food and eating habits</string>
+    <string name="transportation">Transportation</string>
+    <string name="better_materials">Better materials</string>
+    <string name="other">Other</string>
 </resources>

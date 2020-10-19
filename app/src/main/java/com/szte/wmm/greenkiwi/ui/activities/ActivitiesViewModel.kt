@@ -19,8 +19,8 @@ class ActivitiesViewModel internal constructor(
     private val _filteredActivities = MutableLiveData<List<Activity>>()
     val filteredActivities: LiveData<List<Activity>>
         get() = _filteredActivities
-    private val _categories = MutableLiveData<List<String>>()
-    val categories: LiveData<List<String>>
+    private val _categories = MutableLiveData<List<Category>>()
+    val categories: LiveData<List<Category>>
         get() = _categories
     private val _navigateToSelectedActivity = MutableLiveData<Activity>()
     val navigateToSelectedActivity: LiveData<Activity>
@@ -30,7 +30,7 @@ class ActivitiesViewModel internal constructor(
     init {
         viewModelScope.launch {
             _activities.value = activitiesRepository.getActivities()
-            _categories.value = Category.values().map { it.name }
+            _categories.value = Category.values().toList()
             _filteredActivities.value = _activities.value.orEmpty()
         }
     }

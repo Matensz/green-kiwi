@@ -13,6 +13,7 @@ import com.google.android.material.chip.Chip
 import com.szte.wmm.greenkiwi.InjectorUtils
 import com.szte.wmm.greenkiwi.R
 import com.szte.wmm.greenkiwi.databinding.FragmentActivitiesBinding
+import com.szte.wmm.greenkiwi.repository.domain.Category
 
 class ActivitiesFragment : Fragment() {
 
@@ -36,15 +37,15 @@ class ActivitiesFragment : Fragment() {
             }
         })
 
-        activitiesViewModel.categories.observe(viewLifecycleOwner, object: Observer<List<String>> {
-            override fun onChanged(data: List<String>?) {
+        activitiesViewModel.categories.observe(viewLifecycleOwner, object: Observer<List<Category>> {
+            override fun onChanged(data: List<Category>?) {
                 data ?: return
                 val chipGroup = binding.categoriesList
                 val inflator = LayoutInflater.from(chipGroup.context)
-                val children = data.map { categoryName ->
+                val children = data.map { category ->
                     val chip = inflator.inflate(R.layout.category, chipGroup, false) as Chip
-                    chip.text = categoryName
-                    chip.tag = categoryName
+                    chip.text = getString(category.stringResourceId)
+                    chip.tag = category.name
                     chip.setOnCheckedChangeListener { button, isChecked ->
                         activitiesViewModel.onFilterChanged(button.tag as String, isChecked)
                     }
