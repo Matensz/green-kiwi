@@ -21,10 +21,12 @@ class HomeViewModel(currentPoints: Long, private val expBaseNumber: Int) : ViewM
 
     init {
         val levelUps = calculateLevelUpsInExpRange(currentPoints)
-        _levelUps.value = levelUps
-        _petImage.value = getPetImageByLevel(levelUps + 1)
-        val maxExpAtCurrentLevel = calculateMaxExpAtLevel(levelUps + 1)
+        val currentPlayerLevel = levelUps + 1
         val maxExpAtPreviousLevel = calculateMaxExpAtLevel(levelUps)
+        val maxExpAtCurrentLevel = calculateMaxExpAtLevel(currentPlayerLevel)
+
+        _levelUps.value = levelUps
+        _petImage.value = getPetImageByLevel(currentPlayerLevel)
         _experience.value = Experience(currentPoints - maxExpAtPreviousLevel, maxExpAtCurrentLevel - maxExpAtPreviousLevel)
     }
 
