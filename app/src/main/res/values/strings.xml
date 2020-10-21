@@ -9,6 +9,14 @@
     <string name="activity_added_message">Great job, activity added!</string>
     <string name="level_info">Level %d</string>
     <string name="exp_info">%d/%d EXP</string>
+    
+    <!--Instructions dialog related-->
+    <string name="instructions_title">Welcome to GreenKiwi!</string>
+    <string name="instructions_dismiss">Got it!</string>
+    <string name="instructions_first_page">This app was created with the purpose to help people live a more environment-friendly life with the help of a virtual pet.
+        \nYou can choose from a long list of green activities, and once completing one, you can mark it done to get points.
+        \nThe more points you collect, the faster your pet grows, so be enthusiastic and diligent, and it will grow up in no time!</string>
+    <string name="instructions_second_page">Placeholder string, to be completed</string>
 
     <!--Activities view category Chip names-->
     <string name="water_and_energy">Water and energy</string>
