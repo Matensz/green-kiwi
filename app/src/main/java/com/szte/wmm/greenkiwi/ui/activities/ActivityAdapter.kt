@@ -9,7 +9,7 @@ import com.szte.wmm.greenkiwi.databinding.ActivityListItemBinding
 import com.szte.wmm.greenkiwi.repository.domain.Activity
 
 /**
- * Adapter for displaying the activities in as a list in a RecyclerView.
+ * Adapter for displaying the activities as a list in a RecyclerView.
  */
 class ActivityAdapter(private val onClickListener: OnClickListener) : ListAdapter<Activity, ActivityAdapter.ActivityViewHolder>(DiffCallback) {
 
