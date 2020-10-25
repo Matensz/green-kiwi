@@ -25,4 +25,7 @@
     <string name="transportation">Transportation</string>
     <string name="better_materials">Better materials</string>
     <string name="other">Other</string>
+
+    <!--Settings tab-->
+    <string name="view_instructions_button">View Instructions</string>
 </resources>
