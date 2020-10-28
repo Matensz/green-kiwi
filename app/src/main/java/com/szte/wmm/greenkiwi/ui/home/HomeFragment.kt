@@ -3,7 +3,11 @@ package com.szte.wmm.greenkiwi.ui.home
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.content.Context
+import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.util.TypedValue
 import android.view.LayoutInflater
@@ -56,6 +60,11 @@ class HomeFragment : Fragment() {
             binding.filledHungerBar.layoutParams.width = calculateStatBar(it.currentValue, it.currentMaxValue)
         })
 
+        createNotificationChannel(
+            getString(R.string.pet_hunger_channel_id),
+            getString(R.string.pet_hunger_channel_name)
+        )
+
         return binding.root
     }
 
@@ -86,5 +95,23 @@ class HomeFragment : Fragment() {
             }
         })
         animator.start()
+    }
+
+    private fun createNotificationChannel(channelId: String, channelName: String) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val notificationChannel = NotificationChannel(
+                channelId,
+                channelName,
+                NotificationManager.IMPORTANCE_HIGH
+            )
+
+            notificationChannel.enableLights(true)
+            notificationChannel.lightColor = Color.GREEN
+            notificationChannel.enableVibration(true)
+            notificationChannel.description = "Notifications of the kiwi's hunger"
+
+            val notificationManager = requireActivity().getSystemService(NotificationManager::class.java)
+            notificationManager.createNotificationChannel(notificationChannel)
+        }
     }
 }

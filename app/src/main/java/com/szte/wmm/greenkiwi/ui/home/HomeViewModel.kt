@@ -1,10 +1,19 @@
 package com.szte.wmm.greenkiwi.ui.home
 
+import android.app.AlarmManager
 import android.app.Application
+import android.app.NotificationManager
+import android.app.PendingIntent
 import android.content.Context
+import android.content.Intent
 import android.os.CountDownTimer
+import android.os.SystemClock
+import androidx.core.app.AlarmManagerCompat
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.*
+import com.szte.wmm.greenkiwi.HungerAlarmReceiver
 import com.szte.wmm.greenkiwi.R
+import com.szte.wmm.greenkiwi.util.cancelNotifications
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -14,10 +23,11 @@ import kotlin.math.truncate
 class HomeViewModel(
     currentPoints: Long,
     private val expBaseNumber: Int,
-    app: Application
+    private val app: Application
 ) : AndroidViewModel(app) {
 
     companion object {
+        private const val HUNGER_NOTIFICATION_ID = 0
         //TODO set correct value when done testing
         private const val ONE_DAY_IN_MILLIS = 60000L
         private const val ONE_SECOND_IN_MILLIS = 3000L
@@ -38,6 +48,9 @@ class HomeViewModel(
 
     private val hungerTimerKey = app.getString(R.string.hunger_timer_key)
     private val sharedPreferences = app.getSharedPreferences(app.getString(R.string.preference_file_key), Context.MODE_PRIVATE)
+    private val alarmManager = app.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+    private val notifyIntent = Intent(app, HungerAlarmReceiver::class.java)
+    private val notifyPendingIntent: PendingIntent
     private lateinit var timer: CountDownTimer
 
     init {
@@ -49,6 +62,14 @@ class HomeViewModel(
         _levelUps.value = levelUps
         _petImage.value = getPetImageByLevel(currentPlayerLevel)
         _experience.value = ValuePair(currentPoints - maxExpAtPreviousLevel, maxExpAtCurrentLevel - maxExpAtPreviousLevel)
+
+        notifyPendingIntent = PendingIntent.getBroadcast(
+            getApplication(),
+            HUNGER_NOTIFICATION_ID,
+            notifyIntent,
+            PendingIntent.FLAG_UPDATE_CURRENT
+        )
+
         if (currentPlayerLevel > 4) {
             calculatePetHunger()
         }
@@ -70,6 +91,16 @@ class HomeViewModel(
     }
 
     private fun calculatePetHunger() {
+        val notificationManager = ContextCompat.getSystemService(app, NotificationManager::class.java) as NotificationManager
+        notificationManager.cancelNotifications()
+
+        AlarmManagerCompat.setExactAndAllowWhileIdle(
+            alarmManager,
+            AlarmManager.ELAPSED_REALTIME_WAKEUP,
+            SystemClock.elapsedRealtime() + ONE_DAY_IN_MILLIS,
+            notifyPendingIntent
+        )
+
         viewModelScope.launch {
             saveTime()
         }
@@ -91,16 +122,21 @@ class HomeViewModel(
                         _hunger.value = ValuePair(remainingTime, ONE_DAY_IN_MILLIS)
                     } else {
                         _hunger.value = ValuePair(1, 100)
-                        timer.cancel()
+                        cancelAlarm()
                     }
                 }
 
                 override fun onFinish() {
-                    timer.cancel()
+                    cancelAlarm()
                 }
             }
             timer.start()
         }
+    }
+
+    private fun cancelAlarm() {
+        timer.cancel()
+        alarmManager.cancel(notifyPendingIntent)
     }
 
     private suspend fun saveTime() =

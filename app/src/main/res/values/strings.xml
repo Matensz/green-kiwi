@@ -29,4 +29,10 @@
 
     <!--Settings tab-->
     <string name="view_instructions_button">View Instructions</string>
+
+    <!--Notifications-->
+    <string name="notification_title">Take care of your kiwi</string>
+    <string name="pet_hunger_channel_id" translatable="false">hungry_kiwi_channel</string>
+    <string name="pet_hunger_channel_name" translatable="false">HungryKiwiAlert</string>
+    <string name="pet_hunger_message">Hungry Kiwi equals an Angry Kiwi, and your kiwi is hungry!</string>
 </resources>
