@@ -1,4 +1,4 @@
-package com.szte.wmm.greenkiwi
+package com.szte.wmm.greenkiwi.util
 
 import android.app.Application
 import android.content.Context
@@ -24,8 +24,8 @@ object InjectorUtils {
         return UserSelectedActivitiesRepository.getInstance(ApplicationDatabase.getInstance(context.applicationContext).userSelectedActivitiesDao())
     }
 
-    fun getHomeViewModelFactory(currentPoints: Long, expBaseNumber: Int): HomeViewModelFactory {
-        return HomeViewModelFactory(currentPoints, expBaseNumber)
+    fun getHomeViewModelFactory(currentPoints: Long, expBaseNumber: Int, application: Application): HomeViewModelFactory {
+        return HomeViewModelFactory(currentPoints, expBaseNumber, application)
     }
 
     fun getActivitiesViewModelFactory(fragment: Fragment): ActivitiesViewModelFactory {

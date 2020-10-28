@@ -11,7 +11,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import com.szte.wmm.greenkiwi.InjectorUtils
+import com.szte.wmm.greenkiwi.util.InjectorUtils
 import com.szte.wmm.greenkiwi.R
 import com.szte.wmm.greenkiwi.databinding.FragmentActivityDetailBinding
 import com.szte.wmm.greenkiwi.repository.domain.Activity

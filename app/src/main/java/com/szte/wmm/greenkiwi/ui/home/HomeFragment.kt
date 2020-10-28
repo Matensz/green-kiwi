@@ -14,17 +14,19 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.szte.wmm.greenkiwi.InjectorUtils
 import com.szte.wmm.greenkiwi.R
 import com.szte.wmm.greenkiwi.databinding.FragmentHomeBinding
+import com.szte.wmm.greenkiwi.util.InjectorUtils
 import kotlin.math.truncate
 
 class HomeFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
+        val application = requireNotNull(activity).application
         val currentPoints = getPoints()
-        val viewModelFactory = InjectorUtils.getHomeViewModelFactory(currentPoints, resources.getInteger(R.integer.exp_base_number))
+        val levelCalculationBase = resources.getInteger(R.integer.exp_base_number)
+        val viewModelFactory = InjectorUtils.getHomeViewModelFactory(currentPoints, levelCalculationBase, application)
         val viewModel = ViewModelProvider(this, viewModelFactory).get(HomeViewModel::class.java)
 
         val binding: FragmentHomeBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
@@ -36,8 +38,8 @@ class HomeFragment : Fragment() {
         })
 
         viewModel.experience.observe(viewLifecycleOwner, Observer {
-            binding.expText.text = String.format(resources.getString(R.string.exp_info), it.currentExp, it.currentMaxExp)
-            binding.collectedExpBar.layoutParams.width = calculateExpBar(it.currentExp, it.currentMaxExp)
+            binding.expText.text = String.format(resources.getString(R.string.exp_info), it.currentValue, it.currentMaxValue)
+            binding.collectedExpBar.layoutParams.width = calculateStatBar(it.currentValue, it.currentMaxValue)
         })
 
         viewModel.petImage.observe(viewLifecycleOwner, Observer {
@@ -48,6 +50,12 @@ class HomeFragment : Fragment() {
             animatePet(it as ImageView)
         }
 
+        viewModel.hunger.observe(viewLifecycleOwner, Observer {
+            val hungerPercent = truncate(it.currentValue / it.currentMaxValue.toFloat() * 100).toInt()
+            binding.hungerText.text = String.format(resources.getString(R.string.hunger_info), hungerPercent, 100)
+            binding.filledHungerBar.layoutParams.width = calculateStatBar(it.currentValue, it.currentMaxValue)
+        })
+
         return binding.root
     }
 
@@ -57,8 +65,8 @@ class HomeFragment : Fragment() {
         return sharedPref.getLong(getString(R.string.saved_user_points_key), defaultValue)
     }
 
-    private fun calculateExpBar(currentPoints: Long, maxExpAtCurrentLevel: Long): Int {
-        val lengthInPixels = currentPoints / maxExpAtCurrentLevel.toFloat() * resources.getInteger(R.integer.empty_exp_bar_length)
+    private fun calculateStatBar(currentValue: Long, currentMaxValue: Long): Int {
+        val lengthInPixels = currentValue / currentMaxValue.toFloat() * resources.getInteger(R.integer.empty_stat_bar_length)
         val lengthInDp = truncate(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, lengthInPixels, resources.displayMetrics)).toInt()
         return if (lengthInDp != 0) lengthInDp else 1
     }

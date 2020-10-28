@@ -10,7 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.chip.Chip
-import com.szte.wmm.greenkiwi.InjectorUtils
+import com.szte.wmm.greenkiwi.util.InjectorUtils
 import com.szte.wmm.greenkiwi.R
 import com.szte.wmm.greenkiwi.databinding.FragmentActivitiesBinding
 import com.szte.wmm.greenkiwi.repository.domain.Category

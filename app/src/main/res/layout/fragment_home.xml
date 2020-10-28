@@ -48,6 +48,19 @@
             app:layout_constraintStart_toStartOf="@id/empty_exp_bar"
             app:layout_constraintTop_toTopOf="@id/empty_exp_bar" />
 
+        <TextView
+            android:id="@+id/exp_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@id/empty_exp_bar"
+            app:layout_constraintEnd_toEndOf="@id/empty_exp_bar"
+            app:layout_constraintTop_toTopOf="@id/empty_exp_bar"
+            app:layout_constraintBottom_toBottomOf="@id/empty_exp_bar"
+            tools:text="123/999 EXP" />
+
         <View
             android:id="@+id/empty_hunger_bar"
             android:layout_width="300dp"
@@ -70,27 +83,29 @@
             app:layout_constraintTop_toTopOf="@id/empty_hunger_bar" />
 
         <TextView
+            android:id="@+id/hunger_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@id/empty_hunger_bar"
+            app:layout_constraintEnd_toEndOf="@id/empty_hunger_bar"
+            app:layout_constraintTop_toTopOf="@id/empty_hunger_bar"
+            app:layout_constraintBottom_toBottomOf="@id/empty_hunger_bar"
+            tools:text="99/100" />
+
+        <TextView
             android:id="@+id/player_level_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:textAlignment="center"
             android:textSize="20sp"
-            app:layout_constraintEnd_toStartOf="@id/exp_text"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/empty_hunger_bar"
             tools:text="Level 99" />
 
-        <TextView
-            android:id="@+id/exp_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/player_level_text"
-            app:layout_constraintTop_toBottomOf="@id/empty_hunger_bar"
-            tools:text="123/999 EXP" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
