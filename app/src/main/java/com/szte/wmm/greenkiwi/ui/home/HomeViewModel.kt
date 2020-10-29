@@ -14,6 +14,7 @@ import androidx.lifecycle.*
 import com.szte.wmm.greenkiwi.HungerAlarmReceiver
 import com.szte.wmm.greenkiwi.R
 import com.szte.wmm.greenkiwi.repository.UserSelectedActivitiesRepository
+import com.szte.wmm.greenkiwi.ui.home.context.HomeDataContext
 import com.szte.wmm.greenkiwi.util.cancelNotifications
 import kotlinx.coroutines.*
 import java.text.SimpleDateFormat
@@ -21,8 +22,7 @@ import kotlin.math.sqrt
 import kotlin.math.truncate
 
 class HomeViewModel(
-    currentPoints: Long,
-    private val expBaseNumber: Int,
+    context: HomeDataContext,
     private val userSelectedActivitiesRepository: UserSelectedActivitiesRepository,
     private val app: Application
 ) : AndroidViewModel(app) {
@@ -50,6 +50,8 @@ class HomeViewModel(
     val hunger: LiveData<ValuePair>
         get() = _hunger
 
+    private val currentPoints = context.currentPoints
+    private val expBaseNumber = context.expBaseNumber
     private val hungerTimerKey = app.getString(R.string.hunger_timer_key)
     private val sharedPreferences = app.getSharedPreferences(app.getString(R.string.preference_file_key), Context.MODE_PRIVATE)
     private val alarmManager = app.getSystemService(Context.ALARM_SERVICE) as AlarmManager

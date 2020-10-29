@@ -20,6 +20,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.szte.wmm.greenkiwi.R
 import com.szte.wmm.greenkiwi.databinding.FragmentHomeBinding
+import com.szte.wmm.greenkiwi.ui.home.context.HomeDataContext
 import com.szte.wmm.greenkiwi.util.InjectorUtils
 import kotlin.math.truncate
 
@@ -30,7 +31,8 @@ class HomeFragment : Fragment() {
         val application = requireNotNull(activity).application
         val currentPoints = getPoints()
         val levelCalculationBase = resources.getInteger(R.integer.exp_base_number)
-        val viewModelFactory = InjectorUtils.getHomeViewModelFactory(currentPoints, levelCalculationBase, this, application)
+        val context = HomeDataContext(currentPoints, levelCalculationBase)
+        val viewModelFactory = InjectorUtils.getHomeViewModelFactory(context, this, application)
         val viewModel = ViewModelProvider(this, viewModelFactory).get(HomeViewModel::class.java)
 
         val binding: FragmentHomeBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
