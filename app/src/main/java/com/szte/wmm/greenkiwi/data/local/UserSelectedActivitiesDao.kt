@@ -17,4 +17,7 @@ interface UserSelectedActivitiesDao {
 
     @Query("SELECT * FROM user_selected_activities WHERE activityid = :activityId ORDER BY id DESC LIMIT 1")
     fun getLatestActivity(activityId: Long): UserSelectedActivity?
+
+    @Query("SELECT * FROM user_selected_activities ORDER BY id DESC LIMIT :count")
+    fun getLatestXActivities(count: Int): List<UserSelectedActivity>
 }

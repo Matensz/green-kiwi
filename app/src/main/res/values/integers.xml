@@ -3,4 +3,5 @@
     <integer name="default_starting_point">0</integer>
     <integer name="exp_base_number">25</integer>
     <integer name="empty_stat_bar_length">300</integer>
+    <integer name="daily_activity_max_count">3</integer>
 </resources>

@@ -30,7 +30,7 @@ class HomeFragment : Fragment() {
         val application = requireNotNull(activity).application
         val currentPoints = getPoints()
         val levelCalculationBase = resources.getInteger(R.integer.exp_base_number)
-        val viewModelFactory = InjectorUtils.getHomeViewModelFactory(currentPoints, levelCalculationBase, application)
+        val viewModelFactory = InjectorUtils.getHomeViewModelFactory(currentPoints, levelCalculationBase, this, application)
         val viewModel = ViewModelProvider(this, viewModelFactory).get(HomeViewModel::class.java)
 
         val binding: FragmentHomeBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
@@ -53,6 +53,11 @@ class HomeFragment : Fragment() {
         binding.petImage.setOnClickListener {
             animatePet(it as ImageView)
         }
+
+        viewModel.dailyActivityCount.observe(viewLifecycleOwner, Observer {
+            val maxCount = resources.getInteger(R.integer.daily_activity_max_count)
+            binding.dailyActivityCounter.text = String.format(resources.getString(R.string.daily_activity_count_info), it, maxCount)
+        })
 
         viewModel.hunger.observe(viewLifecycleOwner, Observer {
             val hungerPercent = truncate(it.currentValue / it.currentMaxValue.toFloat() * 100).toInt()

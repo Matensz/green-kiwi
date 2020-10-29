@@ -47,8 +47,7 @@ class ActivityDetailViewModel internal constructor(
 
     private suspend fun getFormattedDate(activityId: Long): String {
         return withContext(Dispatchers.IO) {
-            val lastAddedTimeStamp =
-                userSelectedActivitiesRepository.getLatestActivity(activityId)?.timeAdded
+            val lastAddedTimeStamp = userSelectedActivitiesRepository.getLatestActivity(activityId)?.timeAdded
             val formattedDate = formatDateString(lastAddedTimeStamp)
             formattedDate
         }

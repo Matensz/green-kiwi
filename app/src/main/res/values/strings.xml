@@ -9,6 +9,7 @@
     <string name="activity_added_message">Great job, activity added!</string>
     <string name="level_info">Level %d</string>
     <string name="exp_info">%d/%d EXP</string>
+    <string name="daily_activity_count_info">Daily activities: %d/%d</string>
     <string name="hunger_info">%d/%d</string>
 
     <!--Instructions dialog related-->
