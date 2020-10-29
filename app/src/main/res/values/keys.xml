@@ -6,4 +6,5 @@
     <string name="saved_user_points_key">savedUserPointsKey</string>
     <string name="returning_user_key">isReturningUser</string>
     <string name="hunger_timer_key">hungerTimerKey</string>
+    <string name="saved_user_gold_key">savedUserGoldKey</string>
 </resources>

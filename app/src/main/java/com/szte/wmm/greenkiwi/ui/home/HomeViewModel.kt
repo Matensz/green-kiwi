@@ -49,10 +49,14 @@ class HomeViewModel(
     private val _hunger = MutableLiveData<ValuePair>()
     val hunger: LiveData<ValuePair>
         get() = _hunger
+    private val _gold = MutableLiveData<Long>()
+    val gold: LiveData<Long>
+        get() = _gold
 
     private val currentPoints = context.currentPoints
     private val expBaseNumber = context.expBaseNumber
     private val hungerTimerKey = app.getString(R.string.hunger_timer_key)
+    private val playerGoldKey = app.getString(R.string.saved_user_gold_key)
     private val sharedPreferences = app.getSharedPreferences(app.getString(R.string.preference_file_key), Context.MODE_PRIVATE)
     private val alarmManager = app.getSystemService(Context.ALARM_SERVICE) as AlarmManager
     private val notifyIntent = Intent(app, HungerAlarmReceiver::class.java)
@@ -72,6 +76,7 @@ class HomeViewModel(
         _petImage.value = getPetImageByLevel(currentPlayerLevel)
         _experience.value = ValuePair(currentPoints - maxExpAtPreviousLevel, maxExpAtCurrentLevel - maxExpAtPreviousLevel)
         initDailyActivityCounter()
+        initGoldCounter()
 
         notifyPendingIntent = PendingIntent.getBroadcast(
             getApplication(),
@@ -177,6 +182,17 @@ class HomeViewModel(
     private suspend fun loadTime(): Long =
         withContext(Dispatchers.IO) {
             sharedPreferences.getLong(hungerTimerKey, 0)
+        }
+
+    private fun initGoldCounter() {
+        uiScope.launch {
+            _gold.value = getPlayerGold()
+        }
+    }
+
+    private suspend fun getPlayerGold(): Long =
+        withContext(Dispatchers.IO) {
+            sharedPreferences.getLong(playerGoldKey, 0L)
         }
 }
 

@@ -11,6 +11,8 @@
     <string name="exp_info">%d/%d EXP</string>
     <string name="daily_activity_count_info">Daily activities: %d/%d</string>
     <string name="hunger_info">%d/%d</string>
+    <string name="gold_formatter">#,###</string>
+    <string name="gold_info">Gold: %s</string>
 
     <!--Instructions dialog related-->
     <string name="instructions_title">Welcome to GreenKiwi!</string>

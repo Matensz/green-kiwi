@@ -22,6 +22,7 @@ import com.szte.wmm.greenkiwi.R
 import com.szte.wmm.greenkiwi.databinding.FragmentHomeBinding
 import com.szte.wmm.greenkiwi.ui.home.context.HomeDataContext
 import com.szte.wmm.greenkiwi.util.InjectorUtils
+import java.text.DecimalFormat
 import kotlin.math.truncate
 
 class HomeFragment : Fragment() {
@@ -40,11 +41,11 @@ class HomeFragment : Fragment() {
         binding.lifecycleOwner = this
 
         viewModel.levelUps.observe(viewLifecycleOwner, Observer {
-            binding.playerLevelText.text = String.format(resources.getString(R.string.level_info), it + 1)
+            binding.playerLevelText.text = String.format(getString(R.string.level_info), it + 1)
         })
 
         viewModel.experience.observe(viewLifecycleOwner, Observer {
-            binding.expText.text = String.format(resources.getString(R.string.exp_info), it.currentValue, it.currentMaxValue)
+            binding.expText.text = String.format(getString(R.string.exp_info), it.currentValue, it.currentMaxValue)
             binding.collectedExpBar.layoutParams.width = calculateStatBar(it.currentValue, it.currentMaxValue)
         })
 
@@ -58,13 +59,19 @@ class HomeFragment : Fragment() {
 
         viewModel.dailyActivityCount.observe(viewLifecycleOwner, Observer {
             val maxCount = resources.getInteger(R.integer.daily_activity_max_count)
-            binding.dailyActivityCounter.text = String.format(resources.getString(R.string.daily_activity_count_info), it, maxCount)
+            binding.dailyActivityCounter.text = String.format(getString(R.string.daily_activity_count_info), it, maxCount)
         })
 
         viewModel.hunger.observe(viewLifecycleOwner, Observer {
             val hungerPercent = truncate(it.currentValue / it.currentMaxValue.toFloat() * 100).toInt()
-            binding.hungerText.text = String.format(resources.getString(R.string.hunger_info), hungerPercent, 100)
+            binding.hungerText.text = String.format(getString(R.string.hunger_info), hungerPercent, 100)
             binding.filledHungerBar.layoutParams.width = calculateStatBar(it.currentValue, it.currentMaxValue)
+        })
+
+        viewModel.gold.observe(viewLifecycleOwner, Observer {
+            val formatterString = getString(R.string.gold_formatter)
+            val formattedGold = DecimalFormat(formatterString).format(it)
+            binding.playerGoldText.text = String.format(getString(R.string.gold_info), formattedGold)
         })
 
         createNotificationChannel(
