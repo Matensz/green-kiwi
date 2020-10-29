@@ -14,5 +14,6 @@ data class Activity(
     val thumbnailUrl: String,
     val imageUrl: String,
     val point: Int,
+    val gold: Int,
     val category: Category
 ) : Parcelable

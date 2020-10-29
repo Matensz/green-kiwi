@@ -16,6 +16,7 @@ data class Activity(
     @ColumnInfo(name = "thumbnail_url") var thumbnailUrl: String,
     @ColumnInfo(name = "image_url") var imageUrl: String,
     var point: Int,
+    var gold: Int,
     @ColumnInfo(name = "categoryid") var categoryId: Long
 )
 
@@ -30,6 +31,7 @@ fun Activity.asDomainModel(): com.szte.wmm.greenkiwi.repository.domain.Activity 
         thumbnailUrl,
         imageUrl,
         point,
+        gold,
         Category.values().firstOrNull { it -> it.id == categoryId } ?: Category.OTHER
     )
 }
