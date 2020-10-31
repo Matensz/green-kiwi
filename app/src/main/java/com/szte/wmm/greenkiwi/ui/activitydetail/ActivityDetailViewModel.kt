@@ -55,6 +55,7 @@ class ActivityDetailViewModel internal constructor(
         uiScope.launch {
             val newActivity = UserSelectedActivity(activityId = activityId, timeAdded = currentTime)
             insertActivityTobDb(newActivity)
+            _lastAddedDate.value = getFormattedDate(activityId)
         }
     }
 
