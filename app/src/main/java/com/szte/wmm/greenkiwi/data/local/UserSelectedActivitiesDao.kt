@@ -20,4 +20,7 @@ interface UserSelectedActivitiesDao {
 
     @Query("SELECT * FROM user_selected_activities ORDER BY id DESC LIMIT :count")
     fun getLatestXActivities(count: Int): List<UserSelectedActivity>
+
+    @Query("DELETE FROM user_selected_activities")
+    suspend fun deleteAllAddedActivities()
 }

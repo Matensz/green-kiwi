@@ -16,6 +16,8 @@ class UserSelectedActivitiesRepository(private val userSelectedActivitiesDao: Us
 
     suspend fun insertUserSelectedActivity(userSelectedActivity: UserSelectedActivity) = userSelectedActivitiesDao.insertUserSelectedActivity(userSelectedActivity.asDatabaseModel())
 
+    suspend fun deleteAllAddedActivities() = userSelectedActivitiesDao.deleteAllAddedActivities()
+
     companion object {
 
         // For Singleton instantiation

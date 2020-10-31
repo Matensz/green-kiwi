@@ -11,6 +11,7 @@ import com.szte.wmm.greenkiwi.ui.activities.ActivitiesViewModelFactory
 import com.szte.wmm.greenkiwi.ui.activitydetail.ActivityDetailViewModelFactory
 import com.szte.wmm.greenkiwi.ui.home.HomeViewModelFactory
 import com.szte.wmm.greenkiwi.ui.home.context.HomeDataContext
+import com.szte.wmm.greenkiwi.ui.settings.SettingsViewModelFactory
 
 /**
  * Static utility methods for dependency injection.
@@ -35,5 +36,9 @@ object InjectorUtils {
 
     fun getActivityDetailViewModelFactory(activity: Activity, fragment: Fragment, application: Application): ActivityDetailViewModelFactory {
         return ActivityDetailViewModelFactory(activity, getUserSelectedActivitiesRepository(fragment.requireContext()), application)
+    }
+
+    fun getSettingsViewModelFactory(fragment: Fragment, application: Application): SettingsViewModelFactory {
+        return SettingsViewModelFactory(getUserSelectedActivitiesRepository(fragment.requireContext()), application)
     }
 }
