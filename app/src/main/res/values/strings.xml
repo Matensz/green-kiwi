@@ -34,6 +34,7 @@
 
     <!--Settings tab-->
     <string name="view_instructions_button">View Instructions</string>
+    <string name="night_mode_toggle_text">Toggle night mode on/off</string>
 
     <!--Notifications-->
     <string name="notification_title">Take care of your kiwi</string>
