@@ -3,6 +3,7 @@ package com.szte.wmm.greenkiwi.ui.activitydetail
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.os.SystemClock
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +17,8 @@ import com.szte.wmm.greenkiwi.util.InjectorUtils
 import com.szte.wmm.greenkiwi.R
 import com.szte.wmm.greenkiwi.databinding.FragmentActivityDetailBinding
 import com.szte.wmm.greenkiwi.repository.domain.Activity
+import com.szte.wmm.greenkiwi.util.isDayBeforeDate
+import com.szte.wmm.greenkiwi.util.isSameDay
 
 class ActivityDetailFragment : Fragment() {
 
@@ -38,11 +41,19 @@ class ActivityDetailFragment : Fragment() {
 
                 override fun add(activity: Activity?) {
                     activity?.let {
-                        viewModel.addActivity(activity.activityId)
+                        val currentTime = System.currentTimeMillis()
+                        viewModel.addActivity(activity.activityId, currentTime)
                         updatePlayerValue(sharedPref, activity.point, R.integer.default_starting_point, R.string.saved_user_points_key)
-                        updatePlayerValue(sharedPref, activity.gold, R.integer.default_starting_gold, R.string.saved_user_gold_key)
-                        Toast.makeText(application.applicationContext, R.string.activity_added_message, Toast.LENGTH_SHORT)
-                            .show()
+                        val currentDailyCount = updateDailyCounter(sharedPref, currentTime)
+                        var activityAddedMessage = getString(R.string.activity_added_message)
+                        var goldAmount = activity.gold
+                        if (currentDailyCount == 3) {
+                            val extraGold = resources.getInteger(R.integer.daily_counter_gold_reward)
+                            activityAddedMessage = getString(R.string.third_activity_added_message, extraGold)
+                            goldAmount += extraGold
+                        }
+                        Toast.makeText(context, activityAddedMessage, Toast.LENGTH_LONG).show()
+                        updatePlayerValue(sharedPref, goldAmount, R.integer.default_starting_gold, R.string.saved_user_gold_key)
                     }
                 }
             }
@@ -70,11 +81,30 @@ class ActivityDetailFragment : Fragment() {
     private fun updatePlayerValue(sharedPref: SharedPreferences, valueToAdd: Int, defaultResId: Int, sharedPrefKeyResId: Int) {
         val defaultValue = resources.getInteger(defaultResId).toLong()
         val currentValue = sharedPref.getLong(getString(sharedPrefKeyResId), defaultValue)
-        with (sharedPref.edit()) {
+        with(sharedPref.edit()) {
             val updatedValue = currentValue + valueToAdd.toLong()
             putLong(getString(sharedPrefKeyResId), updatedValue)
             apply()
         }
+    }
+
+    private fun updateDailyCounter(sharedPref: SharedPreferences, currentTime: Long): Int {
+        val lastSavedDateKey = getString(R.string.last_saved_activity_date_key)
+        val dailyActivityCounterKey = getString(R.string.daily_activity_counter_key)
+        val defaultLastDate = currentTime - SystemClock.elapsedRealtime()
+        val lastSavedDate = sharedPref.getLong(lastSavedDateKey, defaultLastDate)
+        var count = 0
+        if (lastSavedDate.isDayBeforeDate(currentTime)) {
+            with(sharedPref.edit()) {
+                putLong(lastSavedDateKey, currentTime)
+                putInt(dailyActivityCounterKey, ++count)
+                apply()
+            }
+        } else if (lastSavedDate.isSameDay(currentTime)) {
+            count = sharedPref.getInt(dailyActivityCounterKey, 0)
+            sharedPref.edit().putInt(dailyActivityCounterKey, ++count).apply()
+        }
+        return count
     }
 
     interface Callback {

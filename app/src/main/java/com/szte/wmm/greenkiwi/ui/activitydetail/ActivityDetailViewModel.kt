@@ -1,6 +1,5 @@
 package com.szte.wmm.greenkiwi.ui.activitydetail
 
-import android.annotation.SuppressLint
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
@@ -10,8 +9,8 @@ import com.szte.wmm.greenkiwi.R
 import com.szte.wmm.greenkiwi.repository.UserSelectedActivitiesRepository
 import com.szte.wmm.greenkiwi.repository.domain.Activity
 import com.szte.wmm.greenkiwi.repository.domain.UserSelectedActivity
+import com.szte.wmm.greenkiwi.util.formatDateString
 import kotlinx.coroutines.*
-import java.text.SimpleDateFormat
 
 class ActivityDetailViewModel internal constructor(
     activity: Activity,
@@ -36,10 +35,10 @@ class ActivityDetailViewModel internal constructor(
 
     init {
         _selectedActivity.value = activity
-        initLastAddedDate(activity.activityId)
+        updateLastAddedDate(activity.activityId)
     }
 
-    private fun initLastAddedDate(activityId: Long) {
+    private fun updateLastAddedDate(activityId: Long) {
         uiScope.launch {
             _lastAddedDate.value = getFormattedDate(activityId)
         }
@@ -48,23 +47,12 @@ class ActivityDetailViewModel internal constructor(
     private suspend fun getFormattedDate(activityId: Long): String {
         return withContext(Dispatchers.IO) {
             val lastAddedTimeStamp = userSelectedActivitiesRepository.getLatestActivity(activityId)?.timeAdded
-            val formattedDate = formatDateString(lastAddedTimeStamp)
-            formattedDate
+            formatDateString(lastAddedTimeStamp, app.getString(R.string.last_added_date_default))
         }
     }
 
-    @SuppressLint("SimpleDateFormat")
-    private fun formatDateString(lastAddedTimeStamp: Long?): String {
-        return if (lastAddedTimeStamp != null) {
-            SimpleDateFormat("yyyy-MM-dd").format(lastAddedTimeStamp).toString()
-        } else {
-            "Haven't added yet"
-        }
-    }
-
-    fun addActivity(activityId: Long) {
+    fun addActivity(activityId: Long, currentTime: Long) {
         uiScope.launch {
-            val currentTime = System.currentTimeMillis()
             val newActivity = UserSelectedActivity(activityId = activityId, timeAdded = currentTime)
             insertActivityTobDb(newActivity)
         }

@@ -7,4 +7,6 @@
     <string name="returning_user_key">isReturningUser</string>
     <string name="hunger_timer_key">hungerTimerKey</string>
     <string name="saved_user_gold_key">savedUserGoldKey</string>
+    <string name="last_saved_activity_date_key">lastSavedActivityDateKey</string>
+    <string name="daily_activity_counter_key">dailyActivityCounterKey</string>
 </resources>
