@@ -50,4 +50,9 @@
     <string name="pet_hunger_channel_id" translatable="false">hungry_kiwi_channel</string>
     <string name="pet_hunger_channel_name" translatable="false">HungryKiwiAlert</string>
     <string name="pet_hunger_message">Hungry Kiwi equals an Angry Kiwi, and your kiwi is hungry!</string>
+    <string name="daily_activity_count_info_incomplete">Activities added today: %d/%d\nAdd %d more to get %d bonus gold!</string>
+    <string name="daily_activity_count_info_completed">Congrats! You\'ve added %d activities today!</string>
+    <string name="point_value">Exp: %d</string>
+    <string name="gold_value">Gold: %d</string>
+    <string name="activity_history_header_text">Your previously added activities:</string>
 </resources>

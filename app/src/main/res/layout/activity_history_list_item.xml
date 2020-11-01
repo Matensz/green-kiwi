@@ -1,0 +1,89 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="com.szte.wmm.greenkiwi.util.DateTimeUtilsKt" />
+        <variable
+            name="activity"
+            type="com.szte.wmm.greenkiwi.repository.domain.UserSelectedActivityWithDetails" />
+        <variable
+            name="point"
+            type="String" />
+        <variable
+            name="gold"
+            type="String" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/activity_history_parent_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/history_image"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:scaleType="fitCenter"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/ic_baseline_history_black_24dp"
+            tools:srcCompat="@drawable/ic_baseline_history_black_24dp" />
+
+        <TextView
+            android:id="@+id/activity_history_title"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:text="@{activity.title}"
+            android:textAlignment="viewStart"
+            android:textSize="20sp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/history_image"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="This is an example activity with a really long title" />
+
+        <TextView
+            android:id="@+id/activity_history_points"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="@{point}"
+            android:textAlignment="viewStart"
+            android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@id/activity_history_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/activity_history_gold"
+            tools:text="Exp: 10" />
+
+        <TextView
+            android:id="@+id/activity_history_gold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="@{gold}"
+            android:textAlignment="viewStart"
+            android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@id/activity_history_title"
+            app:layout_constraintStart_toEndOf="@id/activity_history_points"
+            app:layout_constraintEnd_toStartOf="@id/activity_history_date"
+            tools:text="Gold: 3" />
+
+        <TextView
+            android:id="@+id/activity_history_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="@{activity.timeAdded}"
+            android:textAlignment="viewStart"
+            android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@id/activity_history_title"
+            app:layout_constraintStart_toEndOf="@id/activity_history_gold"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="2020.11.01" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
