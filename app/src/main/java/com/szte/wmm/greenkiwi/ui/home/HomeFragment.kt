@@ -41,23 +41,23 @@ class HomeFragment : Fragment() {
         val currentPoints = getPoints()
         val levelCalculationBase = resources.getInteger(R.integer.exp_base_number)
         val context = HomeDataContext(currentPoints, levelCalculationBase)
-        val viewModelFactory = InjectorUtils.getHomeViewModelFactory(context, this, application)
+        val viewModelFactory = InjectorUtils.getHomeViewModelFactory(context, application)
         val viewModel = ViewModelProvider(this, viewModelFactory).get(HomeViewModel::class.java)
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
         binding.homeViewModel = viewModel
         binding.lifecycleOwner = this
 
-        viewModel.levelUps.observe(viewLifecycleOwner, Observer {
+        viewModel.levelUps.observe(viewLifecycleOwner, {
             binding.playerLevelText.text = String.format(getString(R.string.level_info), it + 1)
         })
 
-        viewModel.experience.observe(viewLifecycleOwner, Observer {
+        viewModel.experience.observe(viewLifecycleOwner, {
             binding.expText.text = String.format(getString(R.string.exp_info), it.currentValue, it.currentMaxValue)
             binding.collectedExpBar.layoutParams.width = calculateStatBar(it.currentValue, it.currentMaxValue)
         })
 
-        viewModel.petImage.observe(viewLifecycleOwner, Observer {
+        viewModel.petImage.observe(viewLifecycleOwner, {
             binding.petImage.setImageResource(it)
         })
 
@@ -65,18 +65,13 @@ class HomeFragment : Fragment() {
             animatePet(it as ImageView)
         }
 
-        viewModel.dailyActivityCount.observe(viewLifecycleOwner, Observer {
-            val maxCount = resources.getInteger(R.integer.daily_activity_max_count)
-            binding.dailyActivityCounter.text = String.format(getString(R.string.daily_activity_count_info), it, maxCount)
-        })
-
-        viewModel.hunger.observe(viewLifecycleOwner, Observer {
+        viewModel.hunger.observe(viewLifecycleOwner, {
             val hungerPercent = truncate(it.currentValue / it.currentMaxValue.toFloat() * 100).toInt()
             binding.hungerText.text = String.format(getString(R.string.hunger_info), hungerPercent, 100)
             binding.filledHungerBar.layoutParams.width = calculateStatBar(it.currentValue, it.currentMaxValue)
         })
 
-        viewModel.gold.observe(viewLifecycleOwner, Observer {
+        viewModel.gold.observe(viewLifecycleOwner, {
             val formatterString = getString(R.string.gold_formatter)
             val formattedGold = DecimalFormat(formatterString).format(it)
             binding.playerGoldText.text = String.format(getString(R.string.gold_info), formattedGold)

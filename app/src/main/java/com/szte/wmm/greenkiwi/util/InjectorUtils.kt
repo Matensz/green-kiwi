@@ -27,8 +27,8 @@ object InjectorUtils {
         return UserSelectedActivitiesRepository.getInstance(ApplicationDatabase.getInstance(context.applicationContext).userSelectedActivitiesDao())
     }
 
-    fun getHomeViewModelFactory(context: HomeDataContext, fragment: Fragment, application: Application): HomeViewModelFactory {
-        return HomeViewModelFactory(context, getUserSelectedActivitiesRepository(fragment.requireContext()), application)
+    fun getHomeViewModelFactory(context: HomeDataContext, application: Application): HomeViewModelFactory {
+        return HomeViewModelFactory(context, application)
     }
 
     fun getActivitiesViewModelFactory(fragment: Fragment): ActivitiesViewModelFactory {

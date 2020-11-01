@@ -13,19 +13,13 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.*
 import com.szte.wmm.greenkiwi.HungerAlarmReceiver
 import com.szte.wmm.greenkiwi.R
-import com.szte.wmm.greenkiwi.repository.UserSelectedActivitiesRepository
 import com.szte.wmm.greenkiwi.ui.home.context.HomeDataContext
 import com.szte.wmm.greenkiwi.util.cancelNotifications
 import kotlinx.coroutines.*
-import java.text.SimpleDateFormat
 import kotlin.math.sqrt
 import kotlin.math.truncate
 
-class HomeViewModel(
-    context: HomeDataContext,
-    private val userSelectedActivitiesRepository: UserSelectedActivitiesRepository,
-    private val app: Application
-) : AndroidViewModel(app) {
+class HomeViewModel(context: HomeDataContext, private val app: Application) : AndroidViewModel(app) {
 
     companion object {
         private const val HUNGER_NOTIFICATION_ID = 0
@@ -43,9 +37,6 @@ class HomeViewModel(
     private val _petImage = MutableLiveData<Int>()
     val petImage: LiveData<Int>
         get() = _petImage
-    private val _dailyActivityCount = MutableLiveData<Int>()
-    val dailyActivityCount: LiveData<Int>
-        get() = _dailyActivityCount
     private val _hunger = MutableLiveData<ValuePair>()
     val hunger: LiveData<ValuePair>
         get() = _hunger
@@ -75,7 +66,6 @@ class HomeViewModel(
         _levelUps.value = levelUps
         _petImage.value = getPetImageByLevel(currentPlayerLevel)
         _experience.value = ValuePair(currentPoints - maxExpAtPreviousLevel, maxExpAtCurrentLevel - maxExpAtPreviousLevel)
-        initDailyActivityCounter()
         initGoldCounter()
 
         notifyPendingIntent = PendingIntent.getBroadcast(
@@ -102,23 +92,6 @@ class HomeViewModel(
             0, 1, 2 -> R.drawable.egg
             3, 4 -> R.drawable.egg_cracked
             else -> R.drawable.kiwi
-        }
-    }
-
-    private fun initDailyActivityCounter() {
-        uiScope.launch {
-            _dailyActivityCount.value = getDailyCount()
-        }
-    }
-
-    private suspend fun getDailyCount(): Int {
-        return withContext(Dispatchers.IO) {
-            val currentDate = SimpleDateFormat("yyyyMMdd").format(System.currentTimeMillis())
-            val currentDateActivityCount = userSelectedActivitiesRepository.getLatestXActivities(3)
-                .map { activity -> activity.timeAdded }
-                .map { millis -> SimpleDateFormat("yyyyMMdd").format(millis) }
-                .count { dateAdded -> dateAdded == currentDate }
-            currentDateActivityCount
         }
     }
 
