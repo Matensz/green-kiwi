@@ -5,6 +5,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.szte.wmm.greenkiwi.data.local.model.UserSelectedActivity
+import com.szte.wmm.greenkiwi.data.local.model.UserSelectedActivityWithDetails
 
 /**
  * Room Dao object for the UserSelectedActivity related queries.
@@ -19,7 +20,10 @@ interface UserSelectedActivitiesDao {
     fun getLatestActivity(activityId: Long): UserSelectedActivity?
 
     @Query("SELECT * FROM user_selected_activities ORDER BY id DESC LIMIT :count")
-    fun getLatestXActivities(count: Int): List<UserSelectedActivity>
+    suspend fun getLatestXActivities(count: Int): List<UserSelectedActivity>
+
+    @Query("SELECT activities.activityid as activityId, title, point, gold, categoryid as categoryId, time_added as timeAdded FROM user_selected_activities INNER JOIN activities USING(activityid) ORDER BY id DESC LIMIT :count")
+    suspend fun getLatestXActivitiesWithDetails(count: Int): List<UserSelectedActivityWithDetails>
 
     @Query("DELETE FROM user_selected_activities")
     suspend fun deleteAllAddedActivities()

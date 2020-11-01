@@ -12,7 +12,9 @@ class UserSelectedActivitiesRepository(private val userSelectedActivitiesDao: Us
 
     fun getLatestActivity(activityId: Long) = userSelectedActivitiesDao.getLatestActivity(activityId)?.asDomainModel()
 
-    fun getLatestXActivities(count: Int) = userSelectedActivitiesDao.getLatestXActivities(count).map { activity -> activity.asDomainModel() }
+    suspend fun getLatestXActivities(count: Int) = userSelectedActivitiesDao.getLatestXActivities(count).map { activity -> activity.asDomainModel() }
+
+    suspend fun getLatestXActivitiesWithDetails(count: Int) = userSelectedActivitiesDao.getLatestXActivitiesWithDetails(count).map { activity -> activity.asDomainModel() }
 
     suspend fun insertUserSelectedActivity(userSelectedActivity: UserSelectedActivity) = userSelectedActivitiesDao.insertUserSelectedActivity(userSelectedActivity.asDatabaseModel())
 
