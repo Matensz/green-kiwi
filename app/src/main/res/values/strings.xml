@@ -15,6 +15,9 @@
     <string name="gold_formatter">#,###</string>
     <string name="gold_info">Gold: %s</string>
     <string name="last_added_date_default">Haven\'t added yet</string>
+    <string name="pet_nickname_hint">Give a nickname to your kiwi!</string>
+    <string name="pet_nickname_button_text">Set nickname</string>
+    <string name="pet_nickname_text">Your kiwi, %s loves you!</string>
 
     <!--Instructions dialog related-->
     <string name="instructions_title">Welcome to GreenKiwi!</string>

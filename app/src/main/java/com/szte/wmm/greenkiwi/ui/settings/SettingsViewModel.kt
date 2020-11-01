@@ -29,6 +29,7 @@ class SettingsViewModel(private val userSelectedActivitiesRepository: UserSelect
                 remove(app.getString(R.string.saved_user_gold_key))
                 remove(app.getString(R.string.last_saved_activity_date_key))
                 remove(app.getString(R.string.daily_activity_counter_key))
+                remove(app.getString(R.string.pet_nickname_key))
                 apply()
             }
         }

@@ -10,4 +10,5 @@
     <string name="last_saved_activity_date_key">lastSavedActivityDateKey</string>
     <string name="daily_activity_counter_key">dailyActivityCounterKey</string>
     <string name="night_mode_setting_key">nightModeSettingKey</string>
+    <string name="pet_nickname_key">petNicknameKey</string>
 </resources>
