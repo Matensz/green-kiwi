@@ -160,5 +160,17 @@
             app:layout_constraintTop_toBottomOf="@id/player_level_text"
             tools:text="Gold: 1000000" />
 
+        <Button
+            android:id="@+id/feed_pet_button"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/feed_pet_button_text"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/player_gold_text" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

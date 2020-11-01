@@ -17,6 +17,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -32,6 +34,7 @@ class HomeFragment : Fragment() {
     private lateinit var application: Application
     private lateinit var binding: FragmentHomeBinding
     private lateinit var sharedPref: SharedPreferences
+    private lateinit var viewModel: HomeViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -41,7 +44,7 @@ class HomeFragment : Fragment() {
         val levelCalculationBase = resources.getInteger(R.integer.exp_base_number)
         val context = HomeDataContext(currentPoints, levelCalculationBase)
         val viewModelFactory = InjectorUtils.getHomeViewModelFactory(context, application)
-        val viewModel = ViewModelProvider(this, viewModelFactory).get(HomeViewModel::class.java)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(HomeViewModel::class.java)
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
         binding.homeViewModel = viewModel
@@ -60,10 +63,6 @@ class HomeFragment : Fragment() {
             binding.petImage.setImageResource(it)
         })
 
-        binding.petImage.setOnClickListener {
-            animatePet(it as ImageView)
-        }
-
         viewModel.hunger.observe(viewLifecycleOwner, {
             val hungerPercent = truncate(it.currentValue / it.currentMaxValue.toFloat() * 100).toInt()
             binding.hungerText.text = String.format(getString(R.string.hunger_info), hungerPercent, 100)
@@ -76,6 +75,14 @@ class HomeFragment : Fragment() {
             binding.playerGoldText.text = String.format(getString(R.string.gold_info), formattedGold)
         })
 
+        viewModel.feedButtonVisible.observe(viewLifecycleOwner, {
+            binding.feedPetButton.visibility = if (it) View.VISIBLE else View.GONE
+        })
+
+        binding.petImage.setOnClickListener {
+            animatePet(it as ImageView)
+        }
+
         binding.petNicknameText.text = sharedPref.getString(getString(R.string.pet_nickname_key), getString(R.string.pet_nickname_hint))
         binding.petNicknameText.setOnClickListener {
             editPetNickname()
@@ -83,6 +90,10 @@ class HomeFragment : Fragment() {
 
         binding.petNicknameButton.setOnClickListener {
             confirmPetNickname()
+        }
+
+        binding.feedPetButton.setOnClickListener {
+            createPetFeedDialog().show()
         }
 
         createNotificationChannel(
@@ -144,6 +155,27 @@ class HomeFragment : Fragment() {
         }
         val inputMethodManager = application.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         inputMethodManager.hideSoftInputFromWindow(binding.petNicknameButton.windowToken, 0)
+    }
+
+    private fun createPetFeedDialog(): AlertDialog {
+        val dialogText = getString(R.string.feed_pet_dialog_text)
+        val foodPrice = resources.getInteger(R.integer.food_price_in_gold)
+        val nickname = binding.petNicknameText.text
+        val playerGold = sharedPref.getLong(getString(R.string.saved_user_gold_key), 0L)
+
+        val builder = AlertDialog.Builder(requireActivity())
+        builder.setTitle(R.string.feed_pet_dialog_title)
+            .setMessage(String.format(dialogText, foodPrice, nickname))
+            .setNegativeButton(R.string.feed_pet_dialog_negative_button_text) { dialog, _ -> dialog.cancel() }
+        if (playerGold > foodPrice.toLong()) {
+            builder.setPositiveButton(R.string.feed_pet_dialog_positive_button_text) { dialog, _ ->
+                viewModel.feedPet()
+                dialog.dismiss()
+            }
+        } else {
+            Toast.makeText(context, R.string.feed_pet_toast_message, Toast.LENGTH_SHORT).show()
+        }
+        return builder.create()
     }
 
     private fun createNotificationChannel(channelId: String, channelName: String) {

@@ -6,4 +6,5 @@
     <integer name="daily_activity_max_count">3</integer>
     <integer name="default_starting_gold">0</integer>
     <integer name="daily_counter_gold_reward">1</integer>
+    <integer name="food_price_in_gold">5</integer>
 </resources>

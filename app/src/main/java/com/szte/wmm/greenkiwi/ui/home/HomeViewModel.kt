@@ -43,6 +43,9 @@ class HomeViewModel(context: HomeDataContext, private val app: Application) : An
     private val _gold = MutableLiveData<Long>()
     val gold: LiveData<Long>
         get() = _gold
+    private val _feedButtonVisible = MutableLiveData<Boolean>()
+    val feedButtonVisible: LiveData<Boolean>
+        get() = _feedButtonVisible
 
     private val currentPoints = context.currentPoints
     private val expBaseNumber = context.expBaseNumber
@@ -78,6 +81,13 @@ class HomeViewModel(context: HomeDataContext, private val app: Application) : An
         if (currentPlayerLevel > 4) {
             calculatePetHunger()
         }
+    }
+
+    fun feedPet() {
+        _feedButtonVisible.value = false
+        sharedPreferences.edit().remove(hungerTimerKey).apply()
+        subtractFoodPriceFromGold()
+        calculatePetHunger()
     }
 
     private fun calculateLevelUpsInExpRange(currentExp: Long): Int {
@@ -127,6 +137,7 @@ class HomeViewModel(context: HomeDataContext, private val app: Application) : An
                         _hunger.value = ValuePair(remainingTime, ONE_DAY_IN_MILLIS)
                     } else {
                         _hunger.value = ValuePair(1, 100)
+                        _feedButtonVisible.value = true
                         cancelAlarm()
                     }
                 }
@@ -167,6 +178,21 @@ class HomeViewModel(context: HomeDataContext, private val app: Application) : An
         withContext(Dispatchers.IO) {
             sharedPreferences.getLong(playerGoldKey, 0L)
         }
+
+    private fun subtractFoodPriceFromGold() {
+        uiScope.launch {
+            _gold.value = updatePlayerGold()
+        }
+    }
+
+    private suspend fun updatePlayerGold(): Long {
+        return withContext(Dispatchers.IO) {
+            val currentGold = sharedPreferences.getLong(playerGoldKey, 0L)
+            val updatedGold = currentGold - app.resources.getInteger(R.integer.food_price_in_gold)
+            sharedPreferences.edit().putLong(playerGoldKey, updatedGold).apply()
+            updatedGold
+        }
+    }
 }
 
 /**
