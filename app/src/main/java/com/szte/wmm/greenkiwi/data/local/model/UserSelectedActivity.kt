@@ -2,12 +2,18 @@ package com.szte.wmm.greenkiwi.data.local.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.Index
 import androidx.room.PrimaryKey
 
 /**
  * Database entity representing an activity selected by the user.
  */
-@Entity(tableName = "user_selected_activities")
+@Entity(
+    tableName = "user_selected_activities",
+    foreignKeys = [
+        androidx.room.ForeignKey(entity = Activity::class, parentColumns = ["activityid"], childColumns = ["activityid"])
+    ],
+    indices = [Index("activityid")])
 data class UserSelectedActivity(
     @PrimaryKey(autoGenerate = true) var id: Long = 0L,
     @ColumnInfo(name = "activityid") var activityId: Long,
