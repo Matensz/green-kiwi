@@ -9,7 +9,7 @@ import com.szte.wmm.greenkiwi.R
 import com.szte.wmm.greenkiwi.repository.UserSelectedActivitiesRepository
 import com.szte.wmm.greenkiwi.repository.domain.Activity
 import com.szte.wmm.greenkiwi.repository.domain.UserSelectedActivity
-import com.szte.wmm.greenkiwi.util.formatDateString
+import com.szte.wmm.greenkiwi.util.formatNullableDateString
 import kotlinx.coroutines.*
 
 class ActivityDetailViewModel internal constructor(
@@ -47,7 +47,7 @@ class ActivityDetailViewModel internal constructor(
     private suspend fun getFormattedDate(activityId: Long): String {
         return withContext(Dispatchers.IO) {
             val lastAddedTimeStamp = userSelectedActivitiesRepository.getLatestActivity(activityId)?.timeAdded
-            formatDateString(lastAddedTimeStamp, app.getString(R.string.last_added_date_default))
+            formatNullableDateString(lastAddedTimeStamp, app.getString(R.string.last_added_date_default))
         }
     }
 

@@ -23,6 +23,11 @@ fun Long.isSameDay(millis: Long): Boolean {
 }
 
 @SuppressLint("SimpleDateFormat")
-fun formatDateString(lastAddedTimeStamp: Long?, defaultValue: String): String {
-    return lastAddedTimeStamp?.let { timeStamp -> SimpleDateFormat("yyyy-MM-dd").format(timeStamp).toString()} ?: defaultValue
+fun formatNullableDateString(lastAddedTimeStamp: Long?, defaultValue: String): String {
+    return lastAddedTimeStamp?.let { timeStamp -> SimpleDateFormat("yyyy.MM.dd").format(timeStamp).toString()} ?: defaultValue
+}
+
+@SuppressLint("SimpleDateFormat")
+fun formatDateString(lastAddedTimeStamp: Long): String {
+    return lastAddedTimeStamp.let { timeStamp -> SimpleDateFormat("yyyy.MM.dd").format(timeStamp).toString()}
 }
