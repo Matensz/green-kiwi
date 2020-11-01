@@ -70,7 +70,7 @@ class SettingsFragment : Fragment() {
                 dialog.dismiss()
             }
             .setNegativeButton(R.string.reset_dialog_negative_button_text) { dialog, _ ->
-                dialog.dismiss()
+                dialog.cancel()
             }
         return builder.create()
     }
