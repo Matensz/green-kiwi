@@ -16,9 +16,10 @@ class HungerAlarmReceiver: BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
 
         val channelId = context.getString(R.string.pet_hunger_channel_id)
-        val message = context.getString(R.string.pet_hunger_message)
+        val text = context.getString(R.string.pet_hunger_text)
+        val bigText = context.getString(R.string.pet_hunger_bigtext)
 
         val notificationManager = ContextCompat.getSystemService(context, NotificationManager::class.java) as NotificationManager
-        notificationManager.sendNotification(HUNGER_NOTIFICATION_ID, channelId, message, context)
+        notificationManager.sendNotification(HUNGER_NOTIFICATION_ID, channelId, text, bigText, context)
     }
 }

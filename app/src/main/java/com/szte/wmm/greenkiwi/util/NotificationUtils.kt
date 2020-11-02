@@ -9,7 +9,7 @@ import androidx.core.app.NotificationCompat
 import com.szte.wmm.greenkiwi.MainActivity
 import com.szte.wmm.greenkiwi.R
 
-fun NotificationManager.sendNotification(notificationId: Int, notificationChannelId: String, message: String, applicationContext: Context) {
+fun NotificationManager.sendNotification(notificationId: Int, notificationChannelId: String, text: String, bigText: String, applicationContext: Context) {
 
     val contentIntent = Intent(applicationContext, MainActivity::class.java)
     val contentPendingIntent = PendingIntent.getActivity(
@@ -24,10 +24,12 @@ fun NotificationManager.sendNotification(notificationId: Int, notificationChanne
     val notificationBuilder = NotificationCompat.Builder(applicationContext, notificationChannelId)
         .setSmallIcon(R.drawable.kiwi)
         .setContentTitle(applicationContext.getString(R.string.notification_title))
-        .setContentText(message)
+        .setContentText(text)
+        .setStyle(NotificationCompat.BigTextStyle().bigText(bigText))
         .setLargeIcon(petImage)
         .setContentIntent(contentPendingIntent)
-        .setPriority(NotificationCompat.PRIORITY_HIGH)
+        .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+        .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
         .setAutoCancel(true)
 
     notify(notificationId, notificationBuilder.build())
