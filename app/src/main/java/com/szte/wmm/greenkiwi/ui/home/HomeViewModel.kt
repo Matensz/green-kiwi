@@ -84,6 +84,7 @@ class HomeViewModel(context: HomeDataContext, private val app: Application) : An
     }
 
     fun feedPet() {
+        cancelAlarm()
         _feedButtonVisible.value = false
         sharedPreferences.edit().remove(hungerTimerKey).apply()
         subtractFoodPriceFromGold()
@@ -136,14 +137,15 @@ class HomeViewModel(context: HomeDataContext, private val app: Application) : An
                     if (remainingTime > 0) {
                         _hunger.value = ValuePair(remainingTime, ONE_DAY_IN_MILLIS)
                     } else {
+                        cancelAlarm()
                         _hunger.value = ValuePair(1, 100)
                         _feedButtonVisible.value = true
-                        cancelAlarm()
+                        timer.cancel()
                     }
                 }
 
                 override fun onFinish() {
-                    cancelAlarm()
+                    timer.cancel()
                 }
             }
             timer.start()
@@ -151,7 +153,6 @@ class HomeViewModel(context: HomeDataContext, private val app: Application) : An
     }
 
     private fun cancelAlarm() {
-        timer.cancel()
         alarmManager.cancel(notifyPendingIntent)
     }
 
