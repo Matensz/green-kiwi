@@ -168,7 +168,7 @@ class HomeFragment : Fragment() {
         builder.setTitle(R.string.feed_pet_dialog_title)
             .setMessage(String.format(dialogText, foodPrice, nickname))
             .setNegativeButton(R.string.feed_pet_dialog_negative_button_text) { dialog, _ -> dialog.cancel() }
-        if (playerGold > foodPrice.toLong()) {
+        if (playerGold >= foodPrice.toLong()) {
             builder.setPositiveButton(R.string.feed_pet_dialog_positive_button_text) { dialog, _ ->
                 viewModel.feedPet()
                 dialog.dismiss()
