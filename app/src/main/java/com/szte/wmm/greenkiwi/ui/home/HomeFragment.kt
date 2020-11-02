@@ -160,7 +160,8 @@ class HomeFragment : Fragment() {
     private fun createPetFeedDialog(): AlertDialog {
         val dialogText = getString(R.string.feed_pet_dialog_text)
         val foodPrice = resources.getInteger(R.integer.food_price_in_gold)
-        val nickname = binding.petNicknameText.text
+        val defaultNickname = getString(R.string.feed_pet_dialog_text_default_nickname)
+        val nickname = sharedPref.getString(getString(R.string.pet_nickname_key), defaultNickname)
         val playerGold = sharedPref.getLong(getString(R.string.saved_user_gold_key), 0L)
 
         val builder = AlertDialog.Builder(requireActivity())

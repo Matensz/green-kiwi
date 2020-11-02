@@ -20,7 +20,8 @@
     <string name="pet_nickname_text">Your kiwi, %s loves you!</string>
     <string name="feed_pet_button_text">Feed kiwi</string>
     <string name="feed_pet_dialog_title">Feed your kiwi</string>
-    <string name="feed_pet_dialog_text">You can buy some delicious kiwi food for %d golds to make your %s happy</string>
+    <string name="feed_pet_dialog_text">You can buy some delicious kiwi food for %d golds to make %s happy</string>
+    <string name="feed_pet_dialog_text_default_nickname">your kiwi</string>
     <string name="feed_pet_dialog_positive_button_text">Buy</string>
     <string name="feed_pet_dialog_negative_button_text">Cancel</string>
     <string name="feed_pet_toast_message">Sorry, you don\'t have enough gold</string>
