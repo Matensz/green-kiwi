@@ -6,6 +6,6 @@
     android:layout_margin="10dp"
     android:padding="8dp"
     android:textAppearance="?android:attr/textAppearanceLarge"
-    android:textColor="@color/colorAccent"
+    android:textColor="@color/primaryTextColor"
     android:text="@string/activity_history_header_text"
-    android:background="@color/colorPrimary"/>
+    android:background="@color/primaryColor"/>

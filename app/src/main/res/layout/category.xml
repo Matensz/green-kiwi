@@ -9,6 +9,5 @@
     android:padding="10dp"
     style="@style/Widget.MaterialComponents.Chip.Choice"
     app:chipCornerRadius="0dp"
-    app:chipBackgroundColor="@color/selected_highlight"
     app:checkedIconVisible="false"
     tools:checked="true" />
