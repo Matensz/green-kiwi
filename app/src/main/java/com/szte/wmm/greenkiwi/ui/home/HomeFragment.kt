@@ -31,6 +31,10 @@ import kotlin.math.truncate
 
 class HomeFragment : Fragment() {
 
+    companion object {
+        private const val DEFAULT_NICKNAME = "Pea"
+    }
+
     private lateinit var application: Application
     private lateinit var binding: FragmentHomeBinding
     private lateinit var sharedPref: SharedPreferences
@@ -51,7 +55,9 @@ class HomeFragment : Fragment() {
         binding.lifecycleOwner = this
 
         viewModel.levelUps.observe(viewLifecycleOwner, {
-            binding.playerLevelText.text = String.format(getString(R.string.level_info), it + 1)
+            val currentLevel = it + 1
+            binding.playerLevelText.text = String.format(getString(R.string.level_info), currentLevel)
+            binding.petNicknameText.visibility = if (currentLevel > 4) View.VISIBLE else View.INVISIBLE
         })
 
         viewModel.experience.observe(viewLifecycleOwner, {
@@ -145,8 +151,8 @@ class HomeFragment : Fragment() {
 
     private fun confirmPetNickname() {
         binding.apply {
-            val newPetNickname = String.format(getString(R.string.pet_nickname_text), petNicknameEdit.text.toString())
-            petNicknameText.text = newPetNickname
+            val newPetNickname = if (!petNicknameEdit.text.toString().isBlank()) petNicknameEdit.text.toString() else DEFAULT_NICKNAME
+            petNicknameText.text = String.format(getString(R.string.pet_nickname_text), newPetNickname)
             invalidateAll()
             petNicknameText.visibility = View.VISIBLE
             petNicknameEdit.visibility = View.GONE
