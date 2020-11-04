@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title_home">Kiwi</string>
+    <string name="title_activities">Tevékenységek</string>
+    <string name="title_notifications">Értesítések</string>
+    <string name="title_settings">Beállítások</string>
+    <string name="subtitle_activity_history">Legutóbb hozzáadva</string>
+    <string name="point_info">Ez a tevékenység %d pontot ér</string>
+    <string name="activity_added_message">Szép munka, tevékenység hozzáadva!</string>
+    <string name="third_activity_added_message">Gratulálunk! Épp most rögzítetted a mai harmadik tevékenységedet, ezért %d arany a jutalmad!</string>
+    <string name="level_info">%d. szint</string>
+    <string name="exp_info">%d/%d XP</string>
+    <string name="daily_activity_count_info">Napi tevékenységek: %d/%d</string>
+    <string name="hunger_info">%d/%d</string>
+    <string name="gold_formatter">#,###</string>
+    <string name="gold_info">Arany: %s</string>
+    <string name="last_added_date_default">Még nem rögzítettél ilyen tevékenységet</string>
+    <string name="pet_nickname_hint">Adj egy becenevet a kiwidnek</string>
+    <string name="pet_nickname_button_text">Becenév rögzítése</string>
+    <string name="pet_nickname_text">%s, a kiwid imád téged!</string>
+    <string name="feed_pet_button_text">Kiwi etetés</string>
+    <string name="feed_pet_dialog_title">Kiwi megetetése</string>
+    <string name="feed_pet_dialog_text">%d aranyért cserébe vásárolhatsz egy kis ízletes kiwieledelt, %s nagyon boldog lesz tőle</string>
+    <string name="feed_pet_dialog_text_default_nickname">a kiwid</string>
+    <string name="feed_pet_dialog_positive_button_text">Vásárlás</string>
+    <string name="feed_pet_dialog_negative_button_text">Mégse</string>
+    <string name="feed_pet_toast_message">Sajnáljuk, de nincs elég aranyad hozzá</string>
+
+    <!--Instructions dialog related-->
+    <string name="instructions_title">Üdvözöl a GreenKiwi!</string>
+    <string name="instructions_dismiss">Értettem!</string>
+    <string name="instructions_first_page">Ez az alkalmazás azért jött létre, hogy egy virtuális háziállat segítségével sarkalljon a környezettudatosabb életmódra.
+        \nEgy listányi tevékenység közül választhatsz, amelyek mind különböző környezetbarát dolgokhoz kapcsolódnak, teljesítésüket pedig pontokkal honoráljuk.
+        \nMinél több pontot gyűjtesz, annál gyorsabban nő a háziállatod, szóval egy kis lelkesedéssel és szorgalommal egy szempillantás alatt nagyra nő!</string>
+    <string name="instructions_second_page">Placeholder string, to be completed</string>
+
+    <!--Activities view category Chip names-->
+    <string name="water_and_energy">Víz és energia</string>
+    <string name="less_waste">Kevesebb hulladék</string>
+    <string name="food_and_eating_habits">Ételek, táplálkozási szokások</string>
+    <string name="transportation">Közlekedés</string>
+    <string name="better_materials">Jobb alapanyagok</string>
+    <string name="other">Egyéb</string>
+
+    <!--Settings tab-->
+    <string name="view_instructions_button">Instrukciók megnyitása</string>
+    <string name="night_mode_toggle_text">Éjszakai mód be/kikapcsolása</string>
+    <string name="reset_progress_label">Játék visszaállítása</string>
+    <string name="reset_progress_button_text">Visszaállítás</string>
+    <string name="reset_dialog_title">Játék visszaállítása</string>
+    <string name="reset_dialog_text">Biztosan törölni akarod minden eddigi eredményed? Ezt később már nem lehet visszavonni!</string>
+    <string name="reset_dialog_positive_button_text">Csináljuk</string>
+    <string name="reset_dialog_negative_button_text">Inkább ne</string>
+
+    <!--Notifications-->
+    <string name="notification_title">Gondoskodj a kiwidről</string>
+    <string name="pet_hunger_text">Figyelem, a kiwid éhes! És egy Éhes Kiwi\.\.\.</string>
+    <string name="pet_hunger_bigtext">Figyelem, a kiwid éhes! És egy Éhes Kiwi egyenlő egy Mérges Kiwivel, úgyhogy siess megetetni! Meglátod, nagyon hálás lesz érte.</string>
+    <string name="daily_activity_count_info_incomplete">Mai rögzített tevékenységek: %d/%d\nRögzíts még %d további tevékenységet %d bónusz aranyért!</string>
+    <string name="daily_activity_count_info_completed">Gratulálunk! Máris %d tevékenységet rögzítettél ma!</string>
+    <string name="point_value">Tapasztalati pont: %d</string>
+    <string name="gold_value">Arany: %d</string>
+    <string name="activity_history_header_text">Korábban hozzáadott tevékenységeid:</string>
+</resources>
