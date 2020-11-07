@@ -48,7 +48,7 @@ class HomeFragment : Fragment() {
         val currentPoints = getPoints()
         val levelCalculationBase = resources.getInteger(R.integer.exp_base_number)
         val context = HomeDataContext(currentPoints, levelCalculationBase)
-        val viewModelFactory = InjectorUtils.getHomeViewModelFactory(context, application)
+        val viewModelFactory = InjectorUtils.getHomeViewModelFactory(context, this)
         viewModel = ViewModelProvider(this, viewModelFactory).get(HomeViewModel::class.java)
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)

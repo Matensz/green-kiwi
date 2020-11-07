@@ -13,13 +13,18 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.*
 import com.szte.wmm.greenkiwi.HungerAlarmReceiver
 import com.szte.wmm.greenkiwi.R
+import com.szte.wmm.greenkiwi.repository.ActivitiesRepository
 import com.szte.wmm.greenkiwi.ui.home.context.HomeDataContext
 import com.szte.wmm.greenkiwi.util.cancelNotifications
 import kotlinx.coroutines.*
 import kotlin.math.sqrt
 import kotlin.math.truncate
 
-class HomeViewModel(context: HomeDataContext, private val app: Application) : AndroidViewModel(app) {
+class HomeViewModel(
+    context: HomeDataContext,
+    private val activitiesRepository: ActivitiesRepository,
+    private val app: Application
+) : AndroidViewModel(app) {
 
     companion object {
         private const val DEFAULT_PET_IMAGE_NAME = "kiwi_green"
@@ -68,6 +73,8 @@ class HomeViewModel(context: HomeDataContext, private val app: Application) : An
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
     init {
+        warmUpDatabase()
+
         val levelUps = calculateLevelUpsInExpRange(currentPoints)
         val currentPlayerLevel = levelUps + 1
         val maxExpAtPreviousLevel = calculateMaxExpAtLevel(levelUps)
@@ -88,6 +95,17 @@ class HomeViewModel(context: HomeDataContext, private val app: Application) : An
 
         if (currentPlayerLevel > 4) {
             calculatePetHunger()
+        }
+    }
+
+    /**
+     * This view does not use the result of this query, it's needed for database initialization to fasten up the first real query.
+     */
+    private fun warmUpDatabase() {
+        uiScope.launch {
+            withContext(Dispatchers.IO) {
+                activitiesRepository.getActivities()
+            }
         }
     }
 

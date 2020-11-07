@@ -37,8 +37,8 @@ object InjectorUtils {
         return ShopRepository.getInstance(getDatabase(context).shopDao())
     }
 
-    fun getHomeViewModelFactory(context: HomeDataContext, application: Application): HomeViewModelFactory {
-        return HomeViewModelFactory(context, application)
+    fun getHomeViewModelFactory(context: HomeDataContext, fragment: Fragment): HomeViewModelFactory {
+        return HomeViewModelFactory(context, getActivitiesRepository(fragment.requireContext()), fragment.requireActivity().application)
     }
 
     fun getActivitiesViewModelFactory(fragment: Fragment): ActivitiesViewModelFactory {
