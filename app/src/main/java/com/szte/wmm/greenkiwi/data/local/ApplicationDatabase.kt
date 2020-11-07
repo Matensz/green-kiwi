@@ -8,17 +8,19 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import com.szte.wmm.greenkiwi.data.local.model.Activity
+import com.szte.wmm.greenkiwi.data.local.model.ShopItem
 import com.szte.wmm.greenkiwi.data.local.model.UserSelectedActivity
-import com.szte.wmm.greenkiwi.worker.ActivityInitializerWorker
+import com.szte.wmm.greenkiwi.worker.DatabaseInitializerWorker
 
 /**
  * Room database object for the application.
  */
-@Database(entities = [Activity::class, UserSelectedActivity::class], version = 1, exportSchema = false)
+@Database(entities = [Activity::class, UserSelectedActivity::class, ShopItem::class], version = 2, exportSchema = false)
 abstract class ApplicationDatabase : RoomDatabase() {
 
     abstract fun activitiesDao(): ActivitiesDao
     abstract fun userSelectedActivitiesDao(): UserSelectedActivitiesDao
+    abstract fun shopDao(): ShopDao
 
     companion object {
         private const val DATABASE_NAME = "green-kiwi-db"
@@ -38,7 +40,7 @@ abstract class ApplicationDatabase : RoomDatabase() {
                 .addCallback(object : RoomDatabase.Callback() {
                     override fun onCreate(db: SupportSQLiteDatabase) {
                         super.onCreate(db)
-                        val request = OneTimeWorkRequestBuilder<ActivityInitializerWorker>().build()
+                        val request = OneTimeWorkRequestBuilder<DatabaseInitializerWorker>().build()
                         WorkManager.getInstance(context).enqueue(request)
                     }
                 })

@@ -1,0 +1,114 @@
+[
+  {
+    "itemId": 1,
+    "titleResourceName": "default_wallpaper_name",
+    "imageResourceName": "",
+    "price": 100,
+    "category": 1,
+    "purchased": true
+  },
+  {
+    "itemId": 2,
+    "titleResourceName": "kiwi_wallpaper_name",
+    "imageResourceName": "background_kiwi",
+    "price": 100,
+    "category": 1,
+    "purchased": false
+  },
+  {
+    "itemId": 3,
+    "titleResourceName": "orange_wallpaper_name",
+    "imageResourceName": "background_orange",
+    "price": 100,
+    "category": 1,
+    "purchased": false
+  },
+  {
+    "itemId": 4,
+    "titleResourceName": "doughnut_wallpaper_name",
+    "imageResourceName": "background_doughnut",
+    "price": 100,
+    "category": 1,
+    "purchased": false
+  },
+  {
+    "itemId": 5,
+    "titleResourceName": "green_kiwi_name",
+    "imageResourceName": "kiwi_green",
+    "price": 50,
+    "category": 2,
+    "purchased": true
+  },
+  {
+    "itemId": 6,
+    "titleResourceName": "brown_kiwi_name",
+    "imageResourceName": "kiwi_brown",
+    "price": 50,
+    "category": 2,
+    "purchased": false
+  },
+  {
+    "itemId": 7,
+    "titleResourceName": "dark_blue_kiwi_name",
+    "imageResourceName": "kiwi_dark_blue",
+    "price": 50,
+    "category": 2,
+    "purchased": false
+  },
+  {
+    "itemId": 8,
+    "titleResourceName": "dark_pink_kiwi_name",
+    "imageResourceName": "kiwi_dark_pink",
+    "price": 50,
+    "category": 2,
+    "purchased": false
+  },
+  {
+    "itemId": 9,
+    "titleResourceName": "light_blue_kiwi_name",
+    "imageResourceName": "kiwi_light_blue",
+    "price": 50,
+    "category": 2,
+    "purchased": false
+  },
+  {
+    "itemId": 10,
+    "titleResourceName": "light_pink_kiwi_name",
+    "imageResourceName": "kiwi_light_pink",
+    "price": 50,
+    "category": 2,
+    "purchased": false
+  },
+  {
+    "itemId": 11,
+    "titleResourceName": "purple_kiwi_name",
+    "imageResourceName": "kiwi_purple",
+    "price": 50,
+    "category": 2,
+    "purchased": false
+  },
+  {
+    "itemId": 12,
+    "titleResourceName": "red_kiwi_name",
+    "imageResourceName": "kiwi_red",
+    "price": 50,
+    "category": 2,
+    "purchased": false
+  },
+  {
+    "itemId": 13,
+    "titleResourceName": "teal_kiwi_name",
+    "imageResourceName": "kiwi_teal",
+    "price": 50,
+    "category": 2,
+    "purchased": false
+  },
+  {
+    "itemId": 14,
+    "titleResourceName": "yellow_kiwi_name",
+    "imageResourceName": "kiwi_yellow",
+    "price": 50,
+    "category": 2,
+    "purchased": false
+  }
+]
