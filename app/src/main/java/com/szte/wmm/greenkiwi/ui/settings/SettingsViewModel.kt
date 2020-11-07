@@ -8,13 +8,20 @@ import android.content.Intent
 import androidx.lifecycle.*
 import com.szte.wmm.greenkiwi.HungerAlarmReceiver
 import com.szte.wmm.greenkiwi.R
+import com.szte.wmm.greenkiwi.repository.ShopRepository
 import com.szte.wmm.greenkiwi.repository.UserSelectedActivitiesRepository
 import kotlinx.coroutines.*
 
-class SettingsViewModel(private val userSelectedActivitiesRepository: UserSelectedActivitiesRepository, private val app: Application) : AndroidViewModel(app) {
+class SettingsViewModel(
+    private val userSelectedActivitiesRepository: UserSelectedActivitiesRepository,
+    private val shopRepository: ShopRepository,
+    private val app: Application
+) : AndroidViewModel(app) {
 
     companion object {
         private const val HUNGER_NOTIFICATION_ID = 0
+        private const val DEFAULT_BACKGROUND_RESOURCE_NAME = "default_wallpaper_name"
+        private const val DEFAULT_PET_IMAGE_RESOURCE_NAME = "green_kiwi_name"
     }
 
     private val sharedPref = app.getSharedPreferences(app.getString(R.string.preference_file_key), Context.MODE_PRIVATE)
@@ -52,6 +59,8 @@ class SettingsViewModel(private val userSelectedActivitiesRepository: UserSelect
                 remove(app.getString(R.string.last_saved_activity_date_key))
                 remove(app.getString(R.string.daily_activity_counter_key))
                 remove(app.getString(R.string.pet_nickname_key))
+                remove(app.getString(R.string.current_background_key))
+                remove(app.getString(R.string.current_pet_image_key))
                 apply()
             }
         }
@@ -60,6 +69,7 @@ class SettingsViewModel(private val userSelectedActivitiesRepository: UserSelect
     private suspend fun cleanUpDatabase() {
         withContext(Dispatchers.IO) {
             userSelectedActivitiesRepository.deleteAllAddedActivities()
+            shopRepository.resetPurchaseStatuses(DEFAULT_BACKGROUND_RESOURCE_NAME, DEFAULT_PET_IMAGE_RESOURCE_NAME)
         }
     }
 }

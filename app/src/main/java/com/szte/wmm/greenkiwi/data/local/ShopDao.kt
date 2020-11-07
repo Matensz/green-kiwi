@@ -20,4 +20,7 @@ interface ShopDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(shopItems: List<ShopItem>)
+
+    @Query("UPDATE shopitems SET purchased = 0 WHERE title_resource_name NOT IN (:defaultBackgroundName, :defaultPetImageName)")
+    suspend fun resetPurchaseStatuses(defaultBackgroundName: String, defaultPetImageName: String)
 }

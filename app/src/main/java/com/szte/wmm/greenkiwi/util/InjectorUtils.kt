@@ -54,7 +54,7 @@ object InjectorUtils {
     }
 
     fun getSettingsViewModelFactory(fragment: Fragment, application: Application): SettingsViewModelFactory {
-        return SettingsViewModelFactory(getUserSelectedActivitiesRepository(fragment.requireContext()), application)
+        return SettingsViewModelFactory(getUserSelectedActivitiesRepository(fragment.requireContext()), getShopRepository(fragment.requireContext()), application)
     }
 
     fun getShopViewModelFactory(fragment: Fragment, application: Application): ShopViewModelFactory {

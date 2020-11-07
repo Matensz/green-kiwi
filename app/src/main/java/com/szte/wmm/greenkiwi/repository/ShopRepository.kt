@@ -12,6 +12,8 @@ class ShopRepository(private val shopDao: ShopDao) {
 
     suspend fun updateShopItemById(itemId: Long, purchased: Boolean) = shopDao.updateShopItemById(itemId, purchased)
 
+    suspend fun resetPurchaseStatuses(defaultBackgroundName: String, defaultPetImageName: String) = shopDao.resetPurchaseStatuses(defaultBackgroundName, defaultPetImageName)
+
     companion object {
 
         // For Singleton instantiation
