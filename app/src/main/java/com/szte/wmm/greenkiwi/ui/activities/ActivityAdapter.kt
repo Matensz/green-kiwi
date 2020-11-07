@@ -49,6 +49,9 @@ class ActivityAdapter(private val onClickListener: OnClickListener) : ListAdapte
         }
     }
 
+    /**
+     * Click listener for the list items.
+     */
     class OnClickListener(val clickListener: (activity: Activity) -> Unit) {
         fun onClick(activity: Activity) = clickListener(activity)
     }

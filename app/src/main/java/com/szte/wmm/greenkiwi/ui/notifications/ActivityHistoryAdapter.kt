@@ -18,7 +18,6 @@ import kotlinx.coroutines.withContext
 /**
  * Adapter for displaying the latest activities as the activity history list in a RecyclerView.
  */
-
 class ActivityHistoryAdapter(private val context: Context) : ListAdapter<HistoryListItem, RecyclerView.ViewHolder>(DiffCallback) {
 
     private val headerType = 0

@@ -41,6 +41,9 @@ class ActivitiesViewModel internal constructor(
         }
     }
 
+    /**
+     * Class for holding the current category filter.
+     */
     private class FilterHolder {
         var currentValue: String? = null
             private set
