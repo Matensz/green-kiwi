@@ -14,7 +14,7 @@
         android:id="@+id/home_parent_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#51BF63"
+        android:background="@color/secondaryColor"
         tools:context=".ui.home.HomeFragment">
 
         <TextView
@@ -63,7 +63,7 @@
             android:layout_width="200dp"
             android:layout_height="300dp"
             android:layout_marginBottom="100dp"
-            android:background="#51BF63"
+            android:background="@android:color/transparent"
             android:src="@drawable/egg"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
