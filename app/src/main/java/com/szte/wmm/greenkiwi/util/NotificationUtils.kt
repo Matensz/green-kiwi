@@ -19,10 +19,10 @@ fun NotificationManager.sendNotification(notificationId: Int, notificationChanne
         PendingIntent.FLAG_UPDATE_CURRENT
     )
 
-    val petImage = BitmapFactory.decodeResource(applicationContext.resources, R.drawable.kiwi)
+    val petImage = BitmapFactory.decodeResource(applicationContext.resources, R.drawable.kiwi_green)
 
     val notificationBuilder = NotificationCompat.Builder(applicationContext, notificationChannelId)
-        .setSmallIcon(R.drawable.kiwi)
+        .setSmallIcon(R.drawable.kiwi_green)
         .setContentTitle(applicationContext.getString(R.string.notification_title))
         .setContentText(text)
         .setStyle(NotificationCompat.BigTextStyle().bigText(bigText))

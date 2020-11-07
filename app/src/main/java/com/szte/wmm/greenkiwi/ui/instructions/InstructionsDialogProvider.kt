@@ -17,7 +17,7 @@ object InstructionsDialogProvider {
 
     fun createInstructionsDialog(activity: Activity): Dialog {
         val builder = AlertDialog.Builder(activity)
-        builder.setIcon(R.drawable.kiwi)
+        builder.setIcon(R.drawable.kiwi_green)
             .setTitle(R.string.instructions_title)
             .setView(activity.layoutInflater.inflate(R.layout.fragment_instructions_dialog, null).let {
                 val pager = it.findViewById<ViewPager2>(R.id.instructions_pager)
