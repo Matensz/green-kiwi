@@ -22,6 +22,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.szte.wmm.greenkiwi.R
 import com.szte.wmm.greenkiwi.databinding.FragmentHomeBinding
 import com.szte.wmm.greenkiwi.ui.home.context.HomeDataContext
@@ -69,6 +70,10 @@ class HomeFragment : Fragment() {
             binding.petImage.setImageResource(it)
         })
 
+        viewModel.currentBackground.observe(viewLifecycleOwner, {
+            binding.homeParentLayout.setBackgroundResource(it ?: R.color.secondaryColor)
+        })
+
         viewModel.hunger.observe(viewLifecycleOwner, {
             val hungerPercent = truncate(it.currentValue / it.currentMaxValue.toFloat() * 100).toInt()
             binding.hungerText.text = String.format(getString(R.string.hunger_info), hungerPercent, 100)
@@ -83,6 +88,13 @@ class HomeFragment : Fragment() {
 
         viewModel.feedButtonVisible.observe(viewLifecycleOwner, {
             binding.feedPetButton.visibility = if (it) View.VISIBLE else View.GONE
+        })
+
+        viewModel.navigateToShop.observe(viewLifecycleOwner, {
+            if (it != null) {
+                this.findNavController().navigate(HomeFragmentDirections.actionNavigationHomeToShopFragment())
+                viewModel.navigateToShopComplete()
+            }
         })
 
         binding.petImage.setOnClickListener {
@@ -100,6 +112,10 @@ class HomeFragment : Fragment() {
 
         binding.feedPetButton.setOnClickListener {
             createPetFeedDialog().show()
+        }
+
+        binding.playerGoldText.setOnClickListener {
+            viewModel.navigateToShop()
         }
 
         createNotificationChannel(

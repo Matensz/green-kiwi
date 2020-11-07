@@ -9,7 +9,11 @@
         android:id="@+id/navigation_home"
         android:name="com.szte.wmm.greenkiwi.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_shopFragment"
+            app:destination="@id/shopFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_activities"
@@ -43,5 +47,13 @@
         <action
             android:id="@+id/action_navigation_activity_detail_to_navigation_activities"
             app:destination="@id/navigation_activities" />
+    </fragment>
+    <fragment
+        android:id="@+id/shopFragment"
+        android:name="com.szte.wmm.greenkiwi.ui.shop.ShopFragment"
+        android:label="ShopFragment" >
+        <action
+            android:id="@+id/action_shopFragment_to_navigation_home"
+            app:destination="@id/navigation_home" />
     </fragment>
 </navigation>

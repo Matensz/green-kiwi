@@ -22,6 +22,7 @@ import kotlin.math.truncate
 class HomeViewModel(context: HomeDataContext, private val app: Application) : AndroidViewModel(app) {
 
     companion object {
+        private const val DEFAULT_PET_IMAGE_NAME = "kiwi_green"
         private const val HUNGER_NOTIFICATION_ID = 0
         //TODO set correct value when done testing
         private const val ONE_DAY_IN_MILLIS = 60000L
@@ -37,6 +38,9 @@ class HomeViewModel(context: HomeDataContext, private val app: Application) : An
     private val _petImage = MutableLiveData<Int>()
     val petImage: LiveData<Int>
         get() = _petImage
+    private val _currentBackground = MutableLiveData<Int?>()
+    val currentBackground: LiveData<Int?>
+        get() = _currentBackground
     private val _hunger = MutableLiveData<ValuePair>()
     val hunger: LiveData<ValuePair>
         get() = _hunger
@@ -46,6 +50,9 @@ class HomeViewModel(context: HomeDataContext, private val app: Application) : An
     private val _feedButtonVisible = MutableLiveData<Boolean>()
     val feedButtonVisible: LiveData<Boolean>
         get() = _feedButtonVisible
+    private val _navigateToShop = MutableLiveData<Boolean>()
+    val navigateToShop: LiveData<Boolean>
+        get() = _navigateToShop
 
     private val currentPoints = context.currentPoints
     private val expBaseNumber = context.expBaseNumber
@@ -68,6 +75,7 @@ class HomeViewModel(context: HomeDataContext, private val app: Application) : An
 
         _levelUps.value = levelUps
         _petImage.value = getPetImageByLevel(currentPlayerLevel)
+        _currentBackground.value = getCurrentBackground()
         _experience.value = ValuePair(currentPoints - maxExpAtPreviousLevel, maxExpAtCurrentLevel - maxExpAtPreviousLevel)
         initGoldCounter()
 
@@ -102,8 +110,18 @@ class HomeViewModel(context: HomeDataContext, private val app: Application) : An
         return when(playerLevel) {
             0, 1, 2 -> R.drawable.egg
             3, 4 -> R.drawable.egg_cracked
-            else -> R.drawable.kiwi
+            else -> getCurrentPetImage()
         }
+    }
+
+    private fun getCurrentPetImage(): Int {
+        val resName = sharedPreferences.getString(app.getString(R.string.current_pet_image_key), DEFAULT_PET_IMAGE_NAME) ?: DEFAULT_PET_IMAGE_NAME
+        return getResIdForImageName(resName)
+    }
+
+    private fun getCurrentBackground(): Int? {
+        val resName = sharedPreferences.getString(app.getString(R.string.current_background_key), "")
+        return resName.let { if (!it.isNullOrEmpty()) getResIdForImageName(it) else null }
     }
 
     private fun calculatePetHunger() {
@@ -193,6 +211,18 @@ class HomeViewModel(context: HomeDataContext, private val app: Application) : An
             sharedPreferences.edit().putLong(playerGoldKey, updatedGold).apply()
             updatedGold
         }
+    }
+
+    private fun getResIdForImageName(resourceName: String): Int {
+        return app.resources.getIdentifier(resourceName, "drawable", app.applicationContext.packageName)
+    }
+
+    fun navigateToShop() {
+        _navigateToShop.value = true
+    }
+
+    fun navigateToShopComplete() {
+        _navigateToShop.value = null
     }
 }
 
