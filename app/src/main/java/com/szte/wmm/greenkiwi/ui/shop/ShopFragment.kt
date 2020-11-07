@@ -96,7 +96,6 @@ class ShopFragment : Fragment() {
                     shopViewModel.buySelectedItem(shopItem)
                     dialog.dismiss()
                 }
-
         }
         return updatedBuilder
     }

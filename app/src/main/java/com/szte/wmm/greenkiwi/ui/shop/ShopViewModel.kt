@@ -57,7 +57,9 @@ class ShopViewModel(private val shopRepository: ShopRepository, private val app:
     private suspend fun setPurchasedFlagForItem(itemId: Long) {
         withContext(Dispatchers.IO) {
             shopRepository.updateShopItemById(itemId, true)
+            shopItems = shopRepository.getShopItems()
         }
+        _filteredItems.value = shopItems.filter { filter.currentValue?.equals(it.category.name) ?: true }
     }
 
     private suspend fun updatePlayerGold(price: Int) {
