@@ -155,8 +155,8 @@ class HomeFragment : Fragment() {
     }
 
     private fun formatNickname(): String {
-        val petNickname = sharedPref.getString(getString(R.string.pet_nickname_key), getString(R.string.pet_nickname_hint))
-        return String.format(getString(R.string.pet_nickname_text), petNickname)
+        val petNickname = sharedPref.getString(getString(R.string.pet_nickname_key), "")
+        return if (petNickname.isNullOrBlank()) getString(R.string.pet_nickname_hint) else String.format(getString(R.string.pet_nickname_text), petNickname)
     }
 
     private fun editPetNickname() {
