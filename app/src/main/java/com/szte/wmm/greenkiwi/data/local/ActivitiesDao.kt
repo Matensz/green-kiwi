@@ -22,5 +22,5 @@ interface ActivitiesDao {
     fun insertActivity(activity: Activity)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAll(plants: List<Activity>)
+    suspend fun insertAll(activities: List<Activity>)
 }
