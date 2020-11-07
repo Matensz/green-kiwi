@@ -15,7 +15,7 @@ import com.szte.wmm.greenkiwi.worker.DatabaseInitializerWorker
 /**
  * Room database object for the application.
  */
-@Database(entities = [Activity::class, UserSelectedActivity::class, ShopItem::class], version = 2, exportSchema = false)
+@Database(entities = [Activity::class, UserSelectedActivity::class, ShopItem::class], version = 1, exportSchema = false)
 abstract class ApplicationDatabase : RoomDatabase() {
 
     abstract fun activitiesDao(): ActivitiesDao
