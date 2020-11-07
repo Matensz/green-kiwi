@@ -149,7 +149,6 @@ xmlns:tools="http://schemas.android.com/tools">
                     android:layout_margin="10dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/activity_history_title"
-                    android:text="@{activityViewModel.lastAddedDate}"
                     tools:text="Yesterday" />
 
                 <View

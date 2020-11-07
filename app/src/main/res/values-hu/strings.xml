@@ -8,6 +8,7 @@
     <string name="point_info">Ez a tevékenység %d pontot ér</string>
     <string name="activity_added_message">Szép munka, tevékenység hozzáadva!</string>
     <string name="third_activity_added_message">Gratulálunk! Épp most rögzítetted a mai harmadik tevékenységedet, ezért %d arany a jutalmad!</string>
+    <string name="activity_already_added_today_message">Ma már rögzítetted ezt a tevékenységet, gyere vissza holnap!</string>
     <string name="level_info">%d. szint</string>
     <string name="exp_info">%d/%d XP</string>
     <string name="daily_activity_count_info">Napi tevékenységek: %d/%d</string>

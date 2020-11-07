@@ -17,6 +17,7 @@ import com.szte.wmm.greenkiwi.util.InjectorUtils
 import com.szte.wmm.greenkiwi.R
 import com.szte.wmm.greenkiwi.databinding.FragmentActivityDetailBinding
 import com.szte.wmm.greenkiwi.repository.domain.Activity
+import com.szte.wmm.greenkiwi.util.formatNullableDateString
 import com.szte.wmm.greenkiwi.util.isDayBeforeDate
 import com.szte.wmm.greenkiwi.util.isSameDay
 
@@ -28,7 +29,7 @@ class ActivityDetailFragment : Fragment() {
         //TODO handle potentional exception from requireArguments()
         val activity = ActivityDetailFragmentArgs.fromBundle(requireArguments()).selectedActivity
         val viewModelFactory = InjectorUtils.getActivityDetailViewModelFactory(activity, this, application)
-        val viewModel = ViewModelProvider(this, viewModelFactory).get(ActivityDetailViewModel::class.java)
+        val activityDetail = ViewModelProvider(this, viewModelFactory).get(ActivityDetailViewModel::class.java)
 
         val sharedPref = application.getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE)
 
@@ -36,24 +37,28 @@ class ActivityDetailFragment : Fragment() {
             inflater, R.layout.fragment_activity_detail, container, false
         ).apply {
             lifecycleOwner = viewLifecycleOwner
-            activityViewModel = viewModel
+            activityViewModel = activityDetail
             callback = object : Callback {
 
                 override fun add(activity: Activity?) {
                     activity?.let {
                         val currentTime = System.currentTimeMillis()
-                        viewModel.addActivity(activity.activityId, currentTime)
-                        updatePlayerValue(sharedPref, activity.point, R.integer.default_starting_point, R.string.saved_user_points_key)
-                        val currentDailyCount = updateDailyCounter(sharedPref, currentTime)
-                        var activityAddedMessage = getString(R.string.activity_added_message)
-                        var goldAmount = activity.gold
-                        if (currentDailyCount == 3) {
-                            val extraGold = resources.getInteger(R.integer.daily_counter_gold_reward)
-                            activityAddedMessage = getString(R.string.third_activity_added_message, extraGold)
-                            goldAmount += extraGold
+                        if (activityDetail.lastAddedDate.value?.isDayBeforeDate(currentTime) != false) {
+                            activityDetail.addActivity(activity.activityId, currentTime)
+                            updatePlayerValue(sharedPref, activity.point, R.integer.default_starting_point, R.string.saved_user_points_key)
+                            val currentDailyCount = updateDailyCounter(sharedPref, currentTime)
+                            var activityAddedMessage = getString(R.string.activity_added_message)
+                            var goldAmount = activity.gold
+                            if (currentDailyCount == 3) {
+                                val extraGold = resources.getInteger(R.integer.daily_counter_gold_reward)
+                                activityAddedMessage = getString(R.string.third_activity_added_message, extraGold)
+                                goldAmount += extraGold
+                            }
+                            Toast.makeText(context, activityAddedMessage, Toast.LENGTH_LONG).show()
+                            updatePlayerValue(sharedPref, goldAmount, R.integer.default_starting_gold, R.string.saved_user_gold_key)
+                        } else {
+                            Toast.makeText(context, getString(R.string.activity_already_added_today_message), Toast.LENGTH_LONG).show()
                         }
-                        Toast.makeText(context, activityAddedMessage, Toast.LENGTH_LONG).show()
-                        updatePlayerValue(sharedPref, goldAmount, R.integer.default_starting_gold, R.string.saved_user_gold_key)
                     }
                 }
             }
@@ -74,6 +79,10 @@ class ActivityDetailFragment : Fragment() {
                 view.findNavController().navigateUp()
             }
         }
+
+        activityDetail.lastAddedDate.observe(viewLifecycleOwner, {
+            binding.activityHistoryDate.text = formatNullableDateString(it, getString(R.string.last_added_date_default))
+        })
 
         return binding.root
     }

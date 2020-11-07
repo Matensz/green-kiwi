@@ -9,7 +9,6 @@ import com.szte.wmm.greenkiwi.R
 import com.szte.wmm.greenkiwi.repository.UserSelectedActivitiesRepository
 import com.szte.wmm.greenkiwi.repository.domain.Activity
 import com.szte.wmm.greenkiwi.repository.domain.UserSelectedActivity
-import com.szte.wmm.greenkiwi.util.formatNullableDateString
 import kotlinx.coroutines.*
 
 class ActivityDetailViewModel internal constructor(
@@ -21,8 +20,8 @@ class ActivityDetailViewModel internal constructor(
     private val _selectedActivity = MutableLiveData<Activity>()
     val selectedActivity: LiveData<Activity>
         get() = _selectedActivity
-    private val _lastAddedDate = MutableLiveData<String>()
-    val lastAddedDate: LiveData<String>
+    private val _lastAddedDate = MutableLiveData<Long?>()
+    val lastAddedDate: LiveData<Long?>
         get() = _lastAddedDate
 
     val pointInfo = Transformations.map(selectedActivity) { activity ->
@@ -35,19 +34,19 @@ class ActivityDetailViewModel internal constructor(
 
     init {
         _selectedActivity.value = activity
-        updateLastAddedDate(activity.activityId)
+        initLastAddedDate(activity.activityId)
     }
 
-    private fun updateLastAddedDate(activityId: Long) {
+    private fun initLastAddedDate(activityId: Long) {
         uiScope.launch {
-            _lastAddedDate.value = getFormattedDate(activityId)
+            _lastAddedDate.value = getLastAddedTimeStamp(activityId)
         }
     }
 
-    private suspend fun getFormattedDate(activityId: Long): String {
+    private suspend fun getLastAddedTimeStamp(activityId: Long): Long? {
         return withContext(Dispatchers.IO) {
             val lastAddedTimeStamp = userSelectedActivitiesRepository.getLatestActivity(activityId)?.timeAdded
-            formatNullableDateString(lastAddedTimeStamp, app.getString(R.string.last_added_date_default))
+            lastAddedTimeStamp
         }
     }
 
@@ -55,7 +54,7 @@ class ActivityDetailViewModel internal constructor(
         uiScope.launch {
             val newActivity = UserSelectedActivity(activityId = activityId, timeAdded = currentTime)
             insertActivityTobDb(newActivity)
-            _lastAddedDate.value = getFormattedDate(activityId)
+            _lastAddedDate.value = getLastAddedTimeStamp(activityId)
         }
     }
 

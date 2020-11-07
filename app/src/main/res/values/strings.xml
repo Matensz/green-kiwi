@@ -8,6 +8,7 @@
     <string name="point_info">This activity gives you %d points</string>
     <string name="activity_added_message">Great job, activity added!</string>
     <string name="third_activity_added_message">Congrats! You\'ve just added the third activity today, which earned you %d extra gold!</string>
+    <string name="activity_already_added_today_message">You\'ve already added this activity today, check back tomorrow!</string>
     <string name="level_info">Level %d</string>
     <string name="exp_info">%d/%d EXP</string>
     <string name="daily_activity_count_info">Daily activities: %d/%d</string>
