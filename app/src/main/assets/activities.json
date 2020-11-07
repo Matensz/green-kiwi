@@ -1,8 +1,8 @@
 [
   {
     "activityId": 1,
-    "title": "Take a shower",
-    "description": "Take a shower instead of a bath, which uses much more water.",
+    "title": "Újratölhető elemeket használok",
+    "description": "Egyszerhasználatos elemek helyett fektess be újratölthető akkumlátorokba, hogy ezzel is csökkentsd az elektromos hulladék mennyiségét. Jelöld be ezt a tevékenységet, ha ma újratölthető akkumulátort használtál elem helyett.",
     "thumbnailUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR49WUodjRIUIhV1lPYl8lAuMySzCSmqNEWdQ&usqp=CAU",
     "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR49WUodjRIUIhV1lPYl8lAuMySzCSmqNEWdQ&usqp=CAU",
     "point": 10,
@@ -11,8 +11,38 @@
   },
   {
     "activityId": 2,
-    "title": "Flush the toilet less often",
-    "description": "If you pee during shower, you can spare the water needed to flush the toilet.",
+    "title": "Takarékoskodok a fűtéssel",
+    "description": "Próbálj meg odafigyelni a fűtésre, hiszen nem feltétlen szükséges nyári meleget varázsolni télen a szobában. Ráadásul, ha utána még az alakot is folyamatosan nyitva kell tartani, hogy ne legyen annyira meleged, felesleges volt az egész. 20-21 °C teljesen ideális, de ha fázol a lakásban, egy meleg pléd vagy egy pulcsi még mindig segíthet. Jelöld be ezt a tevékenységet, ha ma nem fűtötted túl a lakást.",
+    "thumbnailUrl": "https://cnet1.cbsistatic.com/img/1u5_4-DBs7mtLM57Ix4oyfIUxIY=/1200x675/2015/12/23/f7b47eaf-a13e-456c-93a4-7d6e72aa2332/toilet-bowl.jpg",
+    "imageUrl": "https://cnet1.cbsistatic.com/img/1u5_4-DBs7mtLM57Ix4oyfIUxIY=/1200x675/2015/12/23/f7b47eaf-a13e-456c-93a4-7d6e72aa2332/toilet-bowl.jpg",
+    "point": 100,
+    "gold": 1,
+    "categoryId": 1
+  },
+  {
+    "activityId": 3,
+    "title": "Nem folyatom feleslegesen a vizet",
+    "description": "A víz a legnagyobb és legértékesebb kincsünk, ezért érdemes takarékoskodni vele. Sokszor csak megnyitjuk a csapot pl. mosogatás vagy fogmosás közben, és ezzel értékes ivóvizet pazarlunk el. Egy kis odafigyeléssel viszont ilyen apró dolgokon is sokat megspórolhatunk. Jelöld be ezt a tevékenységet, ha nem folyattad ma feleslegesen a csapot.",
+    "thumbnailUrl": "https://cnet1.cbsistatic.com/img/1u5_4-DBs7mtLM57Ix4oyfIUxIY=/1200x675/2015/12/23/f7b47eaf-a13e-456c-93a4-7d6e72aa2332/toilet-bowl.jpg",
+    "imageUrl": "https://cnet1.cbsistatic.com/img/1u5_4-DBs7mtLM57Ix4oyfIUxIY=/1200x675/2015/12/23/f7b47eaf-a13e-456c-93a4-7d6e72aa2332/toilet-bowl.jpg",
+    "point": 100,
+    "gold": 1,
+    "categoryId": 1
+  },
+  {
+    "activityId": 4,
+    "title": "Zuhanyzok",
+    "description": "Egy jó meleg fürdő tagadhatatlanul kellemes dolog, azonban rengeteg víz használódik el egy rövid, 3-5 perces tusoláshoz képest. Ha a szürke hétköznapokon utóbbit választod, máris rengeteg ivóvizet megspóroltál. Persze ez nem jelenti az, hogy néha ne férne bele egy kiadós fürő, de minél ritkábban, annál jobb. Jelöld be ezt a tevékenységet, ha ma csak gyorsan letusoltál fürdés helyett.",
+    "thumbnailUrl": "https://cnet1.cbsistatic.com/img/1u5_4-DBs7mtLM57Ix4oyfIUxIY=/1200x675/2015/12/23/f7b47eaf-a13e-456c-93a4-7d6e72aa2332/toilet-bowl.jpg",
+    "imageUrl": "https://cnet1.cbsistatic.com/img/1u5_4-DBs7mtLM57Ix4oyfIUxIY=/1200x675/2015/12/23/f7b47eaf-a13e-456c-93a4-7d6e72aa2332/toilet-bowl.jpg",
+    "point": 100,
+    "gold": 1,
+    "categoryId": 1
+  },
+  {
+    "activityId": 4,
+    "title": "Teli mosógépet indítok el",
+    "description": "Egy mosás rengeteg vizet haszál el, ezért próbáljuk ",
     "thumbnailUrl": "https://cnet1.cbsistatic.com/img/1u5_4-DBs7mtLM57Ix4oyfIUxIY=/1200x675/2015/12/23/f7b47eaf-a13e-456c-93a4-7d6e72aa2332/toilet-bowl.jpg",
     "imageUrl": "https://cnet1.cbsistatic.com/img/1u5_4-DBs7mtLM57Ix4oyfIUxIY=/1200x675/2015/12/23/f7b47eaf-a13e-456c-93a4-7d6e72aa2332/toilet-bowl.jpg",
     "point": 100,
