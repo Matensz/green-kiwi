@@ -63,4 +63,28 @@
     <string name="point_value">Exp: %d</string>
     <string name="gold_value">Gold: %d</string>
     <string name="activity_history_header_text">Your previously added activities:</string>
+
+    <!--Shop-->
+    <string name="background">Background</string>
+    <string name="pet_image">Pet Image</string>
+    <string name="default_wallpaper_name">Default Background</string>
+    <string name="kiwi_wallpaper_name">Kiwi Background</string>
+    <string name="orange_wallpaper_name">Orange Background</string>
+    <string name="doughnut_wallpaper_name">Doughnut Background</string>
+    <string name="green_kiwi_name">Green Kiwi Image</string>
+    <string name="brown_kiwi_name">Brown Kiwi Image</string>
+    <string name="dark_blue_kiwi_name">Dark Blue Kiwi Image</string>
+    <string name="dark_pink_kiwi_name">Dark Pink Kiwi Image</string>
+    <string name="light_blue_kiwi_name">Light Blue Kiwi Image</string>
+    <string name="light_pink_kiwi_name">Light Pink Kiwi Image</string>
+    <string name="purple_kiwi_name">Purple Kiwi Image</string>
+    <string name="red_kiwi_name">Red Kiwi Image</string>
+    <string name="teal_kiwi_name">Teal Kiwi Image</string>
+    <string name="yellow_kiwi_name">Yellow Kiwi Image</string>
+    <string name="shop_item_dialog_positive_button_text_buy">Buy item</string>
+    <string name="shop_item_dialog_positive_button_text_use">Use item</string>
+    <string name="shop_item_dialog_negative_button_text">Cancel</string>
+    <string name="shop_item_dialog_message_buy">Do you want to buy this %s for %d gold?</string>
+    <string name="shop_item_dialog_message_buy_not_enough_gold">You don\'t have enough gold (%d) to buy this %s, check out the activities first and earn some more!</string>
+    <string name="shop_item_dialog_message_use">Do you want to set this %s as the current one?</string>
 </resources>
