@@ -89,7 +89,7 @@ class HomeFragment : Fragment() {
             animatePet(it as ImageView)
         }
 
-        binding.petNicknameText.text = sharedPref.getString(getString(R.string.pet_nickname_key), getString(R.string.pet_nickname_hint))
+        binding.petNicknameText.text = formatNickname()
         binding.petNicknameText.setOnClickListener {
             editPetNickname()
         }
@@ -136,6 +136,11 @@ class HomeFragment : Fragment() {
             }
         })
         animator.start()
+    }
+
+    private fun formatNickname(): String {
+        val petNickname = sharedPref.getString(getString(R.string.pet_nickname_key), getString(R.string.pet_nickname_hint))
+        return String.format(getString(R.string.pet_nickname_text), petNickname)
     }
 
     private fun editPetNickname() {
