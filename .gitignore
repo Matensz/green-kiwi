@@ -29,6 +29,9 @@
 /.idea/assetWizardSettings.xml
 /.idea/libraries
 /.idea/shelf
+/.idea/tasks.xml
+/.idea/gradle.xml
+/.idea/dictionaries
 
 # Android Studio
 /.idea/caches
