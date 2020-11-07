@@ -12,6 +12,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import com.google.android.material.chip.Chip
 import com.szte.wmm.greenkiwi.R
 import com.szte.wmm.greenkiwi.databinding.FragmentShopBinding
@@ -43,6 +44,9 @@ class ShopFragment : Fragment() {
         binding.shopList.adapter = ShopItemGridAdapter(requireContext(), ShopItemGridAdapter.OnClickListener {
             createShopItemDialog(it).show()
         })
+        binding.toolbar.setNavigationOnClickListener { view ->
+            view.findNavController().navigateUp()
+        }
 
         shopViewModel.categories.observe(viewLifecycleOwner, object:
             Observer<List<ShopCategory>> {

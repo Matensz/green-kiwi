@@ -65,6 +65,7 @@
     <string name="activity_history_header_text">Your previously added activities:</string>
 
     <!--Shop-->
+    <string name="shop_title">Shop</string>
     <string name="background">Background</string>
     <string name="pet_image">Pet Image</string>
     <string name="default_wallpaper_name">Default Background</string>

@@ -63,6 +63,7 @@
     <string name="activity_history_header_text">Korábban hozzáadott tevékenységeid:</string>
 
     <!--Shop-->
+    <string name="shop_title">Bolt</string>
     <string name="background">Háttér</string>
     <string name="pet_image">Kiwi szín</string>
     <string name="default_wallpaper_name">Alapértelmezett Háttér</string>
