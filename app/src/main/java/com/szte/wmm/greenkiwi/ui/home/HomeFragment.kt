@@ -84,7 +84,7 @@ class HomeFragment : Fragment() {
         viewModel.gold.observe(viewLifecycleOwner, {
             val formatterString = getString(R.string.gold_formatter)
             val formattedGold = DecimalFormat(formatterString).format(it)
-            binding.playerGoldText.text = String.format(getString(R.string.gold_info), formattedGold)
+            binding.playerGoldText.text = formattedGold
         })
 
         viewModel.feedButtonVisible.observe(viewLifecycleOwner, {
