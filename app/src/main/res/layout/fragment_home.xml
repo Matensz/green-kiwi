@@ -27,7 +27,8 @@
             android:paddingEnd="10dp"
             android:background="@drawable/sticker_background"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            app:layout_constraintEnd_toEndOf="parent"
+            android:elevation="6dp">
 
             <ImageView
                 android:id="@+id/gold_image"
@@ -116,7 +117,8 @@
             app:layout_constraintTop_toBottomOf="@id/pet_image"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:background="@drawable/sticker_background">
+            android:background="@drawable/sticker_background"
+            android:elevation="6dp">
 
             <View
                 android:id="@+id/empty_exp_bar"

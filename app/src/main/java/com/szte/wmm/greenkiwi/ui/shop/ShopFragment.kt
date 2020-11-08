@@ -122,7 +122,6 @@ class ShopFragment : Fragment() {
         return getString(when (category) {
             ShopCategory.BACKGROUND -> R.string.background
             ShopCategory.PET_IMAGE -> R.string.pet_image
-            // TODO check min api level settings
         }).toLowerCase(resources.configuration.locale)
     }
 }

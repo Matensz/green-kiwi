@@ -38,7 +38,7 @@ class ActivityHistoryAdapter(private val context: Context) : ListAdapter<History
         return when (viewType) {
             headerType -> TextViewHolder.from(parent)
             dataType -> ActivityHistoryViewHolder.from(parent, context)
-            else -> throw ClassCastException("Unknown viewType ${viewType}")
+            else -> throw ClassCastException("Unknown viewType $viewType")
         }
     }
 
