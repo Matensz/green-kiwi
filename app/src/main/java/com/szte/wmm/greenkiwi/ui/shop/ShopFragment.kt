@@ -101,8 +101,8 @@ class ShopFragment : Fragment() {
     }
 
     private fun buildUseItemDialog(builder: AlertDialog.Builder, shopItem: ShopItem): AlertDialog.Builder {
-        return builder.setIcon(R.drawable.kiwi_green)
-            .setTitle(R.string.instructions_title)
+        return builder.setIcon(getResIdForImageName(shopItem.imageResourceName))
+            .setTitle(getResIdForTitleName(shopItem.titleResourceName))
             .setMessage(String.format(getString(R.string.shop_item_dialog_message_use), getCategoryName(shopItem.category)))
             .setPositiveButton(R.string.shop_item_dialog_positive_button_text_use) { dialog, _ ->
                 shopViewModel.useSelectedItem(shopItem)
