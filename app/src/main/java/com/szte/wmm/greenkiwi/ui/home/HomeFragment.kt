@@ -114,7 +114,7 @@ class HomeFragment : Fragment() {
             createPetFeedDialog().show()
         }
 
-        binding.playerGoldText.setOnClickListener {
+        binding.goldLayout.setOnClickListener {
             viewModel.navigateToShop()
         }
 

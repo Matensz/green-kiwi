@@ -2,7 +2,7 @@
 <resources>
     <integer name="default_starting_point">0</integer>
     <integer name="exp_base_number">25</integer>
-    <integer name="empty_stat_bar_length">300</integer>
+    <integer name="empty_stat_bar_length">296</integer>
     <integer name="daily_activity_max_count">3</integer>
     <integer name="default_starting_gold">0</integer>
     <integer name="daily_counter_gold_reward">1</integer>
