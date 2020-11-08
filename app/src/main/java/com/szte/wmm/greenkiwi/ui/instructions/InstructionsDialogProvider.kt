@@ -4,8 +4,8 @@ import android.app.Activity
 import android.app.Dialog
 import android.content.Context
 import android.content.res.Resources
-import androidx.appcompat.app.AlertDialog
 import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.szte.wmm.greenkiwi.R
@@ -16,7 +16,7 @@ import com.szte.wmm.greenkiwi.R
 object InstructionsDialogProvider {
 
     fun createInstructionsDialog(activity: Activity): Dialog {
-        val builder = AlertDialog.Builder(activity)
+        val builder = MaterialAlertDialogBuilder(activity)
         builder.setIcon(R.drawable.kiwi_green)
             .setTitle(R.string.instructions_title)
             .setView(activity.layoutInflater.inflate(R.layout.fragment_instructions_dialog, null).let {

@@ -14,6 +14,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.google.android.material.chip.Chip
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.szte.wmm.greenkiwi.R
 import com.szte.wmm.greenkiwi.databinding.FragmentShopBinding
 import com.szte.wmm.greenkiwi.repository.domain.ShopCategory
@@ -76,7 +77,7 @@ class ShopFragment : Fragment() {
 
     // TODO
     private fun createShopItemDialog(shopItem: ShopItem): AlertDialog {
-        var builder = AlertDialog.Builder(requireActivity())
+        var builder = MaterialAlertDialogBuilder(requireActivity())
             .setNegativeButton(R.string.shop_item_dialog_negative_button_text) { dialog, _ ->
                 dialog.cancel()
             }
@@ -84,7 +85,7 @@ class ShopFragment : Fragment() {
         return builder.create()
     }
 
-    private fun buildBuyItemDialog(builder: AlertDialog.Builder, shopItem: ShopItem): AlertDialog.Builder {
+    private fun buildBuyItemDialog(builder: MaterialAlertDialogBuilder, shopItem: ShopItem): MaterialAlertDialogBuilder {
         val currentPlayerGold = sharedPref.getLong(getString(R.string.saved_user_gold_key), 0L)
         val updatedBuilder = builder.setIcon(getResIdForImageName(shopItem.imageResourceName))
             .setTitle(getResIdForTitleName(shopItem.titleResourceName))
@@ -100,7 +101,7 @@ class ShopFragment : Fragment() {
         return updatedBuilder
     }
 
-    private fun buildUseItemDialog(builder: AlertDialog.Builder, shopItem: ShopItem): AlertDialog.Builder {
+    private fun buildUseItemDialog(builder: MaterialAlertDialogBuilder, shopItem: ShopItem): MaterialAlertDialogBuilder {
         return builder.setIcon(getResIdForImageName(shopItem.imageResourceName))
             .setTitle(getResIdForTitleName(shopItem.titleResourceName))
             .setMessage(String.format(getString(R.string.shop_item_dialog_message_use), getCategoryName(shopItem.category)))

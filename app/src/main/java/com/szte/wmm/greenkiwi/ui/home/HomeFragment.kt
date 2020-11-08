@@ -23,6 +23,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.szte.wmm.greenkiwi.R
 import com.szte.wmm.greenkiwi.databinding.FragmentHomeBinding
 import com.szte.wmm.greenkiwi.ui.home.context.HomeDataContext
@@ -191,7 +192,7 @@ class HomeFragment : Fragment() {
         val nickname = sharedPref.getString(getString(R.string.pet_nickname_key), defaultNickname)
         val playerGold = sharedPref.getLong(getString(R.string.saved_user_gold_key), 0L)
 
-        val builder = AlertDialog.Builder(requireActivity())
+        val builder = MaterialAlertDialogBuilder(requireActivity())
         builder.setTitle(R.string.feed_pet_dialog_title)
             .setMessage(String.format(dialogText, foodPrice, nickname))
             .setNegativeButton(R.string.feed_pet_dialog_negative_button_text) { dialog, _ -> dialog.cancel() }

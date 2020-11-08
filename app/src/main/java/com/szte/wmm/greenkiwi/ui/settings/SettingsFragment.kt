@@ -13,6 +13,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.szte.wmm.greenkiwi.R
 import com.szte.wmm.greenkiwi.databinding.FragmentSettingsBinding
 import com.szte.wmm.greenkiwi.ui.instructions.InstructionsDialogProvider
@@ -62,7 +63,7 @@ class SettingsFragment : Fragment() {
     }
 
     private fun createResetDialog(activity: Activity): AlertDialog {
-        val builder = AlertDialog.Builder(activity)
+        val builder = MaterialAlertDialogBuilder(activity)
         builder.setTitle(R.string.reset_dialog_title)
             .setMessage(R.string.reset_dialog_text)
             .setPositiveButton(R.string.reset_dialog_positive_button_text) { dialog, _ ->
