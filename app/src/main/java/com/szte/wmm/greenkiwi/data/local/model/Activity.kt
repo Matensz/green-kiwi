@@ -32,6 +32,6 @@ fun Activity.asDomainModel(): com.szte.wmm.greenkiwi.repository.domain.Activity 
         imageUrl,
         point,
         gold,
-        Category.values().firstOrNull { it -> it.id == categoryId } ?: Category.OTHER
+        Category.values().firstOrNull { it.id == categoryId } ?: Category.OTHER
     )
 }

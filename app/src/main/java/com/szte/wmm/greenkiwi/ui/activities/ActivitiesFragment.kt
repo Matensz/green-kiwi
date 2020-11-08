@@ -30,7 +30,7 @@ class ActivitiesFragment : Fragment() {
             activitiesViewModel.displayActivityDetails(it)
         })
 
-        activitiesViewModel.navigateToSelectedActivity.observe(viewLifecycleOwner, Observer {
+        activitiesViewModel.navigateToSelectedActivity.observe(viewLifecycleOwner, {
             if (it != null) {
                 this.findNavController().navigate(ActivitiesFragmentDirections.actionNavigationActivitiesToNavigationActivityDetail(it))
                 activitiesViewModel.displayActivityDetailsComplete()
