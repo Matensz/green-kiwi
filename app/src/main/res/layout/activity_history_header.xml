@@ -3,9 +3,9 @@
     android:id="@+id/text"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp"
+    android:layout_marginBottom="10dp"
+    android:background="@color/secondaryColor"
     android:padding="8dp"
-    android:textAppearance="?android:attr/textAppearanceLarge"
-    android:textColor="@color/primaryTextColor"
     android:text="@string/activity_history_header_text"
-    android:background="@color/primaryColor"/>
+    android:textAppearance="?android:attr/textAppearanceLarge"
+    android:textColor="@android:color/white" />
