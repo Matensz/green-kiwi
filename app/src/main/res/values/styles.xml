@@ -6,14 +6,84 @@
         <item name="colorPrimaryDark">@color/primaryDarkColor</item>
         <item name="colorAccent">@color/secondaryColor</item>
         <item name="android:windowNoTitle">true</item>
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.GreenKiwi.SmallComponent</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.GreenKiwi.MediumComponent</item>
+        <item name="materialButtonStyle">@style/Widget.GreenKiwi.Button</item>
+        <item name="materialCardViewStyle">@style/Widget.GreenKiwi.CardView</item>
+        <item name="chipStyle">@style/Widget.GreenKiwi.Chip</item>
+        <item name="chipGroupStyle">@style/Widget.GreenKiwi.ChipGroup</item>
+        <item name="bottomNavigationStyle">@style/Widget.GreenKiwi.BottomNavigationView.PrimarySurface</item>
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.GreenKiwi.MaterialAlertDialog</item>
+        <item name="colorControlNormal">@color/secondaryTextColor</item>
+        <item name="android:textColor">@color/primaryTextColor</item>
     </style>
 
     <style name="TextAppearance.GreenKiwi.Toolbar.Text" parent="TextAppearance.MaterialComponents.Headline5" >
         <item name="android:textColor">?attr/colorOnSurface</item>
     </style>
 
-    <style
-        name="ShapeAppearance.GreenKiwi.FAB"
-        parent="ShapeAppearance.MaterialComponents.SmallComponent" />
+    <style name="ShapeAppearance.GreenKiwi.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerSize">5dp</item>
+        <item name="cornerFamily">rounded</item>
+    </style>
+
+    <style name="ShapeAppearance.GreenKiwi.MediumComponent" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerSize">10dp</item>
+        <item name="cornerFamily">rounded</item>
+    </style>
+
+    <style name="Widget.GreenKiwi.Button" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/secondaryColor</item>
+        <item name="android:textColor">@color/secondaryTextColor</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.GreenKiwi.SmallComponent</item>
+    </style>
+
+    <style name="Widget.GreenKiwi.CardView" parent="Widget.MaterialComponents.CardView">
+        <item name="elevation">4dp</item>
+        <item name="cardBackgroundColor">@color/primaryLightColor</item>
+    </style>
+
+    <style name="Widget.GreenKiwi.Chip" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.GreenKiwi.SmallComponent</item>
+        <item name="chipBackgroundColor">@color/selected_chip_background</item>
+        <item name="android:textColor">@color/selected_chip_text</item>
+        <item name="rippleColor">@color/secondaryDarkColor</item>
+        <item name="android:textAppearance">@style/TextAppearance.GreenKiwi.Chip</item>
+        <item name="textStartPadding">10dp</item>
+        <item name="textEndPadding">10dp</item>
+    </style>
+
+    <style name="TextAppearance.GreenKiwi.Chip" parent="TextAppearance.MaterialComponents.Chip">
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="Widget.GreenKiwi.ChipGroup" parent="Widget.MaterialComponents.ChipGroup">
+        <item name="singleLine">true</item>
+        <item name="singleSelection">true</item>
+        <item name="selectionRequired">true</item>
+        <item name="android:spacing">10dp</item>
+    </style>
+
+    <style name="Widget.GreenKiwi.BottomNavigationView.PrimarySurface" parent="Widget.MaterialComponents.BottomNavigationView.PrimarySurface">
+        <item name="backgroundTint">@color/primaryDarkColor</item>
+        <item name="labelVisibilityMode">labeled</item>
+        <item name="itemIconTint">@color/selected_bottom_navigation_color</item>
+        <item name="itemTextColor">@color/selected_bottom_navigation_color</item>
+    </style>
+
+    <style name="ThemeOverlay.GreenKiwi.MaterialAlertDialog" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <item name="colorPrimary">@color/stickerBackgroundColor</item>
+        <item name="colorSecondary">@color/stickerBackgroundColor</item>
+        <item name="colorSurface">@color/stickerBackgroundColor</item>
+        <item name="colorOnSurface">@color/primaryTextColor</item>
+        <item name="android:textColor">@color/primaryTextColor</item>
+        <item name="buttonBarPositiveButtonStyle">@style/Widget.GreenKiwi.TextButton.Dialog</item>
+        <item name="buttonBarNegativeButtonStyle">@style/Widget.GreenKiwi.TextButton.Dialog</item>
+    </style>
+
+    <style name="Widget.GreenKiwi.TextButton.Dialog" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">@color/secondaryDarkColor</item>
+    </style>
+
 
 </resources>
