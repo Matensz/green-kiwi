@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="activityViewModel"
             type="com.szte.wmm.greenkiwi.ui.activitydetail.ActivityDetailViewModel" />
+
         <variable
             name="callback"
             type="com.szte.wmm.greenkiwi.ui.activitydetail.ActivityDetailFragment.Callback" />
@@ -16,8 +18,8 @@ xmlns:tools="http://schemas.android.com/tools">
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/primaryColor"
         android:fitsSystemWindows="true"
-        android:background="?attr/colorSurface"
         tools:context="com.szte.wmm.greenkiwi.MainActivity"
         tools:ignore="MergeRootFrame">
 
@@ -25,22 +27,21 @@ xmlns:tools="http://schemas.android.com/tools">
             android:id="@+id/appbar"
             android:layout_width="match_parent"
             android:layout_height="240dp"
+            android:animateLayoutChanges="true"
+            android:background="@color/secondaryLightColor"
             android:fitsSystemWindows="true"
-            android:theme="@style/ThemeOverlay.AppCompat.Light"
-            android:stateListAnimator="@animator/show_toolbar"
-            android:background="?attr/colorSurface"
-            android:animateLayoutChanges="true">
+            android:stateListAnimator="@animator/show_toolbar">
 
             <com.google.android.material.appbar.CollapsingToolbarLayout
                 android:id="@+id/toolbar_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fitsSystemWindows="true"
-                app:contentScrim="?attr/colorSurface"
-                app:statusBarScrim="?attr/colorOnSurface"
                 app:collapsedTitleGravity="center"
                 app:collapsedTitleTextAppearance="@style/TextAppearance.GreenKiwi.Toolbar.Text"
+                app:contentScrim="@color/secondaryLightColor"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                app:statusBarScrim="@color/secondaryLightColor"
                 app:title="@{activityViewModel.selectedActivity.title}"
                 app:titleEnabled="false"
                 app:toolbarId="@id/toolbar">
@@ -49,6 +50,7 @@ xmlns:tools="http://schemas.android.com/tools">
                     android:id="@+id/detail_image"
                     android:layout_width="match_parent"
                     android:layout_height="240dp"
+                    android:contentDescription="@string/activities_view_activity_image_description"
                     android:fitsSystemWindows="true"
                     android:scaleType="centerCrop"
                     app:imageUrl="@{activityViewModel.selectedActivity.imageUrl}"
@@ -58,11 +60,10 @@ xmlns:tools="http://schemas.android.com/tools">
                     android:id="@+id/toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
-                    android:background="@android:color/transparent"
-                    app:titleTextColor="?attr/colorOnSurface"
-                    app:layout_collapseMode="pin"
                     app:contentInsetStartWithNavigation="0dp"
-                    app:navigationIcon="@drawable/ic_baseline_arrow_back_black_24dp" />
+                    app:layout_collapseMode="pin"
+                    app:navigationIcon="@drawable/ic_baseline_arrow_back_black_24dp"
+                    app:titleTextColor="@color/secondaryTextColor" />
 
             </com.google.android.material.appbar.CollapsingToolbarLayout>
 
@@ -124,6 +125,7 @@ xmlns:tools="http://schemas.android.com/tools">
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
+                    android:contentDescription="@string/activity_detail_view_history_description"
                     android:scaleType="centerCrop"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/separator"
@@ -166,6 +168,7 @@ xmlns:tools="http://schemas.android.com/tools">
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
+                    android:contentDescription="@string/activity_detail_view_points_description"
                     android:scaleType="centerCrop"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/second_separator"
@@ -189,17 +192,19 @@ xmlns:tools="http://schemas.android.com/tools">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab"
-            style="@style/Widget.MaterialComponents.FloatingActionButton"
-            app:backgroundTint="@color/secondaryColor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:backgroundTint="@color/secondaryDarkColor"
             android:onClick="@{() -> callback.add(activityViewModel.selectedActivity)}"
-            android:tint="@android:color/white"
-            app:shapeAppearance="@style/ShapeAppearance.GreenKiwi.FAB"
+            app:borderWidth="0dp"
             app:layout_anchor="@id/appbar"
             app:layout_anchorGravity="bottom|end"
-            app:srcCompat="@drawable/ic_baseline_add_black_24dp" />
+            app:shapeAppearance="@style/ShapeAppearance.GreenKiwi.SmallComponent"
+            app:srcCompat="@drawable/ic_baseline_add_black_24dp"
+            app:tint="@color/primaryLightColor"
+            tools:ignore="ContentDescription"
+            tools:srcCompat="@drawable/ic_baseline_add_black_24dp" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

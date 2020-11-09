@@ -96,4 +96,6 @@
     <string name="activities_view_activity_image_description">This image shows the corresponding activity</string>
     <string name="shop_view_item_description">This is the image of the actual item</string>
     <string name="shop_view_purchase_status_description">This icon represents whether the item is purchasable or already purchased</string>
+    <string name="activity_detail_view_history_description">A history icon</string>
+    <string name="activity_detail_view_points_description">A points icon</string>
 </resources>

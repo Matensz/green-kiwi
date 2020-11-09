@@ -94,4 +94,6 @@
     <string name="activities_view_activity_image_description">Ez a kép egy az aktuális tevlkenyésget ábrázoló kép</string>
     <string name="shop_view_item_description">Ez a kép az aktuális tételt ábrázolja</string>
     <string name="shop_view_purchase_status_description">Ez az ikon azt mutatja, az adott tétel megvásárolható vagy már meg lett-e vásárolva</string>
+    <string name="activity_detail_view_history_description">Előzmények ikon</string>
+    <string name="activity_detail_view_points_description">Pontok ikon</string>
 </resources>
