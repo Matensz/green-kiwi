@@ -72,7 +72,7 @@ class HomeFragment : Fragment() {
         })
 
         viewModel.currentBackground.observe(viewLifecycleOwner, {
-            binding.homeParentLayout.setBackgroundResource(it ?: R.color.secondaryColor)
+            binding.homeParentLayout.setBackgroundResource(it ?: R.color.primaryColor)
         })
 
         viewModel.hunger.observe(viewLifecycleOwner, {

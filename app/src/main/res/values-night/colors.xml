@@ -8,4 +8,6 @@
     <color name="secondaryDarkColor">#002984</color>
     <color name="primaryTextColor">#ffffff</color>
     <color name="secondaryTextColor">#ffffff</color>
+    <color name="stickerBackgroundColor">#3A3A3A</color>
+    <color name="textColorOnStickerBackground">#000000</color>
 </resources>
