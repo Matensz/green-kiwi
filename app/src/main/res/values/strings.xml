@@ -94,4 +94,6 @@
     <string name="home_view_gold_description">Image of a gold coin</string>
     <string name="home_view_pet_description">Image of your pet kiwi</string>
     <string name="activities_view_activity_image_description">This image shows the corresponding activity</string>
+    <string name="shop_view_item_description">This is the image of the actual item</string>
+    <string name="shop_view_purchase_status_description">This icon represents whether the item is purchasable or already purchased</string>
 </resources>

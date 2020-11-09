@@ -55,13 +55,20 @@ class ShopItemGridAdapter(private val context: Context, private val onClickListe
             binding.shopItem = shopItem
             binding.shopItemImage.setImageResource(getResIdForImageName(shopItem.imageResourceName))
             binding.shopItemImage.scaleType = getScaleType(shopItem.category)
+            binding.shopItemName.text = getItemName(shopItem.titleResourceName)
             binding.purchasedStatus.setImageResource(getPurchasedStatusImage(shopItem.purchased))
             binding.executePendingBindings()
         }
 
         private fun getResIdForImageName(resourceName: String): Int {
             val resources: Resources = context.resources
-            return resources.getIdentifier(resourceName, "drawable", context.packageName)
+            return if (!resourceName.isBlank()) resources.getIdentifier(resourceName, "drawable", context.packageName) else R.color.primaryColor
+        }
+
+        private fun getItemName(resourceName: String): String {
+            val resources: Resources = context.resources
+            val resId = resources.getIdentifier(resourceName, "string", context.packageName)
+            return resources.getString(resId)
         }
 
         private fun getPurchasedStatusImage(purchased: Boolean): Int {
