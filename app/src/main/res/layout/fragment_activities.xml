@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="activitiesViewModel"
             type="com.szte.wmm.greenkiwi.ui.activities.ActivitiesViewModel" />
@@ -12,6 +13,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/primaryColor"
         tools:context=".ui.activities.ActivitiesFragment">
 
         <HorizontalScrollView
@@ -22,14 +24,16 @@
             app:layout_constraintHorizontal_bias="0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
+
             <com.google.android.material.chip.ChipGroup
                 android:id="@+id/categories_list"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                app:singleLine="true"
-                app:singleSelection="true"
-                app:selectionRequired="true"
-                android:padding="16dp"/>
+                android:paddingStart="5dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="0dp"
+                android:paddingBottom="5dp" />
+
         </HorizontalScrollView>
 
         <androidx.recyclerview.widget.RecyclerView
@@ -37,13 +41,15 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:clipToPadding="true"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/categories"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:listData="@{activitiesViewModel.filteredActivities}"
             tools:itemCount="16"
             tools:listitem="@layout/activity_list_item" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

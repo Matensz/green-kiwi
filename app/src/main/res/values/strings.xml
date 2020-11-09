@@ -93,4 +93,5 @@
     <!--Accessibility-->
     <string name="home_view_gold_description">Image of a gold coin</string>
     <string name="home_view_pet_description">Image of your pet kiwi</string>
+    <string name="activities_view_activity_image_description">This image shows the corresponding activity</string>
 </resources>
