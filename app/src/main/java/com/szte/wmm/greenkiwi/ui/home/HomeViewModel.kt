@@ -16,6 +16,7 @@ import com.szte.wmm.greenkiwi.R
 import com.szte.wmm.greenkiwi.repository.ActivitiesRepository
 import com.szte.wmm.greenkiwi.ui.home.context.HomeDataContext
 import com.szte.wmm.greenkiwi.util.cancelNotifications
+import com.szte.wmm.greenkiwi.util.getResIdForImageName
 import kotlinx.coroutines.*
 import kotlin.math.sqrt
 import kotlin.math.truncate
@@ -134,12 +135,12 @@ class HomeViewModel(
 
     private fun getCurrentPetImage(): Int {
         val resName = sharedPreferences.getString(app.getString(R.string.current_pet_image_key), DEFAULT_PET_IMAGE_NAME) ?: DEFAULT_PET_IMAGE_NAME
-        return getResIdForImageName(resName)
+        return getResIdForImageName(app, resName)
     }
 
     private fun getCurrentBackground(): Int? {
         val resName = sharedPreferences.getString(app.getString(R.string.current_background_key), "")
-        return resName.let { if (!it.isNullOrEmpty()) getResIdForImageName(it) else null }
+        return resName.let { if (!it.isNullOrEmpty()) getResIdForImageName(app, it) else null }
     }
 
     private fun calculatePetHunger() {
@@ -229,10 +230,6 @@ class HomeViewModel(
             sharedPreferences.edit().putLong(playerGoldKey, updatedGold).apply()
             updatedGold
         }
-    }
-
-    private fun getResIdForImageName(resourceName: String): Int {
-        return app.resources.getIdentifier(resourceName, "drawable", app.applicationContext.packageName)
     }
 
     fun navigateToShop() {

@@ -11,6 +11,8 @@ import com.szte.wmm.greenkiwi.R
 import com.szte.wmm.greenkiwi.databinding.ShopGridItemBinding
 import com.szte.wmm.greenkiwi.repository.domain.ShopCategory
 import com.szte.wmm.greenkiwi.repository.domain.ShopItem
+import com.szte.wmm.greenkiwi.util.getResIdForImageName
+import com.szte.wmm.greenkiwi.util.getStringForResourceName
 
 /**
  * Adapter for displaying items in the Shop View as a grid in a RecyclerView.
@@ -53,22 +55,19 @@ class ShopItemGridAdapter(private val context: Context, private val onClickListe
 
         fun bind(shopItem: ShopItem) {
             binding.shopItem = shopItem
-            binding.shopItemImage.setImageResource(getResIdForImageName(shopItem.imageResourceName))
+            binding.shopItemImage.setImageResource(getImageResource(shopItem.imageResourceName))
             binding.shopItemImage.scaleType = getScaleType(shopItem.category)
             binding.shopItemName.text = getItemName(shopItem.titleResourceName)
             binding.purchasedStatus.setImageResource(getPurchasedStatusImage(shopItem.purchased))
             binding.executePendingBindings()
         }
 
-        private fun getResIdForImageName(resourceName: String): Int {
-            val resources: Resources = context.resources
-            return if (!resourceName.isBlank()) resources.getIdentifier(resourceName, "drawable", context.packageName) else R.color.primaryColor
+        private fun getImageResource(resourceName: String): Int {
+            return if (!resourceName.isBlank()) getResIdForImageName(context, resourceName) else R.color.primaryColor
         }
 
         private fun getItemName(resourceName: String): String {
-            val resources: Resources = context.resources
-            val resId = resources.getIdentifier(resourceName, "string", context.packageName)
-            return resources.getString(resId)
+            return getStringForResourceName(context, resourceName)
         }
 
         private fun getPurchasedStatusImage(purchased: Boolean): Int {
