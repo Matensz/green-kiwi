@@ -64,30 +64,36 @@
             android:id="@+id/pet_nickname_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/sticker_background"
+            android:padding="5dp"
             android:textAlignment="center"
+            android:textColor="@color/textColorOnStickerBackground"
             android:textSize="20sp"
             android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/gold_layout"
             tools:text="Your kiwi, Momo loves you!" />
 
         <EditText
             android:id="@+id/pet_nickname_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="20dp"
             android:autofillHints="textPersonName"
+            android:background="@drawable/sticker_background"
+            android:padding="5dp"
             android:ems="10"
             android:hint="@string/pet_nickname_hint"
             android:inputType="textPersonName"
             android:textAlignment="center"
+            android:textColor="@color/textColorOnStickerBackground"
             android:textSize="20sp"
             android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/gold_layout" />
 
         <Button
             android:id="@+id/pet_nickname_button"
@@ -104,7 +110,7 @@
             android:id="@+id/pet_image"
             android:layout_width="200dp"
             android:layout_height="300dp"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="55dp"
             android:background="@android:color/transparent"
             android:contentDescription="@string/home_view_pet_description"
             android:src="@drawable/egg"
@@ -201,23 +207,22 @@
                 android:textAlignment="center"
                 android:textColor="@color/textColorOnStickerBackground"
                 android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/feed_pet_button"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/empty_hunger_bar"
                 tools:text="Level 99" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            <Button
+                android:id="@+id/feed_pet_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/feed_pet_button_text"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/player_level_text"
+                app:layout_constraintTop_toBottomOf="@id/empty_hunger_bar" />
 
-        <Button
-            android:id="@+id/feed_pet_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="@string/feed_pet_button_text"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/stat_layout" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
