@@ -20,16 +20,31 @@
             android:id="@+id/daily_activity_notification"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/secondaryDarkColor"
+            android:layout_margin="10dp"
+            android:background="@drawable/speech_bubble"
             android:elevation="6dp"
-            android:padding="10dp"
+            android:paddingStart="10dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="30dp"
             android:textAlignment="center"
-            android:textColor="@android:color/white"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:textColor="@color/textColorOnStickerBackground"
+            android:textSize="18sp"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Congrats! You've added 3 activities today!" />
+
+        <ImageView
+            android:id="@+id/pet_image"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_margin="10dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/home_view_pet_description"
+            android:src="@drawable/kiwi_green"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/daily_activity_notification"
+            tools:src="@drawable/kiwi_green" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/activity_history_list"
@@ -40,7 +55,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/daily_activity_notification"
+            app:layout_constraintTop_toBottomOf="@id/pet_image"
             tools:itemCount="21"
             tools:listitem="@layout/activity_history_list_item" />
 

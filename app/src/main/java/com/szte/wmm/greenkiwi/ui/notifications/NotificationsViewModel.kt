@@ -3,6 +3,7 @@ package com.szte.wmm.greenkiwi.ui.notifications
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.szte.wmm.greenkiwi.R
 import com.szte.wmm.greenkiwi.repository.UserSelectedActivitiesRepository
 import com.szte.wmm.greenkiwi.repository.domain.UserSelectedActivityWithDetails
 import kotlinx.coroutines.*
@@ -20,6 +21,9 @@ class NotificationsViewModel(private val userSelectedActivitiesRepository: UserS
     private val _activityHistoryList = MutableLiveData<List<UserSelectedActivityWithDetails>>()
     val activityHistoryList: LiveData<List<UserSelectedActivityWithDetails>>
         get() = _activityHistoryList
+    private val _kiwiImageKey = MutableLiveData<Int>()
+    val kiwiImageKey: LiveData<Int>
+        get() = _kiwiImageKey
 
     private var viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
@@ -27,6 +31,7 @@ class NotificationsViewModel(private val userSelectedActivitiesRepository: UserS
     init {
         initDailyActivityCounter()
         initActivityHistoryList()
+        _kiwiImageKey.value = R.string.current_pet_image_key
     }
 
     private fun initActivityHistoryList() {
