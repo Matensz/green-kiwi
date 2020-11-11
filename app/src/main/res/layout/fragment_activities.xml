@@ -29,10 +29,10 @@
                 android:id="@+id/categories_list"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:paddingStart="5dp"
-                android:paddingTop="5dp"
-                android:paddingEnd="0dp"
-                android:paddingBottom="5dp" />
+                android:paddingStart="@dimen/small_padding"
+                android:paddingTop="@dimen/small_padding"
+                android:paddingEnd="@dimen/zero_padding"
+                android:paddingBottom="@dimen/small_padding" />
 
         </HorizontalScrollView>
 

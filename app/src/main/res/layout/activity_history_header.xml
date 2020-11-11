@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/margin_default"
     android:background="@color/secondaryColor"
-    android:padding="8dp"
+    android:padding="@dimen/margin_default"
     android:text="@string/activity_history_header_text"
-    android:textSize="24sp"
+    android:textSize="@dimen/large_text_size"
     android:textColor="@android:color/white" />

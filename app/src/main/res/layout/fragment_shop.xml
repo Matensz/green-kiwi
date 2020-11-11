@@ -40,10 +40,10 @@
                 android:id="@+id/shop_categories_list"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:paddingStart="5dp"
-                android:paddingTop="0dp"
-                android:paddingEnd="5dp"
-                android:paddingBottom="0dp" />
+                android:paddingStart="@dimen/small_padding"
+                android:paddingTop="@dimen/zero_padding"
+                android:paddingEnd="@dimen/small_padding"
+                android:paddingBottom="@dimen/small_padding" />
         </HorizontalScrollView>
 
         <androidx.recyclerview.widget.RecyclerView

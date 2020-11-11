@@ -39,7 +39,7 @@
     </style>
 
     <style name="Widget.GreenKiwi.CardView" parent="Widget.MaterialComponents.CardView">
-        <item name="elevation">4dp</item>
+        <item name="elevation">@dimen/default_elevation</item>
         <item name="cardBackgroundColor">@color/primaryLightColor</item>
     </style>
 
@@ -54,7 +54,7 @@
     </style>
 
     <style name="TextAppearance.GreenKiwi.Chip" parent="TextAppearance.MaterialComponents.Chip">
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">@dimen/large_text_size</item>
     </style>
 
     <style name="Widget.GreenKiwi.ChipGroup" parent="Widget.MaterialComponents.ChipGroup">

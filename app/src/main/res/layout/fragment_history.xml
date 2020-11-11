@@ -22,14 +22,14 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_default"
             android:background="@drawable/speech_bubble"
-            android:elevation="6dp"
+            android:elevation="@dimen/default_elevation"
             android:paddingStart="@dimen/margin_default"
             android:paddingTop="@dimen/margin_default"
             android:paddingEnd="@dimen/margin_default"
-            android:paddingBottom="30dp"
+            android:paddingBottom="@dimen/daily_activity_large_padding"
             android:textAlignment="center"
             android:textColor="@color/primaryTextColor"
-            android:textSize="18sp"
+            android:textSize="@dimen/medium_text_size"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Congrats! You've added 3 activities today!" />
 

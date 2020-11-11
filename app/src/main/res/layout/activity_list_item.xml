@@ -40,7 +40,7 @@
                 android:layout_marginTop="@dimen/margin_default"
                 android:text="@{activity.title}"
                 android:textAlignment="viewStart"
-                android:textSize="24sp"
+                android:textSize="@dimen/large_text_size"
                 tools:text="This is an example activity with a really long title" />
 
         </LinearLayout>
