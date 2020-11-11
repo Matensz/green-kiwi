@@ -19,7 +19,7 @@
     </style>
 
     <style name="TextAppearance.GreenKiwi.Toolbar.Text" parent="TextAppearance.MaterialComponents.Headline5" >
-        <item name="android:textColor">?attr/colorOnSurface</item>
+        <item name="android:textSize">@dimen/large_text_size</item>
     </style>
 
     <style name="ShapeAppearance.GreenKiwi.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
