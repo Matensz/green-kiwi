@@ -130,6 +130,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/separator"
                     app:srcCompat="@drawable/ic_baseline_history_black_24dp"
+                    app:tint="@color/primaryTextColor"
                     tools:src="@drawable/ic_baseline_history_black_24dp" />
 
                 <TextView
@@ -172,8 +173,9 @@
                     android:scaleType="centerCrop"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/second_separator"
-                    app:srcCompat="@drawable/ic_baseline_trending_up_black_24dp"
-                    tools:src="@drawable/ic_baseline_trending_up_black_24dp" />
+                    app:srcCompat="@drawable/ic_baseline_eco_black_24dp"
+                    app:tint="@color/primaryTextColor"
+                    tools:src="@drawable/ic_baseline_eco_black_24dp" />
 
                 <TextView
                     android:id="@+id/activity_points_title"
