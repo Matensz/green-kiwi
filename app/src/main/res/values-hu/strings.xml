@@ -2,7 +2,7 @@
 <resources>
     <string name="title_home">Kiwi</string>
     <string name="title_activities">Tevékenységek</string>
-    <string name="title_notifications">Értesítések</string>
+    <string name="title_history">Előzmények</string>
     <string name="title_settings">Beállítások</string>
     <string name="subtitle_activity_history">Legutóbb hozzáadva</string>
     <string name="point_info">Ez a tevékenység %d pontot ér</string>
@@ -58,6 +58,8 @@
     <string name="notification_title">Gondoskodj a kiwidről</string>
     <string name="pet_hunger_text">Figyelem, a kiwid éhes! És egy Éhes Kiwi\.\.\.</string>
     <string name="pet_hunger_bigtext">Figyelem, a kiwid éhes! És egy Éhes Kiwi egyenlő egy Mérges Kiwivel, úgyhogy siess megetetni! Meglátod, nagyon hálás lesz érte.</string>
+
+    <!--History-->
     <string name="daily_activity_count_info_incomplete">Mai rögzített tevékenységek: %d/%d\nRögzíts még %d további tevékenységet %d bónusz aranyért!</string>
     <string name="daily_activity_count_info_completed">Gratulálunk! Máris %d tevékenységet rögzítettél ma!</string>
     <string name="activity_history_header_text">Korábban hozzáadott tevékenységeid:</string>

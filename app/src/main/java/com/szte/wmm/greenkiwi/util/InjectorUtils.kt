@@ -12,7 +12,7 @@ import com.szte.wmm.greenkiwi.ui.activities.ActivitiesViewModelFactory
 import com.szte.wmm.greenkiwi.ui.activitydetail.ActivityDetailViewModelFactory
 import com.szte.wmm.greenkiwi.ui.home.HomeViewModelFactory
 import com.szte.wmm.greenkiwi.ui.home.context.HomeDataContext
-import com.szte.wmm.greenkiwi.ui.notifications.NotificationsViewModelFactory
+import com.szte.wmm.greenkiwi.ui.history.HistoryViewModelFactory
 import com.szte.wmm.greenkiwi.ui.settings.SettingsViewModelFactory
 import com.szte.wmm.greenkiwi.ui.shop.ShopViewModelFactory
 
@@ -49,8 +49,8 @@ object InjectorUtils {
         return ActivityDetailViewModelFactory(activity, getUserSelectedActivitiesRepository(fragment.requireContext()), application)
     }
 
-    fun getNotificationsViewModelFactory(fragment: Fragment): NotificationsViewModelFactory {
-        return NotificationsViewModelFactory(getUserSelectedActivitiesRepository(fragment.requireContext()))
+    fun getHistoryViewModelFactory(fragment: Fragment): HistoryViewModelFactory {
+        return HistoryViewModelFactory(getUserSelectedActivitiesRepository(fragment.requireContext()))
     }
 
     fun getSettingsViewModelFactory(fragment: Fragment, application: Application): SettingsViewModelFactory {

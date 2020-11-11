@@ -2,7 +2,7 @@
     <string name="app_name" translatable="false">GreenKiwi</string>
     <string name="title_home">Kiwi</string>
     <string name="title_activities">Activities</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_history">History</string>
     <string name="title_settings">Settings</string>
     <string name="subtitle_activity_history">Previously added</string>
     <string name="point_info">This activity gives you %d points</string>
@@ -60,6 +60,8 @@
     <string name="pet_hunger_channel_name" translatable="false">HungryKiwiAlert</string>
     <string name="pet_hunger_text">Watch out, your kiwi is hungry! And a Hungry Kiwi\.\.\.</string>
     <string name="pet_hunger_bigtext">Watch out, your kiwi is hungry! And a Hungry Kiwi equals an Angry Kiwi, so hurry and feed it! It\'ll be very grateful.</string>
+
+    <!--History-->
     <string name="daily_activity_count_info_incomplete">Activities added today: %d/%d\nAdd %d more to get %d bonus gold!</string>
     <string name="daily_activity_count_info_completed">Congrats! You\'ve added %d activities today!</string>
     <string name="activity_history_header_text">Your previously added activities:</string>

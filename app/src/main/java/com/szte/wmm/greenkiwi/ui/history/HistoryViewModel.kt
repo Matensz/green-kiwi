@@ -1,4 +1,4 @@
-package com.szte.wmm.greenkiwi.ui.notifications
+package com.szte.wmm.greenkiwi.ui.history
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -9,7 +9,7 @@ import com.szte.wmm.greenkiwi.repository.domain.UserSelectedActivityWithDetails
 import kotlinx.coroutines.*
 import java.text.SimpleDateFormat
 
-class NotificationsViewModel(private val userSelectedActivitiesRepository: UserSelectedActivitiesRepository) : ViewModel() {
+class HistoryViewModel(private val userSelectedActivitiesRepository: UserSelectedActivitiesRepository) : ViewModel() {
 
     companion object {
         private const val HISTORY_LIST_LENGTH = 15

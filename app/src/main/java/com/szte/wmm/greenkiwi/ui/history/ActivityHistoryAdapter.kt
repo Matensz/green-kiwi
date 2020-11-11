@@ -1,4 +1,4 @@
-package com.szte.wmm.greenkiwi.ui.notifications
+package com.szte.wmm.greenkiwi.ui.history
 
 import android.content.Context
 import android.view.LayoutInflater

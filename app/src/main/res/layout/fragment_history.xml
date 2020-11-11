@@ -6,15 +6,15 @@
     <data>
 
         <variable
-            name="notificationsViewModel"
-            type="com.szte.wmm.greenkiwi.ui.notifications.NotificationsViewModel" />
+            name="historyViewModel"
+            type="com.szte.wmm.greenkiwi.ui.history.HistoryViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/primaryColor"
-        tools:context=".ui.notifications.NotificationsFragment">
+        tools:context=".ui.history.HistoryFragment">
 
         <TextView
             android:id="@+id/daily_activity_notification"
