@@ -44,7 +44,8 @@
     <string name="other">Other</string>
 
     <!--Settings tab-->
-    <string name="view_instructions_button">View Instructions</string>
+    <string name="view_instructions_label">Open Instructions</string>
+    <string name="view_instructions_button_text">Open</string>
     <string name="night_mode_toggle_text">Toggle night mode on/off</string>
     <string name="reset_progress_label">Reset player progress</string>
     <string name="reset_progress_button_text">Reset</string>

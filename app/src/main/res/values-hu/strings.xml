@@ -44,7 +44,8 @@
     <string name="other">Egyéb</string>
 
     <!--Settings tab-->
-    <string name="view_instructions_button">Instrukciók megnyitása</string>
+    <string name="view_instructions_label">Instrukciók megnyitása</string>
+    <string name="view_instructions_button_text">Megnyitás</string>
     <string name="night_mode_toggle_text">Éjszakai mód be/kikapcsolása</string>
     <string name="reset_progress_label">Játék visszaállítása</string>
     <string name="reset_progress_button_text">Visszaállítás</string>
