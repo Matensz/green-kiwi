@@ -49,8 +49,8 @@
         <item name="android:textColor">@color/selected_chip_text</item>
         <item name="rippleColor">@color/secondaryDarkColor</item>
         <item name="android:textAppearance">@style/TextAppearance.GreenKiwi.Chip</item>
-        <item name="textStartPadding">10dp</item>
-        <item name="textEndPadding">10dp</item>
+        <item name="textStartPadding">@dimen/margin_default</item>
+        <item name="textEndPadding">@dimen/margin_default</item>
     </style>
 
     <style name="TextAppearance.GreenKiwi.Chip" parent="TextAppearance.MaterialComponents.Chip">
@@ -61,7 +61,7 @@
         <item name="singleLine">true</item>
         <item name="singleSelection">true</item>
         <item name="selectionRequired">true</item>
-        <item name="android:spacing">10dp</item>
+        <item name="android:spacing">@dimen/margin_default</item>
     </style>
 
     <style name="Widget.GreenKiwi.BottomNavigationView.PrimarySurface" parent="Widget.MaterialComponents.BottomNavigationView.PrimarySurface">

@@ -14,14 +14,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/primaryColor"
-        android:padding="10dp"
+        android:padding="@dimen/margin_default"
         tools:context=".ui.settings.SettingsFragment">
 
         <com.google.android.material.switchmaterial.SwitchMaterial
             android:id="@+id/night_mode_switch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="@dimen/margin_default"
             android:checked="false"
             android:text="@string/night_mode_toggle_text"
             android:textSize="18sp"
@@ -33,7 +33,7 @@
             android:id="@+id/instructions_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="@dimen/margin_default"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -44,7 +44,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_margin="10dp"
+                android:layout_margin="@dimen/margin_default"
                 android:text="@string/view_instructions_label"
                 android:textSize="18sp" />
 
@@ -64,7 +64,7 @@
             android:id="@+id/reset_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="@dimen/margin_default"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -75,7 +75,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_margin="10dp"
+                android:layout_margin="@dimen/margin_default"
                 android:text="@string/reset_progress_label"
                 android:textSize="18sp" />
 
