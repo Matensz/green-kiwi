@@ -28,7 +28,7 @@
             android:paddingEnd="10dp"
             android:paddingBottom="30dp"
             android:textAlignment="center"
-            android:textColor="@color/textColorOnStickerBackground"
+            android:textColor="@color/primaryTextColor"
             android:textSize="18sp"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Congrats! You've added 3 activities today!" />

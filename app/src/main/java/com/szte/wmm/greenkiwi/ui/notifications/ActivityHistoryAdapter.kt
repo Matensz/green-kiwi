@@ -29,7 +29,7 @@ class ActivityHistoryAdapter(private val context: Context) : ListAdapter<History
         when (holder) {
             is ActivityHistoryViewHolder -> {
                 val activity = getItem(position) as HistoryListItem.HistoryListData
-                holder.bind(activity.userSelectedActivityWithDetails)
+                holder.bind(activity.userSelectedActivityWithDetails, position)
             }
         }
     }
@@ -98,11 +98,16 @@ class ActivityHistoryAdapter(private val context: Context) : ListAdapter<History
             }
         }
 
-        fun bind(activity: UserSelectedActivityWithDetails) {
+        fun bind(activity: UserSelectedActivityWithDetails, position: Int) {
             binding.activity = activity
-            binding.point = String.format(context.getString(R.string.point_value), activity.point)
-            binding.gold = String.format(context.getString(R.string.gold_value), activity.gold)
+            binding.point = activity.point.toString()
+            binding.gold = activity.gold.toString()
             binding.executePendingBindings()
+            binding.activityHistoryCard.setCardBackgroundColor(getColor(position))
+        }
+
+        private fun getColor(position: Int): Int {
+            return if (position % 2 == 0) context.resources.getColor(R.color.primaryLightColor) else context.resources.getColor(R.color.stickerBackgroundColor)
         }
     }
 }

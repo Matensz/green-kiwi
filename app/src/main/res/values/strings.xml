@@ -61,8 +61,6 @@
     <string name="pet_hunger_bigtext">Watch out, your kiwi is hungry! And a Hungry Kiwi equals an Angry Kiwi, so hurry and feed it! It\'ll be very grateful.</string>
     <string name="daily_activity_count_info_incomplete">Activities added today: %d/%d\nAdd %d more to get %d bonus gold!</string>
     <string name="daily_activity_count_info_completed">Congrats! You\'ve added %d activities today!</string>
-    <string name="point_value">Exp: %d</string>
-    <string name="gold_value">Gold: %d</string>
     <string name="activity_history_header_text">Your previously added activities:</string>
 
     <!--Shop-->

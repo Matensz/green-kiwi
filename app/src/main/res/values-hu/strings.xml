@@ -59,8 +59,6 @@
     <string name="pet_hunger_bigtext">Figyelem, a kiwid éhes! És egy Éhes Kiwi egyenlő egy Mérges Kiwivel, úgyhogy siess megetetni! Meglátod, nagyon hálás lesz érte.</string>
     <string name="daily_activity_count_info_incomplete">Mai rögzített tevékenységek: %d/%d\nRögzíts még %d további tevékenységet %d bónusz aranyért!</string>
     <string name="daily_activity_count_info_completed">Gratulálunk! Máris %d tevékenységet rögzítettél ma!</string>
-    <string name="point_value">Tapasztalati pont: %d</string>
-    <string name="gold_value">Arany: %d</string>
     <string name="activity_history_header_text">Korábban hozzáadott tevékenységeid:</string>
 
     <!--Shop-->

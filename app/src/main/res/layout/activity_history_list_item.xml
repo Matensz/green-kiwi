@@ -20,6 +20,7 @@
     </data>
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/activity_history_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -32,72 +33,105 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:padding="20dp">
-
-            <ImageView
-                android:id="@+id/history_image"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_margin="10dp"
-                android:contentDescription="@string/activity_detail_view_history_description"
-                android:scaleType="fitCenter"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_baseline_history_black_24dp"
-                tools:srcCompat="@drawable/ic_baseline_history_black_24dp" />
+            android:padding="10dp">
 
             <TextView
                 android:id="@+id/activity_history_title"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:text="@{activity.title}"
                 android:textAlignment="viewStart"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/history_image"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="This is an example activity with a really long title" />
+
+            <ImageView
+                android:id="@+id/exp_image"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:contentDescription="@string/activity_detail_view_points_description"
+                android:scaleType="fitCenter"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/activity_history_points"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/activity_history_title"
+                app:srcCompat="@drawable/ic_baseline_eco_black_24dp"
+                app:tint="@color/primaryTextColor"
+                tools:srcCompat="@drawable/ic_baseline_eco_black_24dp" />
 
             <TextView
                 android:id="@+id/activity_history_points"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
                 android:text="@{point}"
                 android:textAlignment="viewStart"
                 android:textSize="20sp"
-                app:layout_constraintEnd_toStartOf="@id/activity_history_gold"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/gold_image"
+                app:layout_constraintStart_toEndOf="@id/exp_image"
                 app:layout_constraintTop_toBottomOf="@id/activity_history_title"
-                tools:text="Exp: 10" />
+                tools:text="10" />
+
+            <ImageView
+                android:id="@+id/gold_image"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/home_view_gold_description"
+                android:scaleType="fitCenter"
+                android:src="@drawable/gold_image"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/activity_history_gold"
+                app:layout_constraintStart_toEndOf="@id/activity_history_points"
+                app:layout_constraintTop_toBottomOf="@id/activity_history_title"
+                tools:src="@drawable/gold_image" />
 
             <TextView
                 android:id="@+id/activity_history_gold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
                 android:text="@{gold}"
                 android:textAlignment="viewStart"
                 android:textSize="20sp"
-                app:layout_constraintEnd_toStartOf="@id/activity_history_date"
-                app:layout_constraintStart_toEndOf="@id/activity_history_points"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/history_image"
+                app:layout_constraintStart_toEndOf="@id/gold_image"
                 app:layout_constraintTop_toBottomOf="@id/activity_history_title"
-                tools:text="Gold: 3" />
+                tools:text="3" />
+
+            <ImageView
+                android:id="@+id/history_image"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:contentDescription="@string/activity_detail_view_history_description"
+                android:scaleType="fitCenter"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/activity_history_date"
+                app:layout_constraintStart_toEndOf="@id/activity_history_gold"
+                app:layout_constraintTop_toBottomOf="@id/activity_history_title"
+                app:srcCompat="@drawable/ic_baseline_history_black_24dp"
+                app:tint="@color/primaryTextColor"
+                tools:srcCompat="@drawable/ic_baseline_history_black_24dp" />
 
             <TextView
                 android:id="@+id/activity_history_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
                 android:text="@{activity.timeAdded}"
                 android:textAlignment="viewStart"
                 android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/activity_history_gold"
+                app:layout_constraintStart_toEndOf="@id/history_image"
                 app:layout_constraintTop_toBottomOf="@id/activity_history_title"
                 tools:text="2020.11.01" />
 
