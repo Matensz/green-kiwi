@@ -85,6 +85,7 @@
     <string name="shop_item_dialog_positive_button_text_buy">Megvásárlás</string>
     <string name="shop_item_dialog_positive_button_text_use">Használat</string>
     <string name="shop_item_dialog_negative_button_text">Mégse</string>
+    <string name="shop_item_dialog_message_currently_used">Már ez a %s az aktuálisan beállított.</string>
     <string name="shop_item_dialog_message_buy">Ez a %s megvásárolható %d aranyért. Szeretnéd megvásárolni?</string>
     <string name="shop_item_dialog_message_buy_not_enough_gold">Sajnos nincs elég aranyad (%d) ahhoz, hogy ez a %s a tiéd legyen. Előtte nézz szét a tevékenységek között, és gyűjts még egy kis aranyat!</string>
     <string name="shop_item_dialog_message_use">Kiválasztott %s beállítása az aktuális helyett?</string>

@@ -87,6 +87,7 @@
     <string name="shop_item_dialog_positive_button_text_buy">Buy item</string>
     <string name="shop_item_dialog_positive_button_text_use">Use item</string>
     <string name="shop_item_dialog_negative_button_text">Cancel</string>
+    <string name="shop_item_dialog_message_currently_used">This is the currently used %s.</string>
     <string name="shop_item_dialog_message_buy">Do you want to buy this %s for %d gold?</string>
     <string name="shop_item_dialog_message_buy_not_enough_gold">You don\'t have enough gold (%d) to buy this %s, check out the activities first and earn some more!</string>
     <string name="shop_item_dialog_message_use">Do you want to set this %s as the current one?</string>

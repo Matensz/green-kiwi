@@ -26,6 +26,7 @@ class ShopFragment : Fragment() {
     companion object {
         private const val DRAWABLE_FOLDER_NAME = "drawable"
         private const val STRINGS_FOLDER_NAME = "string"
+        private const val DEFAULT_PET_IMAGE_NAME = "kiwi_green"
     }
 
     private lateinit var application: Application
@@ -102,13 +103,18 @@ class ShopFragment : Fragment() {
     }
 
     private fun buildUseItemDialog(builder: MaterialAlertDialogBuilder, shopItem: ShopItem): MaterialAlertDialogBuilder {
-        return builder.setIcon(getResIdForImageName(shopItem.imageResourceName))
+        val currentlyUsed = shopItem.imageResourceName == getCurrentlyUsedImageName(shopItem.category)
+        val messageResource = if (currentlyUsed) R.string.shop_item_dialog_message_currently_used else R.string.shop_item_dialog_message_use
+        val updatedBuilder = builder.setIcon(getResIdForImageName(shopItem.imageResourceName))
             .setTitle(getResIdForTitleName(shopItem.titleResourceName))
-            .setMessage(String.format(getString(R.string.shop_item_dialog_message_use), getCategoryName(shopItem.category)))
-            .setPositiveButton(R.string.shop_item_dialog_positive_button_text_use) { dialog, _ ->
+            .setMessage(String.format(getString(messageResource), getCategoryName(shopItem.category)))
+        if (!currentlyUsed) {
+            updatedBuilder.setPositiveButton(R.string.shop_item_dialog_positive_button_text_use) { dialog, _ ->
                 shopViewModel.useSelectedItem(shopItem)
                 dialog.dismiss()
             }
+        }
+        return updatedBuilder
     }
 
     private fun getResIdForImageName(resourceName: String): Int {
@@ -124,5 +130,17 @@ class ShopFragment : Fragment() {
             ShopCategory.BACKGROUND -> R.string.background
             ShopCategory.PET_IMAGE -> R.string.pet_image
         }).toLowerCase(resources.configuration.locale)
+    }
+
+    private fun getCurrentlyUsedImageName(category: ShopCategory): String {
+        val preferenceKey = when (category) {
+            ShopCategory.BACKGROUND -> R.string.current_background_key
+            ShopCategory.PET_IMAGE -> R.string.current_pet_image_key
+        }
+        val defaultValue = when (category) {
+            ShopCategory.BACKGROUND -> ""
+            ShopCategory.PET_IMAGE -> DEFAULT_PET_IMAGE_NAME
+        }
+        return sharedPref.getString(getString(preferenceKey), defaultValue) ?: defaultValue
     }
 }
