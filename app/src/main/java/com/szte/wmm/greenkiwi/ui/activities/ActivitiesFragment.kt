@@ -15,6 +15,9 @@ import com.szte.wmm.greenkiwi.R
 import com.szte.wmm.greenkiwi.databinding.FragmentActivitiesBinding
 import com.szte.wmm.greenkiwi.repository.domain.Category
 
+/**
+ * Fragment for the activities view.
+ */
 class ActivitiesFragment : Fragment() {
 
     private val activitiesViewModel: ActivitiesViewModel by viewModels {

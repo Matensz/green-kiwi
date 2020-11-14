@@ -10,17 +10,28 @@ import android.os.CountDownTimer
 import android.os.SystemClock
 import androidx.core.app.AlarmManagerCompat
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.*
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.szte.wmm.greenkiwi.HungerAlarmReceiver
 import com.szte.wmm.greenkiwi.R
 import com.szte.wmm.greenkiwi.repository.ActivitiesRepository
 import com.szte.wmm.greenkiwi.ui.home.context.HomeDataContext
 import com.szte.wmm.greenkiwi.util.cancelNotifications
 import com.szte.wmm.greenkiwi.util.getResIdForImageName
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import kotlin.math.sqrt
 import kotlin.math.truncate
 
+/**
+ * View model for the home view.
+ */
+@Suppress("TooManyFunctions")
 class HomeViewModel(
     context: HomeDataContext,
     private val activitiesRepository: ActivitiesRepository,
@@ -30,6 +41,9 @@ class HomeViewModel(
     companion object {
         private const val DEFAULT_PET_IMAGE_NAME = "kiwi_green"
         private const val HUNGER_NOTIFICATION_ID = 0
+        private const val EGG_HATCHED_LEVEL = 5
+        private const val HUNGER_BAR_MIN_VALUE = 1L
+        private const val HUNGER_BAR_MAX_VALUE = 100L
         //TODO set correct value when done testing
         private const val ONE_DAY_IN_MILLIS = 60000L
         private const val ONE_SECOND_IN_MILLIS = 3000L
@@ -94,7 +108,7 @@ class HomeViewModel(
             PendingIntent.FLAG_UPDATE_CURRENT
         )
 
-        if (currentPlayerLevel > 4) {
+        if (currentPlayerLevel >= EGG_HATCHED_LEVEL) {
             calculatePetHunger()
         }
     }
@@ -118,6 +132,7 @@ class HomeViewModel(
         calculatePetHunger()
     }
 
+    @Suppress("MagicNumber") //4 and 2 are the constant numbers of the quadratic formula
     private fun calculateLevelUpsInExpRange(currentExp: Long): Int {
         val levelUpsInExpRange = (sqrt((expBaseNumber * expBaseNumber + 4 * expBaseNumber * currentExp).toDouble()) - expBaseNumber) / (2 * expBaseNumber)
         return truncate(levelUpsInExpRange).toInt()
@@ -125,6 +140,7 @@ class HomeViewModel(
 
     private fun calculateMaxExpAtLevel(level: Int) = expBaseNumber.toLong() * level * (1 + level)
 
+    @Suppress("MagicNumber")
     private fun getPetImageByLevel(playerLevel: Int): Int {
         return when(playerLevel) {
             0, 1, 2 -> R.drawable.egg
@@ -175,7 +191,7 @@ class HomeViewModel(
                         _hunger.value = ValuePair(remainingTime, ONE_DAY_IN_MILLIS)
                     } else {
                         cancelAlarm()
-                        _hunger.value = ValuePair(1, 100)
+                        _hunger.value = ValuePair(HUNGER_BAR_MIN_VALUE, HUNGER_BAR_MAX_VALUE)
                         _feedButtonVisible.value = true
                         timer.cancel()
                     }

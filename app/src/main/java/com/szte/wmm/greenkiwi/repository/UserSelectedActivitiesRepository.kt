@@ -16,7 +16,8 @@ class UserSelectedActivitiesRepository(private val userSelectedActivitiesDao: Us
 
     suspend fun getLatestXActivitiesWithDetails(count: Int) = userSelectedActivitiesDao.getLatestXActivitiesWithDetails(count).map { activity -> activity.asDomainModel() }
 
-    suspend fun insertUserSelectedActivity(userSelectedActivity: UserSelectedActivity) = userSelectedActivitiesDao.insertUserSelectedActivity(userSelectedActivity.asDatabaseModel())
+    suspend fun insertUserSelectedActivity(userSelectedActivity: UserSelectedActivity) =
+        userSelectedActivitiesDao.insertUserSelectedActivity(userSelectedActivity.asDatabaseModel())
 
     suspend fun deleteAllAddedActivities() = userSelectedActivitiesDao.deleteAllAddedActivities()
 

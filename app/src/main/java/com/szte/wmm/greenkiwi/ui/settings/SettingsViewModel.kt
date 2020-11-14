@@ -5,13 +5,20 @@ import android.app.Application
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
-import androidx.lifecycle.*
+import androidx.lifecycle.AndroidViewModel
 import com.szte.wmm.greenkiwi.HungerAlarmReceiver
 import com.szte.wmm.greenkiwi.R
 import com.szte.wmm.greenkiwi.repository.ShopRepository
 import com.szte.wmm.greenkiwi.repository.UserSelectedActivitiesRepository
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
+/**
+ * View model for the settings view.
+ */
 class SettingsViewModel(
     private val userSelectedActivitiesRepository: UserSelectedActivitiesRepository,
     private val shopRepository: ShopRepository,

@@ -22,6 +22,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
+/**
+ * Fragment for the settings view.
+ */
 class SettingsFragment : Fragment() {
 
     private lateinit var settingsViewModel: SettingsViewModel

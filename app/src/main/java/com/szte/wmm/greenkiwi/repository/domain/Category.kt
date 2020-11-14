@@ -5,6 +5,7 @@ import com.szte.wmm.greenkiwi.R
 /**
  * Enum representing the possible values of an activity's category.
  */
+@Suppress("MagicNumber")
 enum class Category(val id: Long, val stringResourceId: Int) {
     WATER_AND_ENERGY(1, R.string.water_and_energy),
     LESS_WASTE(2, R.string.less_waste),

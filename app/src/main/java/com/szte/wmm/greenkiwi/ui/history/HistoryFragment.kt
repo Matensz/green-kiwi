@@ -13,6 +13,9 @@ import com.szte.wmm.greenkiwi.databinding.FragmentHistoryBinding
 import com.szte.wmm.greenkiwi.util.InjectorUtils
 import com.szte.wmm.greenkiwi.util.getResIdForImageName
 
+/**
+ * Fragment for the history view.
+ */
 class HistoryFragment : Fragment() {
 
     companion object {

@@ -9,6 +9,9 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.szte.wmm.greenkiwi.ui.instructions.InstructionsDialogProvider
 
+/**
+ * The main activity class.
+ */
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

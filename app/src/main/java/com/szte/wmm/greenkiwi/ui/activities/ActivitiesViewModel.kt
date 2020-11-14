@@ -9,6 +9,9 @@ import com.szte.wmm.greenkiwi.repository.domain.Activity
 import com.szte.wmm.greenkiwi.repository.domain.Category
 import kotlinx.coroutines.launch
 
+/**
+ * View model for the activities view.
+ */
 class ActivitiesViewModel internal constructor(
     activitiesRepository: ActivitiesRepository
 ) : ViewModel() {

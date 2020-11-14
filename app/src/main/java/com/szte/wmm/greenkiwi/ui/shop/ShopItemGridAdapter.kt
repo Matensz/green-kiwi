@@ -17,9 +17,8 @@ import com.szte.wmm.greenkiwi.util.getStringForResourceName
 /**
  * Adapter for displaying items in the Shop View as a grid in a RecyclerView.
  */
-class ShopItemGridAdapter(private val context: Context, private val onClickListener: OnClickListener) : androidx.recyclerview.widget.ListAdapter<ShopItem, ShopItemGridAdapter.ShopGridItemHolder>(
-    DiffCallback
-) {
+class ShopItemGridAdapter(private val context: Context, private val onClickListener: OnClickListener) :
+    androidx.recyclerview.widget.ListAdapter<ShopItem, ShopItemGridAdapter.ShopGridItemHolder>(DiffCallback) {
 
     override fun onBindViewHolder(holder: ShopGridItemHolder, position: Int) {
         val shopItem = getItem(position)

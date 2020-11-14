@@ -6,13 +6,21 @@ import androidx.lifecycle.ViewModel
 import com.szte.wmm.greenkiwi.R
 import com.szte.wmm.greenkiwi.repository.UserSelectedActivitiesRepository
 import com.szte.wmm.greenkiwi.repository.domain.UserSelectedActivityWithDetails
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.text.SimpleDateFormat
 
+/**
+ * View model for the history view.
+ */
 class HistoryViewModel(private val userSelectedActivitiesRepository: UserSelectedActivitiesRepository) : ViewModel() {
 
     companion object {
         private const val HISTORY_LIST_LENGTH = 15
+        private const val DAILY_COUNTER_MAX_VALUE = 3
     }
 
     private val _dailyActivityCount = MutableLiveData<Int>()
@@ -56,7 +64,7 @@ class HistoryViewModel(private val userSelectedActivitiesRepository: UserSelecte
     private suspend fun getDailyCount(): Int {
         return withContext(Dispatchers.IO) {
             val currentDate = SimpleDateFormat("yyyyMMdd").format(System.currentTimeMillis())
-            val currentDateActivityCount = userSelectedActivitiesRepository.getLatestXActivities(3)
+            val currentDateActivityCount = userSelectedActivitiesRepository.getLatestXActivities(DAILY_COUNTER_MAX_VALUE)
                 .map { activity -> activity.timeAdded }
                 .map { millis -> SimpleDateFormat("yyyyMMdd").format(millis) }
                 .count { dateAdded -> dateAdded == currentDate }

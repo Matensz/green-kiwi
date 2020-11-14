@@ -7,6 +7,9 @@ import android.content.Intent
 import androidx.core.content.ContextCompat
 import com.szte.wmm.greenkiwi.util.sendNotification
 
+/**
+ * A receiver for pet hunger related alarms.
+ */
 class HungerAlarmReceiver: BroadcastReceiver() {
 
     companion object {

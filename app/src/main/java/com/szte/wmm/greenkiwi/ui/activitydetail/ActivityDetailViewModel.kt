@@ -9,8 +9,15 @@ import com.szte.wmm.greenkiwi.R
 import com.szte.wmm.greenkiwi.repository.UserSelectedActivitiesRepository
 import com.szte.wmm.greenkiwi.repository.domain.Activity
 import com.szte.wmm.greenkiwi.repository.domain.UserSelectedActivity
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
+/**
+ * View model for the activity details view.
+ */
 class ActivityDetailViewModel internal constructor(
     activity: Activity,
     private val userSelectedActivitiesRepository: UserSelectedActivitiesRepository,

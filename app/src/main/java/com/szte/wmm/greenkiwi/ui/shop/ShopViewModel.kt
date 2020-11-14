@@ -2,7 +2,10 @@ package com.szte.wmm.greenkiwi.ui.shop
 
 import android.app.Application
 import android.content.Context
-import androidx.lifecycle.*
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.szte.wmm.greenkiwi.R
 import com.szte.wmm.greenkiwi.repository.ShopRepository
 import com.szte.wmm.greenkiwi.repository.domain.ShopCategory
@@ -11,6 +14,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
+/**
+ * View model for the shop view.
+ */
 class ShopViewModel(private val shopRepository: ShopRepository, private val app: Application) : AndroidViewModel(app) {
 
     private val sharedPref = app.getSharedPreferences(app.getString(R.string.preference_file_key), Context.MODE_PRIVATE)

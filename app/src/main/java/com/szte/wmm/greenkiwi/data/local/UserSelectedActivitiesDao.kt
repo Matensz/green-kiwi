@@ -22,7 +22,9 @@ interface UserSelectedActivitiesDao {
     @Query("SELECT * FROM user_selected_activities ORDER BY id DESC LIMIT :count")
     suspend fun getLatestXActivities(count: Int): List<UserSelectedActivity>
 
-    @Query("SELECT activities.activityid as activityId, title, point, gold, categoryid as categoryId, time_added as timeAdded FROM user_selected_activities INNER JOIN activities USING(activityid) ORDER BY id DESC LIMIT :count")
+    @Query("""SELECT activities.activityid as activityId, title, point, gold, categoryid as categoryId, time_added as timeAdded
+         FROM user_selected_activities
+        INNER JOIN activities USING(activityid) ORDER BY id DESC LIMIT :count""")
     suspend fun getLatestXActivitiesWithDetails(count: Int): List<UserSelectedActivityWithDetails>
 
     @Query("DELETE FROM user_selected_activities")

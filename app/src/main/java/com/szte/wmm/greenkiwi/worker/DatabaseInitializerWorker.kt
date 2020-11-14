@@ -11,6 +11,7 @@ import com.szte.wmm.greenkiwi.data.local.ApplicationDatabase
 import com.szte.wmm.greenkiwi.data.local.model.Activity
 import com.szte.wmm.greenkiwi.data.local.model.ShopItem
 import kotlinx.coroutines.coroutineScope
+import java.io.IOException
 
 /**
  * Worker reading initializing database tables with the provided json files.
@@ -34,7 +35,7 @@ class DatabaseInitializerWorker(
             readActivitiesJson()
             readShopItemsJson()
             Result.success()
-        } catch (ex: Exception) {
+        } catch (ex: IOException) {
             Log.e(TAG, "Error seeding database", ex)
             Result.failure()
         }

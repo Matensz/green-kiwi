@@ -6,6 +6,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.szte.wmm.greenkiwi.repository.ShopRepository
 import com.szte.wmm.greenkiwi.repository.UserSelectedActivitiesRepository
 
+/**
+ * ViewModelProvider.Factory implementation for creating SettingsViewModel.
+ */
 class SettingsViewModelFactory(
     private val userSelectedActivitiesRepository: UserSelectedActivitiesRepository,
     private val shopRepository: ShopRepository,

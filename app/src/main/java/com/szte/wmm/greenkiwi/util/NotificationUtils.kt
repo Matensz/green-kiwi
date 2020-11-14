@@ -1,14 +1,21 @@
 package com.szte.wmm.greenkiwi.util
 
+import android.app.Application
+import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.graphics.BitmapFactory
+import android.graphics.Color
+import android.os.Build
 import androidx.core.app.NotificationCompat
 import com.szte.wmm.greenkiwi.MainActivity
 import com.szte.wmm.greenkiwi.R
 
+/**
+ * Builds and sends a notification related to the app.
+ */
 fun NotificationManager.sendNotification(notificationId: Int, notificationChannelId: String, text: String, bigText: String, applicationContext: Context) {
 
     val contentIntent = Intent(applicationContext, MainActivity::class.java)
@@ -35,6 +42,26 @@ fun NotificationManager.sendNotification(notificationId: Int, notificationChanne
     notify(notificationId, notificationBuilder.build())
 }
 
+/**
+ * Cancel all notifications.
+ */
 fun NotificationManager.cancelNotifications() {
     cancelAll()
+}
+
+/**
+ * Creates a notification channel related to the app.
+ */
+fun createNotificationChannel(app: Application, channelId: String, channelName: String) {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        val notificationChannel = NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_HIGH)
+
+        notificationChannel.enableLights(true)
+        notificationChannel.lightColor = Color.GREEN
+        notificationChannel.enableVibration(true)
+        notificationChannel.description = "Notifications of the kiwi's hunger"
+
+        val notificationManager = app.getSystemService(NotificationManager::class.java)
+        notificationManager.createNotificationChannel(notificationChannel)
+    }
 }

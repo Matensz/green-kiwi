@@ -21,6 +21,9 @@ import com.szte.wmm.greenkiwi.repository.domain.ShopCategory
 import com.szte.wmm.greenkiwi.repository.domain.ShopItem
 import com.szte.wmm.greenkiwi.util.InjectorUtils
 
+/**
+ * Fragment for the shop view.
+ */
 class ShopFragment : Fragment() {
 
     companion object {

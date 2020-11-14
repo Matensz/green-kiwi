@@ -4,12 +4,8 @@ import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
 import android.app.Application
-import android.app.NotificationChannel
-import android.app.NotificationManager
 import android.content.Context
 import android.content.SharedPreferences
-import android.graphics.Color
-import android.os.Build
 import android.os.Bundle
 import android.util.TypedValue
 import android.view.LayoutInflater
@@ -28,13 +24,23 @@ import com.szte.wmm.greenkiwi.R
 import com.szte.wmm.greenkiwi.databinding.FragmentHomeBinding
 import com.szte.wmm.greenkiwi.ui.home.context.HomeDataContext
 import com.szte.wmm.greenkiwi.util.InjectorUtils
+import com.szte.wmm.greenkiwi.util.createNotificationChannel
 import java.text.DecimalFormat
 import kotlin.math.truncate
 
+/**
+ * Fragment for the home view.
+ */
 class HomeFragment : Fragment() {
 
     companion object {
         private const val DEFAULT_NICKNAME = "Pea"
+        private const val EGG_HATCHED_LEVEL = 5
+        private const val HUNDRED_PERCENT = 100
+        private const val PET_ANIMATION_ROTATION_START = 0f
+        private const val PET_ANIMATION_ROTATION_END = 10f
+        private const val PET_ANIMATION_REPEAT_COUNT = 5
+        private const val PET_ANIMATION_DURATION = 300L
     }
 
     private lateinit var application: Application
@@ -42,6 +48,7 @@ class HomeFragment : Fragment() {
     private lateinit var sharedPref: SharedPreferences
     private lateinit var viewModel: HomeViewModel
 
+    @Suppress("LongMethod")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         application = requireNotNull(activity).application
@@ -59,7 +66,7 @@ class HomeFragment : Fragment() {
         viewModel.levelUps.observe(viewLifecycleOwner, {
             val currentLevel = it + 1
             binding.playerLevelText.text = String.format(getString(R.string.level_info), currentLevel)
-            binding.petNicknameText.visibility = if (currentLevel > 4) View.VISIBLE else View.INVISIBLE
+            binding.petNicknameText.visibility = if (currentLevel >= EGG_HATCHED_LEVEL) View.VISIBLE else View.INVISIBLE
         })
 
         viewModel.experience.observe(viewLifecycleOwner, {
@@ -76,8 +83,8 @@ class HomeFragment : Fragment() {
         })
 
         viewModel.hunger.observe(viewLifecycleOwner, {
-            val hungerPercent = truncate(it.currentValue / it.currentMaxValue.toFloat() * 100).toInt()
-            binding.hungerText.text = String.format(getString(R.string.hunger_info), hungerPercent, 100)
+            val hungerPercent = truncate(it.currentValue / it.currentMaxValue.toFloat() * HUNDRED_PERCENT).toInt()
+            binding.hungerText.text = String.format(getString(R.string.hunger_info), hungerPercent, HUNDRED_PERCENT)
             binding.filledHungerBar.layoutParams.width = calculateStatBar(it.currentValue, it.currentMaxValue)
         })
 
@@ -120,6 +127,7 @@ class HomeFragment : Fragment() {
         }
 
         createNotificationChannel(
+            application,
             getString(R.string.pet_hunger_channel_id),
             getString(R.string.pet_hunger_channel_name)
         )
@@ -139,10 +147,10 @@ class HomeFragment : Fragment() {
     }
 
     private fun animatePet(petImage: ImageView) {
-        val animator = ObjectAnimator.ofFloat(petImage, View.ROTATION, 0f, 10f)
-        animator.repeatCount = 5
+        val animator = ObjectAnimator.ofFloat(petImage, View.ROTATION, PET_ANIMATION_ROTATION_START, PET_ANIMATION_ROTATION_END)
+        animator.repeatCount = PET_ANIMATION_REPEAT_COUNT
         animator.repeatMode = ObjectAnimator.REVERSE
-        animator.duration = 300
+        animator.duration = PET_ANIMATION_DURATION
         animator.addListener(object : AnimatorListenerAdapter() {
             override fun onAnimationStart(animation: Animator?) {
                 petImage.isEnabled = false
@@ -205,19 +213,5 @@ class HomeFragment : Fragment() {
             Toast.makeText(context, R.string.feed_pet_toast_message, Toast.LENGTH_SHORT).show()
         }
         return builder.create()
-    }
-
-    private fun createNotificationChannel(channelId: String, channelName: String) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val notificationChannel = NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_HIGH)
-
-            notificationChannel.enableLights(true)
-            notificationChannel.lightColor = Color.GREEN
-            notificationChannel.enableVibration(true)
-            notificationChannel.description = "Notifications of the kiwi's hunger"
-
-            val notificationManager = requireActivity().getSystemService(NotificationManager::class.java)
-            notificationManager.createNotificationChannel(notificationChannel)
-        }
     }
 }

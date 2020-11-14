@@ -6,6 +6,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.szte.wmm.greenkiwi.repository.UserSelectedActivitiesRepository
 import com.szte.wmm.greenkiwi.repository.domain.Activity
 
+/**
+ * ViewModelProvider.Factory implementation for creating ActivityDetailViewModel.
+ */
 class ActivityDetailViewModelFactory(
         private val activity: Activity,
         private val userSelectedActivitiesRepository: UserSelectedActivitiesRepository,
