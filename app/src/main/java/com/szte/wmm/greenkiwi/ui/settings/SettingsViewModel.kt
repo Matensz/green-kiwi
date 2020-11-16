@@ -6,13 +6,12 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.viewModelScope
 import com.szte.wmm.greenkiwi.HungerAlarmReceiver
 import com.szte.wmm.greenkiwi.R
 import com.szte.wmm.greenkiwi.repository.ShopRepository
 import com.szte.wmm.greenkiwi.repository.UserSelectedActivitiesRepository
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -22,7 +21,8 @@ import kotlinx.coroutines.withContext
 class SettingsViewModel(
     private val userSelectedActivitiesRepository: UserSelectedActivitiesRepository,
     private val shopRepository: ShopRepository,
-    private val app: Application
+    private val app: Application,
+    private val defaultDispatcher: CoroutineDispatcher
 ) : AndroidViewModel(app) {
 
     companion object {
@@ -37,12 +37,9 @@ class SettingsViewModel(
     private val notifyIntent = Intent(app, HungerAlarmReceiver::class.java)
     private val notifyPendingIntent: PendingIntent
 
-    private var viewModelJob = Job()
-    private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
-
     init {
         notifyPendingIntent = PendingIntent.getBroadcast(
-            getApplication(),
+            app,
             HUNGER_NOTIFICATION_ID,
             notifyIntent,
             PendingIntent.FLAG_UPDATE_CURRENT
@@ -51,14 +48,14 @@ class SettingsViewModel(
 
     fun resetUserValues() {
         alarmManager.cancel(notifyPendingIntent)
-        uiScope.launch {
+        viewModelScope.launch {
             cleanUpSharedPreferences()
             cleanUpDatabase()
         }
     }
 
     private suspend fun cleanUpSharedPreferences() {
-        withContext(Dispatchers.IO) {
+        withContext(defaultDispatcher) {
             with(sharedPref.edit()) {
                 remove(app.getString(R.string.saved_user_points_key))
                 remove(app.getString(R.string.hunger_timer_key))
@@ -74,7 +71,7 @@ class SettingsViewModel(
     }
 
     private suspend fun cleanUpDatabase() {
-        withContext(Dispatchers.IO) {
+        withContext(defaultDispatcher) {
             userSelectedActivitiesRepository.deleteAllAddedActivities()
             shopRepository.resetPurchaseStatuses(DEFAULT_BACKGROUND_RESOURCE_NAME, DEFAULT_PET_IMAGE_RESOURCE_NAME)
         }
