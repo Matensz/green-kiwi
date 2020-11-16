@@ -43,7 +43,7 @@ object InjectorUtils {
     }
 
     fun getActivitiesViewModelFactory(fragment: Fragment): ActivitiesViewModelFactory {
-        return ActivitiesViewModelFactory(getActivitiesRepository(fragment.requireContext()))
+        return ActivitiesViewModelFactory(getActivitiesRepository(fragment.requireContext()), Dispatchers.IO)
     }
 
     fun getActivityDetailViewModelFactory(activity: Activity, fragment: Fragment): ActivityDetailViewModelFactory {

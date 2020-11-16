@@ -7,18 +7,16 @@ import androidx.lifecycle.viewModelScope
 import com.szte.wmm.greenkiwi.repository.ActivitiesRepository
 import com.szte.wmm.greenkiwi.repository.domain.Activity
 import com.szte.wmm.greenkiwi.repository.domain.Category
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 /**
  * View model for the activities view.
  */
-class ActivitiesViewModel internal constructor(
-    activitiesRepository: ActivitiesRepository
-) : ViewModel() {
+class ActivitiesViewModel(private val activitiesRepository: ActivitiesRepository, private val defaultDispatcher: CoroutineDispatcher) : ViewModel() {
 
-    private val _activities = MutableLiveData<List<Activity>>()
-    val activities: LiveData<List<Activity>>
-        get() = _activities
+    private lateinit var activities: List<Activity>
     private val _filteredActivities = MutableLiveData<List<Activity>>()
     val filteredActivities: LiveData<List<Activity>>
         get() = _filteredActivities
@@ -32,15 +30,21 @@ class ActivitiesViewModel internal constructor(
 
     init {
         viewModelScope.launch {
-            _activities.value = activitiesRepository.getActivities()
+            activities = getActivities()
             _categories.value = Category.values().toList()
-            _filteredActivities.value = _activities.value.orEmpty()
+            _filteredActivities.value = activities
         }
     }
 
     fun onFilterChanged(filter: String, isChecked: Boolean) {
         if (this.filter.update(filter, isChecked)) {
-            _filteredActivities.value = _activities.value?.filter { it.category.name ==  filter}.orEmpty()
+            _filteredActivities.value = activities.filter { it.category.name ==  filter}
+        }
+    }
+
+    private suspend fun getActivities(): List<Activity> {
+        return withContext(defaultDispatcher) {
+            activitiesRepository.getActivities()
         }
     }
 
