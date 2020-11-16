@@ -183,7 +183,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/margin_default"
-                    android:text="@{activityViewModel.pointInfo}"
                     app:layout_constraintStart_toEndOf="@id/activity_points_image"
                     app:layout_constraintTop_toBottomOf="@id/second_separator"
                     tools:text="@string/point_info" />

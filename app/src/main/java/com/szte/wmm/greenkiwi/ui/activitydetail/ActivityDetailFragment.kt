@@ -13,6 +13,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.navArgs
 import com.szte.wmm.greenkiwi.util.InjectorUtils
 import com.szte.wmm.greenkiwi.R
 import com.szte.wmm.greenkiwi.databinding.FragmentActivityDetailBinding
@@ -26,15 +27,14 @@ import com.szte.wmm.greenkiwi.util.isSameDay
  */
 class ActivityDetailFragment : Fragment() {
 
+    private val args: ActivityDetailFragmentArgs by navArgs()
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val application = requireNotNull(activity).application
-
-        //TODO handle potentional exception from requireArguments()
-        val activity = ActivityDetailFragmentArgs.fromBundle(requireArguments()).selectedActivity
-        val viewModelFactory = InjectorUtils.getActivityDetailViewModelFactory(activity, this, application)
-        val viewModel = ViewModelProvider(this, viewModelFactory).get(ActivityDetailViewModel::class.java)
-
         val sharedPref = application.getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE)
+
+        val viewModelFactory = InjectorUtils.getActivityDetailViewModelFactory(args.selectedActivity, this)
+        val viewModel = ViewModelProvider(this, viewModelFactory).get(ActivityDetailViewModel::class.java)
 
         val binding = DataBindingUtil.inflate<FragmentActivityDetailBinding>(inflater, R.layout.fragment_activity_detail, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
@@ -79,6 +79,10 @@ class ActivityDetailFragment : Fragment() {
         binding.toolbar.setNavigationOnClickListener { view ->
             view.findNavController().navigateUp()
         }
+
+        viewModel.selectedActivity.observe(viewLifecycleOwner, {
+            binding.activityPointsTitle.text = String.format(getString(R.string.point_info), it.point)
+        })
 
         viewModel.lastAddedDate.observe(viewLifecycleOwner, {
             binding.activityHistoryDate.text = formatNullableDateString(it, getString(R.string.last_added_date_default))

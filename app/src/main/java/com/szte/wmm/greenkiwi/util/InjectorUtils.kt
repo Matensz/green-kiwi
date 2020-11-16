@@ -15,6 +15,7 @@ import com.szte.wmm.greenkiwi.ui.home.context.HomeDataContext
 import com.szte.wmm.greenkiwi.ui.history.HistoryViewModelFactory
 import com.szte.wmm.greenkiwi.ui.settings.SettingsViewModelFactory
 import com.szte.wmm.greenkiwi.ui.shop.ShopViewModelFactory
+import kotlinx.coroutines.Dispatchers
 
 /**
  * Static utility methods for dependency injection.
@@ -45,8 +46,8 @@ object InjectorUtils {
         return ActivitiesViewModelFactory(getActivitiesRepository(fragment.requireContext()))
     }
 
-    fun getActivityDetailViewModelFactory(activity: Activity, fragment: Fragment, application: Application): ActivityDetailViewModelFactory {
-        return ActivityDetailViewModelFactory(activity, getUserSelectedActivitiesRepository(fragment.requireContext()), application)
+    fun getActivityDetailViewModelFactory(activity: Activity, fragment: Fragment): ActivityDetailViewModelFactory {
+        return ActivityDetailViewModelFactory(activity, getUserSelectedActivitiesRepository(fragment.requireContext()), Dispatchers.IO)
     }
 
     fun getHistoryViewModelFactory(fragment: Fragment): HistoryViewModelFactory {
