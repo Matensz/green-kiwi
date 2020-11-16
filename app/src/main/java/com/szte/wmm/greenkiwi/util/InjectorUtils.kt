@@ -51,7 +51,7 @@ object InjectorUtils {
     }
 
     fun getHistoryViewModelFactory(fragment: Fragment): HistoryViewModelFactory {
-        return HistoryViewModelFactory(getUserSelectedActivitiesRepository(fragment.requireContext()))
+        return HistoryViewModelFactory(getUserSelectedActivitiesRepository(fragment.requireContext()), Dispatchers.IO)
     }
 
     fun getSettingsViewModelFactory(fragment: Fragment, application: Application): SettingsViewModelFactory {

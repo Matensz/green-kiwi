@@ -3,12 +3,11 @@ package com.szte.wmm.greenkiwi.ui.history
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.szte.wmm.greenkiwi.R
 import com.szte.wmm.greenkiwi.repository.UserSelectedActivitiesRepository
 import com.szte.wmm.greenkiwi.repository.domain.UserSelectedActivityWithDetails
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.text.SimpleDateFormat
@@ -16,7 +15,7 @@ import java.text.SimpleDateFormat
 /**
  * View model for the history view.
  */
-class HistoryViewModel(private val userSelectedActivitiesRepository: UserSelectedActivitiesRepository) : ViewModel() {
+class HistoryViewModel(private val userSelectedActivitiesRepository: UserSelectedActivitiesRepository, private val defaultDispatcher: CoroutineDispatcher) : ViewModel() {
 
     companion object {
         private const val HISTORY_LIST_LENGTH = 15
@@ -33,9 +32,6 @@ class HistoryViewModel(private val userSelectedActivitiesRepository: UserSelecte
     val kiwiImageKey: LiveData<Int>
         get() = _kiwiImageKey
 
-    private var viewModelJob = Job()
-    private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
-
     init {
         initDailyActivityCounter()
         initActivityHistoryList()
@@ -43,26 +39,26 @@ class HistoryViewModel(private val userSelectedActivitiesRepository: UserSelecte
     }
 
     private fun initActivityHistoryList() {
-        uiScope.launch {
+        viewModelScope.launch {
             _activityHistoryList.value = getHistoryList()
         }
     }
 
     private suspend fun getHistoryList(): List<UserSelectedActivityWithDetails> {
-        return withContext(Dispatchers.IO) {
+        return withContext(defaultDispatcher) {
             val historyList = userSelectedActivitiesRepository.getLatestXActivitiesWithDetails(HISTORY_LIST_LENGTH)
             historyList
         }
     }
 
     private fun initDailyActivityCounter() {
-        uiScope.launch {
+        viewModelScope.launch {
             _dailyActivityCount.value = getDailyCount()
         }
     }
 
     private suspend fun getDailyCount(): Int {
-        return withContext(Dispatchers.IO) {
+        return withContext(defaultDispatcher) {
             val currentDate = SimpleDateFormat("yyyyMMdd").format(System.currentTimeMillis())
             val currentDateActivityCount = userSelectedActivitiesRepository.getLatestXActivities(DAILY_COUNTER_MAX_VALUE)
                 .map { activity -> activity.timeAdded }
