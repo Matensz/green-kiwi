@@ -39,7 +39,7 @@ object InjectorUtils {
     }
 
     fun getHomeViewModelFactory(context: HomeDataContext, fragment: Fragment): HomeViewModelFactory {
-        return HomeViewModelFactory(context, getActivitiesRepository(fragment.requireContext()), fragment.requireActivity().application)
+        return HomeViewModelFactory(context, getActivitiesRepository(fragment.requireContext()), fragment.requireActivity().application, Dispatchers.IO)
     }
 
     fun getActivitiesViewModelFactory(fragment: Fragment): ActivitiesViewModelFactory {

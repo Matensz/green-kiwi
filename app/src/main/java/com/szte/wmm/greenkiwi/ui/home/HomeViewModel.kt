@@ -20,9 +20,7 @@ import com.szte.wmm.greenkiwi.repository.ActivitiesRepository
 import com.szte.wmm.greenkiwi.ui.home.context.HomeDataContext
 import com.szte.wmm.greenkiwi.util.cancelNotifications
 import com.szte.wmm.greenkiwi.util.getResIdForImageName
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlin.math.sqrt
@@ -35,7 +33,8 @@ import kotlin.math.truncate
 class HomeViewModel(
     context: HomeDataContext,
     private val activitiesRepository: ActivitiesRepository,
-    private val app: Application
+    private val app: Application,
+    private val defaultDispatcher: CoroutineDispatcher
 ) : AndroidViewModel(app) {
 
     companion object {
@@ -84,9 +83,6 @@ class HomeViewModel(
     private val notifyPendingIntent: PendingIntent
     private lateinit var timer: CountDownTimer
 
-    private var viewModelJob = Job()
-    private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
-
     init {
         warmUpDatabase()
 
@@ -102,7 +98,7 @@ class HomeViewModel(
         initGoldCounter()
 
         notifyPendingIntent = PendingIntent.getBroadcast(
-            getApplication(),
+            app,
             HUNGER_NOTIFICATION_ID,
             notifyIntent,
             PendingIntent.FLAG_UPDATE_CURRENT
@@ -117,8 +113,8 @@ class HomeViewModel(
      * This view does not use the result of this query, it's needed for database initialization to fasten up the first real query.
      */
     private fun warmUpDatabase() {
-        uiScope.launch {
-            withContext(Dispatchers.IO) {
+        viewModelScope.launch {
+            withContext(defaultDispatcher) {
                 activitiesRepository.getActivities()
             }
         }
@@ -177,7 +173,7 @@ class HomeViewModel(
     }
 
     /**
-     * Creates a new timer
+     * Creates a new timer for pet hunger.
      */
     private fun createHungerTimer() {
         viewModelScope.launch {
@@ -210,7 +206,7 @@ class HomeViewModel(
     }
 
     private suspend fun saveTime() =
-        withContext(Dispatchers.IO) {
+        withContext(defaultDispatcher) {
             val savedTime = sharedPreferences.getLong(hungerTimerKey, 0)
             if (savedTime == 0L) {
                 sharedPreferences.edit().putLong(hungerTimerKey, System.currentTimeMillis()).apply()
@@ -218,29 +214,29 @@ class HomeViewModel(
         }
 
     private suspend fun loadTime(): Long =
-        withContext(Dispatchers.IO) {
+        withContext(defaultDispatcher) {
             sharedPreferences.getLong(hungerTimerKey, 0)
         }
 
     private fun initGoldCounter() {
-        uiScope.launch {
+        viewModelScope.launch {
             _gold.value = getPlayerGold()
         }
     }
 
     private suspend fun getPlayerGold(): Long =
-        withContext(Dispatchers.IO) {
+        withContext(defaultDispatcher) {
             sharedPreferences.getLong(playerGoldKey, 0L)
         }
 
     private fun subtractFoodPriceFromGold() {
-        uiScope.launch {
+        viewModelScope.launch {
             _gold.value = updatePlayerGold()
         }
     }
 
     private suspend fun updatePlayerGold(): Long {
-        return withContext(Dispatchers.IO) {
+        return withContext(defaultDispatcher) {
             val currentGold = sharedPreferences.getLong(playerGoldKey, 0L)
             val updatedGold = currentGold - app.resources.getInteger(R.integer.food_price_in_gold)
             sharedPreferences.edit().putLong(playerGoldKey, updatedGold).apply()
