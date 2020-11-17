@@ -59,6 +59,6 @@ object InjectorUtils {
     }
 
     fun getShopViewModelFactory(fragment: Fragment, application: Application): ShopViewModelFactory {
-        return ShopViewModelFactory(getShopRepository(fragment.requireContext()), application)
+        return ShopViewModelFactory(getShopRepository(fragment.requireContext()), application, Dispatchers.IO)
     }
 }

@@ -10,14 +10,18 @@ import com.szte.wmm.greenkiwi.R
 import com.szte.wmm.greenkiwi.repository.ShopRepository
 import com.szte.wmm.greenkiwi.repository.domain.ShopCategory
 import com.szte.wmm.greenkiwi.repository.domain.ShopItem
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 /**
  * View model for the shop view.
  */
-class ShopViewModel(private val shopRepository: ShopRepository, private val app: Application) : AndroidViewModel(app) {
+class ShopViewModel(
+    private val shopRepository: ShopRepository,
+    private val app: Application,
+    private val defaultDispatcher: CoroutineDispatcher
+) : AndroidViewModel(app) {
 
     private val sharedPref = app.getSharedPreferences(app.getString(R.string.preference_file_key), Context.MODE_PRIVATE)
 
@@ -61,7 +65,7 @@ class ShopViewModel(private val shopRepository: ShopRepository, private val app:
     }
 
     private suspend fun setPurchasedFlagForItem(itemId: Long) {
-        withContext(Dispatchers.IO) {
+        withContext(defaultDispatcher) {
             shopRepository.updateShopItemById(itemId, true)
             shopItems = shopRepository.getShopItems()
         }
@@ -69,7 +73,7 @@ class ShopViewModel(private val shopRepository: ShopRepository, private val app:
     }
 
     private suspend fun updatePlayerGold(price: Int) {
-        return withContext(Dispatchers.IO) {
+        return withContext(defaultDispatcher) {
             val playerGoldKey = app.getString(R.string.saved_user_gold_key)
             val currentGold = sharedPref.getLong(playerGoldKey, 0L)
             val updatedGold = currentGold - price.toLong()
@@ -78,7 +82,7 @@ class ShopViewModel(private val shopRepository: ShopRepository, private val app:
     }
 
     private suspend fun setCurrentItem(keyId: Int, resourceName: String) {
-        withContext(Dispatchers.IO) {
+        withContext(defaultDispatcher) {
             sharedPref.edit().putString(app.getString(keyId), resourceName).apply()
         }
     }
