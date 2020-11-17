@@ -4,16 +4,15 @@ import android.content.Context
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
-import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.MediumTest
 import com.szte.wmm.greenkiwi.data.local.model.ShopItem
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
+import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.`is`
 import org.hamcrest.Matchers.equalTo
 import org.junit.After
-import org.junit.Assert.assertThat
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -96,11 +95,11 @@ class ShopDaoTest {
         val actualItems = shopDao.getShopItems()
 
         // then
-        ViewMatchers.assertThat(actualItems.size, `is`(equalTo(4)))
-        ViewMatchers.assertThat(actualItems[0].purchased, `is`(equalTo(true)))
-        ViewMatchers.assertThat(actualItems[1].purchased, `is`(equalTo(true)))
-        ViewMatchers.assertThat(actualItems[2].purchased, `is`(equalTo(false)))
-        ViewMatchers.assertThat(actualItems[3].purchased, `is`(equalTo(false)))
+        assertThat(actualItems.size, `is`(equalTo(4)))
+        assertThat(actualItems[0].purchased, `is`(equalTo(true)))
+        assertThat(actualItems[1].purchased, `is`(equalTo(true)))
+        assertThat(actualItems[2].purchased, `is`(equalTo(false)))
+        assertThat(actualItems[3].purchased, `is`(equalTo(false)))
     }
 
     private fun createShopItem(id: Long, purchased: Boolean): ShopItem {

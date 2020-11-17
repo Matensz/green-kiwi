@@ -10,9 +10,9 @@ import com.szte.wmm.greenkiwi.data.local.ActivitiesDao
 import com.szte.wmm.greenkiwi.repository.domain.Category
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
+import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.`is`
 import org.hamcrest.Matchers.equalTo
-import org.junit.Assert.*
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock

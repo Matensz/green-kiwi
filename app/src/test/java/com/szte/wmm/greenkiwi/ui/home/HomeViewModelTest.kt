@@ -29,7 +29,7 @@ import org.mockito.MockitoAnnotations
 import org.robolectric.annotation.Config
 
 /**
- * Unit tests for HomeViewModel.
+ * Unit test for HomeViewModel.
  * @see HomeViewModel
  */
 @ExperimentalCoroutinesApi

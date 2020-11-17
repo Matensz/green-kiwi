@@ -21,7 +21,7 @@ import org.mockito.Mock
 import org.mockito.junit.MockitoJUnitRunner
 
 /**
- * Unit tests for HistoryViewModel.
+ * Unit test for HistoryViewModel.
  * @see HistoryViewModel
  */
 @ExperimentalCoroutinesApi

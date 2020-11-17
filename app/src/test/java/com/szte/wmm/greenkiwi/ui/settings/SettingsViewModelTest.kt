@@ -20,7 +20,7 @@ import org.mockito.MockitoAnnotations
 import org.robolectric.annotation.Config
 
 /**
- * Unit tests for SettingsViewModel.
+ * Unit test for SettingsViewModel.
  * @see SettingsViewModel
  */
 @ExperimentalCoroutinesApi

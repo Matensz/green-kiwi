@@ -11,10 +11,10 @@ import com.szte.wmm.greenkiwi.createUserSelectedActivityWithDetails
 import com.szte.wmm.greenkiwi.data.local.UserSelectedActivitiesDao
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
+import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.`is`
 import org.hamcrest.Matchers.equalTo
 import org.junit.Assert.assertNotNull
-import org.junit.Assert.assertThat
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock

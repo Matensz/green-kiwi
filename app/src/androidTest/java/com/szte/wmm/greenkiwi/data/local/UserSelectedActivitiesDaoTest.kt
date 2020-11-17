@@ -10,11 +10,11 @@ import com.szte.wmm.greenkiwi.data.local.model.Activity
 import com.szte.wmm.greenkiwi.data.local.model.UserSelectedActivity
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
+import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.`is`
 import org.hamcrest.Matchers.equalTo
 import org.junit.After
 import org.junit.Assert.assertNotNull
-import org.junit.Assert.assertThat
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
