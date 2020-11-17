@@ -5,8 +5,8 @@ import com.nhaarman.mockitokotlin2.stub
 import com.nhaarman.mockitokotlin2.times
 import com.nhaarman.mockitokotlin2.verifyBlocking
 import com.nhaarman.mockitokotlin2.verifyNoMoreInteractions
+import com.szte.wmm.greenkiwi.createActivity
 import com.szte.wmm.greenkiwi.data.local.ActivitiesDao
-import com.szte.wmm.greenkiwi.repository.domain.Activity
 import com.szte.wmm.greenkiwi.repository.domain.Category
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
@@ -35,7 +35,7 @@ class ActivitiesRepositoryTest {
         activitiesDao.stub {
             onBlocking { getActivities() }.doReturn(listOf(createDatabaseActivity(1L), createDatabaseActivity(2L)))
         }
-        val expectedResult = listOf(createDomainActivity(1L), createDomainActivity(2L))
+        val expectedResult = listOf(createActivity(1L, Category.WATER_AND_ENERGY), createActivity(2L, Category.WATER_AND_ENERGY))
         val underTest = ActivitiesRepository(activitiesDao)
 
         // when
@@ -50,9 +50,5 @@ class ActivitiesRepositoryTest {
 
     private fun createDatabaseActivity(id: Long): com.szte.wmm.greenkiwi.data.local.model.Activity {
         return com.szte.wmm.greenkiwi.data.local.model.Activity(id, "title", "description", "thumbnailUrl", "imageUrl", 1, 1, 1L)
-    }
-
-    private fun createDomainActivity(id: Long): Activity {
-        return Activity(id, "title", "description", "thumbnailUrl", "imageUrl", 1, 1, Category.WATER_AND_ENERGY)
     }
 }

@@ -5,9 +5,9 @@ import com.nhaarman.mockitokotlin2.stub
 import com.nhaarman.mockitokotlin2.times
 import com.nhaarman.mockitokotlin2.verifyBlocking
 import com.nhaarman.mockitokotlin2.verifyNoMoreInteractions
+import com.szte.wmm.greenkiwi.createShopItem
 import com.szte.wmm.greenkiwi.data.local.ShopDao
 import com.szte.wmm.greenkiwi.repository.domain.ShopCategory
-import com.szte.wmm.greenkiwi.repository.domain.ShopItem
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import org.hamcrest.Matchers.`is`
@@ -30,12 +30,12 @@ class ShopRepositoryTest {
     private lateinit var shopDao: ShopDao
 
     @Test
-    fun `test getShopItems() should delegateto dao method`() = runBlockingTest {
+    fun `test getShopItems() should delegate to dao method`() = runBlockingTest {
         // given
         shopDao.stub {
             onBlocking { getShopItems() }.doReturn(listOf(createDatabaseShopItem(1L), createDatabaseShopItem(2L)))
         }
-        val expectedResult = listOf(createDomainShopItem(1L), createDomainShopItem(2L))
+        val expectedResult = listOf(createShopItem(1L, ShopCategory.BACKGROUND, false), createShopItem(2L, ShopCategory.BACKGROUND, false))
         val underTest = ShopRepository(shopDao)
 
         // when
@@ -71,18 +71,14 @@ class ShopRepositoryTest {
         val underTest = ShopRepository(shopDao)
 
         // when
-        underTest.resetPurchaseStatuses("titleRes", "titleRes")
+        underTest.resetPurchaseStatuses("titleName", "titleName")
 
         // then
-        verifyBlocking(shopDao, times(1)){ resetPurchaseStatuses("titleRes", "titleRes") }
+        verifyBlocking(shopDao, times(1)){ resetPurchaseStatuses("titleName", "titleName") }
         verifyNoMoreInteractions(shopDao)
     }
 
     private fun createDatabaseShopItem(id: Long): com.szte.wmm.greenkiwi.data.local.model.ShopItem {
-        return com.szte.wmm.greenkiwi.data.local.model.ShopItem(id, "titleRes", "imageRes", 1, 1, false)
-    }
-
-    private fun createDomainShopItem(id: Long): ShopItem {
-        return ShopItem(id, "titleRes", "imageRes", 1, ShopCategory.BACKGROUND, false)
+        return com.szte.wmm.greenkiwi.data.local.model.ShopItem(id, "titleName", "imageName", 1, 1, false)
     }
 }

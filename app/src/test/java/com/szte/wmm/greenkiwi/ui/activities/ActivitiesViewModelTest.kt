@@ -8,6 +8,7 @@ import com.nhaarman.mockitokotlin2.times
 import com.nhaarman.mockitokotlin2.verifyBlocking
 import com.nhaarman.mockitokotlin2.verifyNoMoreInteractions
 import com.szte.wmm.greenkiwi.CoroutineTestRule
+import com.szte.wmm.greenkiwi.createActivity
 import com.szte.wmm.greenkiwi.repository.ActivitiesRepository
 import com.szte.wmm.greenkiwi.repository.domain.Activity
 import com.szte.wmm.greenkiwi.repository.domain.Category
@@ -128,9 +129,5 @@ class ActivitiesViewModelTest {
     private fun repositoryVerifications() {
         verifyBlocking(activitiesRepository, times(1)){ getActivities() }
         verifyNoMoreInteractions(activitiesRepository)
-    }
-
-    private fun createActivity(id: Long, category: Category): Activity {
-        return Activity(id, "title", "description", "thumbnailUrl", "imageUrl", 1, 1, category)
     }
 }

@@ -10,6 +10,7 @@ import com.nhaarman.mockitokotlin2.times
 import com.nhaarman.mockitokotlin2.verifyBlocking
 import com.nhaarman.mockitokotlin2.verifyNoMoreInteractions
 import com.szte.wmm.greenkiwi.CoroutineTestRule
+import com.szte.wmm.greenkiwi.createShopItem
 import com.szte.wmm.greenkiwi.repository.ShopRepository
 import com.szte.wmm.greenkiwi.repository.domain.ShopCategory
 import com.szte.wmm.greenkiwi.repository.domain.ShopItem
@@ -112,9 +113,5 @@ class ShopViewModelTest {
             // cleaning up observer
             underTest.filteredItems.removeObserver(observer)
         }
-    }
-
-    private fun createShopItem(id: Long, category: ShopCategory, purchased: Boolean): ShopItem {
-        return ShopItem(id, "titleName", "imageName", 1, category, purchased)
     }
 }

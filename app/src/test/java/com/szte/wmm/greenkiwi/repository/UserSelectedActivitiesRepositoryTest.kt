@@ -5,10 +5,10 @@ import com.nhaarman.mockitokotlin2.stub
 import com.nhaarman.mockitokotlin2.times
 import com.nhaarman.mockitokotlin2.verifyBlocking
 import com.nhaarman.mockitokotlin2.verifyNoMoreInteractions
+import com.szte.wmm.greenkiwi.CURRENT_TIME
+import com.szte.wmm.greenkiwi.createUserSelectedActivity
+import com.szte.wmm.greenkiwi.createUserSelectedActivityWithDetails
 import com.szte.wmm.greenkiwi.data.local.UserSelectedActivitiesDao
-import com.szte.wmm.greenkiwi.repository.domain.Category
-import com.szte.wmm.greenkiwi.repository.domain.UserSelectedActivity
-import com.szte.wmm.greenkiwi.repository.domain.UserSelectedActivityWithDetails
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import org.hamcrest.Matchers.`is`
@@ -35,9 +35,9 @@ class UserSelectedActivitiesRepositoryTest {
     @Test
     fun `test getLatestActivity() should delegate to dao method`() {
         // given
-        `when`(userSelectedActivitiesDao.getLatestActivity(1L)).thenReturn(createDatabaseActivity(1L))
+        `when`(userSelectedActivitiesDao.getLatestActivity(1L)).thenReturn(createDatabaseActivity(1L, CURRENT_TIME))
         val underTest = UserSelectedActivitiesRepository(userSelectedActivitiesDao)
-        val expected = createDomainActivity(1L)
+        val expected = createUserSelectedActivity(1L, CURRENT_TIME)
 
         // when
         val actual = underTest.getLatestActivity(1L)
@@ -51,10 +51,10 @@ class UserSelectedActivitiesRepositoryTest {
     fun `test getLatestXActivities() should delegate to dao method`() = runBlockingTest {
         // given
         userSelectedActivitiesDao.stub {
-            onBlocking { getLatestXActivities(2) }.doReturn(listOf(createDatabaseActivity(2L), createDatabaseActivity(1L)))
+            onBlocking { getLatestXActivities(2) }.doReturn(listOf(createDatabaseActivity(2L, CURRENT_TIME + 1), createDatabaseActivity(1L, CURRENT_TIME)))
         }
         val underTest = UserSelectedActivitiesRepository(userSelectedActivitiesDao)
-        val expected = listOf(createDomainActivity(2L), createDomainActivity(1L))
+        val expected = listOf(createUserSelectedActivity(2L, CURRENT_TIME + 1), createUserSelectedActivity(1L, CURRENT_TIME))
 
         // when
         val actual = underTest.getLatestXActivities(2)
@@ -72,7 +72,7 @@ class UserSelectedActivitiesRepositoryTest {
             onBlocking { getLatestXActivitiesWithDetails(2) }.doReturn(listOf(createDatabaseActivityWithDetails(2L), createDatabaseActivityWithDetails(1L)))
         }
         val underTest = UserSelectedActivitiesRepository(userSelectedActivitiesDao)
-        val expected = listOf(createDomainActivityWithDetails(2L), createDomainActivityWithDetails(1L))
+        val expected = listOf(createUserSelectedActivityWithDetails(2L), createUserSelectedActivityWithDetails(1L))
 
         // when
         val actual = underTest.getLatestXActivitiesWithDetails(2)
@@ -89,10 +89,10 @@ class UserSelectedActivitiesRepositoryTest {
         val underTest = UserSelectedActivitiesRepository(userSelectedActivitiesDao)
 
         // when
-        underTest.insertUserSelectedActivity(createDomainActivity(1L))
+        underTest.insertUserSelectedActivity(createUserSelectedActivity(1L, CURRENT_TIME))
 
         // then
-        verifyBlocking(userSelectedActivitiesDao, times(1)){ insertUserSelectedActivity(createDatabaseActivity(1L)) }
+        verifyBlocking(userSelectedActivitiesDao, times(1)){ insertUserSelectedActivity(createDatabaseActivity(1L, CURRENT_TIME)) }
         verifyNoMoreInteractions(userSelectedActivitiesDao)
     }
 
@@ -109,19 +109,11 @@ class UserSelectedActivitiesRepositoryTest {
         verifyNoMoreInteractions(userSelectedActivitiesDao)
     }
 
-    private fun createDatabaseActivity(id: Long): com.szte.wmm.greenkiwi.data.local.model.UserSelectedActivity {
-        return com.szte.wmm.greenkiwi.data.local.model.UserSelectedActivity(id, id, 999L + id)
-    }
-
-    private fun createDomainActivity(id: Long): UserSelectedActivity {
-        return UserSelectedActivity(id, id, 999L + id)
+    private fun createDatabaseActivity(id: Long, timeAdded: Long): com.szte.wmm.greenkiwi.data.local.model.UserSelectedActivity {
+        return com.szte.wmm.greenkiwi.data.local.model.UserSelectedActivity(id, id, timeAdded)
     }
 
     private fun createDatabaseActivityWithDetails(id: Long): com.szte.wmm.greenkiwi.data.local.model.UserSelectedActivityWithDetails {
-        return com.szte.wmm.greenkiwi.data.local.model.UserSelectedActivityWithDetails(id, "title", 1, 1, 1L, 1605463200000L)
-    }
-
-    private fun createDomainActivityWithDetails(id: Long): UserSelectedActivityWithDetails {
-        return UserSelectedActivityWithDetails(id, "title", 1, 1, Category.WATER_AND_ENERGY, "2020.11.15")
+        return com.szte.wmm.greenkiwi.data.local.model.UserSelectedActivityWithDetails(id, "title", 1, 1, 1L, CURRENT_TIME)
     }
 }

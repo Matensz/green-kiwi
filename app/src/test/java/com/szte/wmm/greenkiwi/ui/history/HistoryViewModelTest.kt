@@ -6,11 +6,11 @@ import com.nhaarman.mockitokotlin2.stub
 import com.nhaarman.mockitokotlin2.times
 import com.nhaarman.mockitokotlin2.verifyBlocking
 import com.nhaarman.mockitokotlin2.verifyNoMoreInteractions
+import com.szte.wmm.greenkiwi.CURRENT_TIME
 import com.szte.wmm.greenkiwi.CoroutineTestRule
+import com.szte.wmm.greenkiwi.createUserSelectedActivity
+import com.szte.wmm.greenkiwi.createUserSelectedActivityWithDetails
 import com.szte.wmm.greenkiwi.repository.UserSelectedActivitiesRepository
-import com.szte.wmm.greenkiwi.repository.domain.Category
-import com.szte.wmm.greenkiwi.repository.domain.UserSelectedActivity
-import com.szte.wmm.greenkiwi.repository.domain.UserSelectedActivityWithDetails
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.TestCoroutineDispatcher
 import kotlinx.coroutines.test.runBlockingTest
@@ -31,7 +31,6 @@ class HistoryViewModelTest {
     companion object {
         private const val HISTORY_LIST_LENGTH = 15
         private const val DAILY_COUNTER_MAX_VALUE = 3
-        private const val CURRENT_TIME = 1605463200000L //2020-11-15 19:00:00
     }
 
     @get:Rule
@@ -52,7 +51,7 @@ class HistoryViewModelTest {
     fun `test init should set up live data with repository calls correctly`() = runBlockingTest {
         // given
         userSelectedActivitiesRepository.stub {
-            onBlocking { getLatestXActivities(DAILY_COUNTER_MAX_VALUE) }.doReturn(listOf(createUserSelectedActivity(2L), createUserSelectedActivity(1L)))
+            onBlocking { getLatestXActivities(DAILY_COUNTER_MAX_VALUE) }.doReturn(listOf(createUserSelectedActivity(2L, CURRENT_TIME), createUserSelectedActivity(1L, CURRENT_TIME)))
         }
         userSelectedActivitiesRepository.stub {
             onBlocking { getLatestXActivitiesWithDetails(HISTORY_LIST_LENGTH) }.doReturn(listOf(createUserSelectedActivityWithDetails(2L), createUserSelectedActivityWithDetails(1L)))
@@ -65,13 +64,5 @@ class HistoryViewModelTest {
         verifyBlocking(userSelectedActivitiesRepository, times(1)) { getLatestXActivities(DAILY_COUNTER_MAX_VALUE) }
         verifyBlocking(userSelectedActivitiesRepository, times(1)) { getLatestXActivitiesWithDetails(HISTORY_LIST_LENGTH) }
         verifyNoMoreInteractions(userSelectedActivitiesRepository)
-    }
-
-    private fun createUserSelectedActivity(id: Long): UserSelectedActivity {
-        return UserSelectedActivity(activityId = id, timeAdded = CURRENT_TIME)
-    }
-
-    private fun createUserSelectedActivityWithDetails(id: Long): UserSelectedActivityWithDetails {
-        return UserSelectedActivityWithDetails(id, "title", 1, 1, Category.WATER_AND_ENERGY, CURRENT_TIME.toString())
     }
 }
