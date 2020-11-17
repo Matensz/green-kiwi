@@ -90,7 +90,7 @@
                     android:layout_marginEnd="@dimen/margin_default"
                     android:gravity="center_horizontal"
                     android:text="@{activityViewModel.selectedActivity.title}"
-                    android:textAppearance="?attr/textAppearanceHeadline5"
+                    android:textSize="@dimen/large_text_size"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -98,13 +98,13 @@
 
                 <TextView
                     android:id="@+id/activity_description"
-                    style="?android:attr/textAppearanceMedium"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/margin_default"
                     android:minHeight="240dp"
                     android:text="@{activityViewModel.selectedActivity.description}"
                     android:textIsSelectable="true"
+                    android:textSize="@dimen/small_text_size"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/activity_title"
@@ -122,11 +122,12 @@
 
                 <ImageView
                     android:id="@+id/activity_history_image"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:layout_margin="@dimen/margin_default"
                     android:contentDescription="@string/activity_detail_view_history_description"
                     android:scaleType="centerCrop"
+                    app:layout_constraintBottom_toTopOf="@id/activity_history_date"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/separator"
                     app:srcCompat="@drawable/ic_baseline_history_black_24dp"
@@ -135,21 +136,22 @@
 
                 <TextView
                     android:id="@+id/activity_history_title"
-                    style="?attr/textAppearanceHeadline6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/margin_default"
                     android:text="@string/subtitle_activity_history"
+                    android:textSize="@dimen/medium_text_size"
+                    app:layout_constraintBottom_toTopOf="@id/activity_history_date"
                     app:layout_constraintStart_toEndOf="@id/activity_history_image"
                     app:layout_constraintTop_toBottomOf="@id/separator"
                     tools:text="@string/subtitle_activity_history" />
 
                 <TextView
                     android:id="@+id/activity_history_date"
-                    style="?android:attr/textAppearanceMedium"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/margin_default"
+                    android:textSize="@dimen/small_text_size"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/activity_history_title"
                     tools:text="Yesterday" />
@@ -166,11 +168,12 @@
 
                 <ImageView
                     android:id="@+id/activity_points_image"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:layout_margin="@dimen/margin_default"
                     android:contentDescription="@string/activity_detail_view_points_description"
                     android:scaleType="centerCrop"
+                    app:layout_constraintBottom_toTopOf="@id/third_separator"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/second_separator"
                     app:srcCompat="@drawable/ic_baseline_eco_black_24dp"
@@ -179,13 +182,48 @@
 
                 <TextView
                     android:id="@+id/activity_points_title"
-                    style="?attr/textAppearanceHeadline6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/margin_default"
+                    android:textSize="@dimen/medium_text_size"
+                    app:layout_constraintBottom_toTopOf="@id/third_separator"
                     app:layout_constraintStart_toEndOf="@id/activity_points_image"
                     app:layout_constraintTop_toBottomOf="@id/second_separator"
-                    tools:text="@string/point_info" />
+                    tools:text="@string/activity_point_info" />
+
+                <View
+                    android:id="@+id/third_separator"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_margin="@dimen/margin_default"
+                    android:background="#90909090"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/activity_points_title" />
+
+                <ImageView
+                    android:id="@+id/activity_gold_image"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_margin="@dimen/margin_default"
+                    android:contentDescription="@string/gold_coin_description"
+                    android:scaleType="centerInside"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/third_separator"
+                    app:srcCompat="@drawable/gold_image"
+                    tools:src="@drawable/gold_image" />
+
+                <TextView
+                    android:id="@+id/activity_gold_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_default"
+                    android:textSize="@dimen/medium_text_size"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/activity_gold_image"
+                    app:layout_constraintTop_toBottomOf="@id/third_separator"
+                    tools:text="@string/activity_point_info" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

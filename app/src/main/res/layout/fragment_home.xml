@@ -37,7 +37,7 @@
                 android:layout_width="55dp"
                 android:layout_height="55dp"
                 android:background="@android:color/transparent"
-                android:contentDescription="@string/home_view_gold_description"
+                android:contentDescription="@string/gold_coin_description"
                 android:scaleType="centerInside"
                 android:src="@drawable/gold_image"
                 app:layout_constraintBottom_toBottomOf="parent"

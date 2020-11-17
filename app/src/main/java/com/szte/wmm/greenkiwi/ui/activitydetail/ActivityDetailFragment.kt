@@ -81,7 +81,8 @@ class ActivityDetailFragment : Fragment() {
         }
 
         viewModel.selectedActivity.observe(viewLifecycleOwner, {
-            binding.activityPointsTitle.text = String.format(getString(R.string.point_info), it.point)
+            binding.activityPointsTitle.text = String.format(getString(R.string.activity_point_info), it.point)
+            binding.activityGoldTitle.text = String.format(getString(R.string.activity_gold_info), it.gold)
         })
 
         viewModel.lastAddedDate.observe(viewLifecycleOwner, {

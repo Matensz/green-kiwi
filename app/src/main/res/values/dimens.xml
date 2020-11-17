@@ -15,7 +15,7 @@
     <dimen name="default_elevation">4dp</dimen>
 
     <!--Text size-->
-    <dimen name="instrucitons_dialog_text_size">16sp</dimen>
+    <dimen name="small_text_size">16sp</dimen>
     <dimen name="medium_text_size">20sp</dimen>
     <dimen name="large_text_size">24sp</dimen>
 </resources>

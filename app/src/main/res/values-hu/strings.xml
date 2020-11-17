@@ -5,7 +5,8 @@
     <string name="title_history">Előzmények</string>
     <string name="title_settings">Beállítások</string>
     <string name="subtitle_activity_history">Legutóbb hozzáadva</string>
-    <string name="point_info">Ez a tevékenység %d pontot ér</string>
+    <string name="activity_point_info">Ez a tevékenység %d pontot ér</string>
+    <string name="activity_gold_info">Ez a tevékenység %d aranyat ér</string>
     <string name="activity_added_message">Szép munka, tevékenység hozzáadva!</string>
     <string name="third_activity_added_message">Gratulálunk! Épp most rögzítetted a mai harmadik tevékenységedet, ezért %d arany a jutalmad!</string>
     <string name="activity_already_added_today_message">Ma már rögzítetted ezt a tevékenységet, gyere vissza holnap!</string>
@@ -91,7 +92,7 @@
     <string name="shop_item_dialog_message_use">Kiválasztott %s beállítása az aktuális helyett?</string>
 
     <!--Accessibility-->
-    <string name="home_view_gold_description">Egy aranyérmét ábrázoló kép</string>
+    <string name="gold_coin_description">Egy aranyérmét ábrázoló kép</string>
     <string name="home_view_pet_description">Az általad nevelt kiwi képe</string>
     <string name="activities_view_activity_image_description">Ez a kép egy az aktuális tevlkenyésget ábrázoló kép</string>
     <string name="shop_view_item_description">Ez a kép az aktuális tételt ábrázolja</string>
