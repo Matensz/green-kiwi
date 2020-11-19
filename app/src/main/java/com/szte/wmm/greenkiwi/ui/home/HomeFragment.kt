@@ -20,11 +20,12 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.szte.wmm.greenkiwi.GreenKiwiApplication
 import com.szte.wmm.greenkiwi.R
 import com.szte.wmm.greenkiwi.databinding.FragmentHomeBinding
 import com.szte.wmm.greenkiwi.ui.home.context.HomeDataContext
-import com.szte.wmm.greenkiwi.util.InjectorUtils
 import com.szte.wmm.greenkiwi.util.createNotificationChannel
+import kotlinx.coroutines.Dispatchers
 import java.text.DecimalFormat
 import kotlin.math.truncate
 
@@ -46,7 +47,7 @@ class HomeFragment : Fragment() {
     private lateinit var application: Application
     private lateinit var binding: FragmentHomeBinding
     private lateinit var sharedPref: SharedPreferences
-    private lateinit var viewModel: HomeViewModel
+    private lateinit var homeViewModel: HomeViewModel
 
     @Suppress("LongMethod")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -56,52 +57,52 @@ class HomeFragment : Fragment() {
         val currentPoints = getPoints()
         val levelCalculationBase = resources.getInteger(R.integer.exp_base_number)
         val context = HomeDataContext(currentPoints, levelCalculationBase)
-        val viewModelFactory = InjectorUtils.getHomeViewModelFactory(context, this)
-        viewModel = ViewModelProvider(this, viewModelFactory).get(HomeViewModel::class.java)
+        val viewModelFactory = HomeViewModelFactory(context, (requireContext().applicationContext as GreenKiwiApplication).activitiesRepository, application, Dispatchers.IO)
+        homeViewModel = ViewModelProvider(this, viewModelFactory).get(HomeViewModel::class.java)
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
-        binding.homeViewModel = viewModel
+        binding.homeViewModel = homeViewModel
         binding.lifecycleOwner = this
 
-        viewModel.levelUps.observe(viewLifecycleOwner, {
+        homeViewModel.levelUps.observe(viewLifecycleOwner, {
             val currentLevel = it + 1
             binding.playerLevelText.text = String.format(getString(R.string.level_info), currentLevel)
             binding.petNicknameText.visibility = if (currentLevel >= EGG_HATCHED_LEVEL) View.VISIBLE else View.INVISIBLE
         })
 
-        viewModel.experience.observe(viewLifecycleOwner, {
+        homeViewModel.experience.observe(viewLifecycleOwner, {
             binding.expText.text = String.format(getString(R.string.exp_info), it.currentValue, it.currentMaxValue)
             binding.collectedExpBar.layoutParams.width = calculateStatBar(it.currentValue, it.currentMaxValue)
         })
 
-        viewModel.petImage.observe(viewLifecycleOwner, {
+        homeViewModel.petImage.observe(viewLifecycleOwner, {
             binding.petImage.setImageResource(it)
         })
 
-        viewModel.currentBackground.observe(viewLifecycleOwner, {
+        homeViewModel.currentBackground.observe(viewLifecycleOwner, {
             binding.homeParentLayout.setBackgroundResource(it ?: R.color.primaryColor)
         })
 
-        viewModel.hunger.observe(viewLifecycleOwner, {
+        homeViewModel.hunger.observe(viewLifecycleOwner, {
             val hungerPercent = truncate(it.currentValue / it.currentMaxValue.toFloat() * HUNDRED_PERCENT).toInt()
             binding.hungerText.text = String.format(getString(R.string.hunger_info), hungerPercent, HUNDRED_PERCENT)
             binding.filledHungerBar.layoutParams.width = calculateStatBar(it.currentValue, it.currentMaxValue)
         })
 
-        viewModel.gold.observe(viewLifecycleOwner, {
+        homeViewModel.gold.observe(viewLifecycleOwner, {
             val formatterString = getString(R.string.gold_formatter)
             val formattedGold = DecimalFormat(formatterString).format(it)
             binding.playerGoldText.text = formattedGold
         })
 
-        viewModel.feedButtonVisible.observe(viewLifecycleOwner, {
+        homeViewModel.feedButtonVisible.observe(viewLifecycleOwner, {
             binding.feedPetButton.visibility = if (it) View.VISIBLE else View.GONE
         })
 
-        viewModel.navigateToShop.observe(viewLifecycleOwner, {
+        homeViewModel.navigateToShop.observe(viewLifecycleOwner, {
             if (it != null) {
                 this.findNavController().navigate(HomeFragmentDirections.actionNavigationHomeToShopFragment())
-                viewModel.navigateToShopComplete()
+                homeViewModel.navigateToShopComplete()
             }
         })
 
@@ -123,7 +124,7 @@ class HomeFragment : Fragment() {
         }
 
         binding.goldLayout.setOnClickListener {
-            viewModel.navigateToShop()
+            homeViewModel.navigateToShop()
         }
 
         createNotificationChannel(
@@ -206,7 +207,7 @@ class HomeFragment : Fragment() {
             .setNegativeButton(R.string.feed_pet_dialog_negative_button_text) { dialog, _ -> dialog.cancel() }
         if (playerGold >= foodPrice.toLong()) {
             builder.setPositiveButton(R.string.feed_pet_dialog_positive_button_text) { dialog, _ ->
-                viewModel.feedPet()
+                homeViewModel.feedPet()
                 dialog.dismiss()
             }
         } else {

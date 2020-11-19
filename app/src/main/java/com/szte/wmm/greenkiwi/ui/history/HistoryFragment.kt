@@ -7,11 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
+import com.szte.wmm.greenkiwi.GreenKiwiApplication
 import com.szte.wmm.greenkiwi.R
 import com.szte.wmm.greenkiwi.databinding.FragmentHistoryBinding
-import com.szte.wmm.greenkiwi.util.InjectorUtils
 import com.szte.wmm.greenkiwi.util.getResIdForImageName
+import kotlinx.coroutines.Dispatchers
 
 /**
  * Fragment for the history view.
@@ -22,17 +23,16 @@ class HistoryFragment : Fragment() {
         private const val DEFAULT_PET_IMAGE_NAME = "kiwi_green"
     }
 
-    private lateinit var historyViewModel: HistoryViewModel
+    private val historyViewModel: HistoryViewModel by viewModels {
+        HistoryViewModelFactory((requireContext().applicationContext as GreenKiwiApplication).userSelectedActivitiesRepository, Dispatchers.IO)
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         val application = requireNotNull(activity).application
         val sharedPref = application.getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE)
 
-        val viewModelFactory = InjectorUtils.getHistoryViewModelFactory(this)
-        historyViewModel = ViewModelProvider(this, viewModelFactory).get(HistoryViewModel::class.java)
         val binding: FragmentHistoryBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_history, container, false)
-
         binding.lifecycleOwner = this
 
         val adapter = ActivityHistoryAdapter(requireContext())

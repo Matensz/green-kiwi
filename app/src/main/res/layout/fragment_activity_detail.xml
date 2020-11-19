@@ -7,7 +7,7 @@
     <data>
 
         <variable
-            name="activityViewModel"
+            name="activityDetailViewModel"
             type="com.szte.wmm.greenkiwi.ui.activitydetail.ActivityDetailViewModel" />
 
         <variable
@@ -42,7 +42,7 @@
                 app:contentScrim="@color/secondaryLightColor"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed"
                 app:statusBarScrim="@color/secondaryLightColor"
-                app:title="@{activityViewModel.selectedActivity.title}"
+                app:title="@{activityDetailViewModel.selectedActivity.title}"
                 app:titleEnabled="false"
                 app:toolbarId="@id/toolbar">
 
@@ -53,7 +53,7 @@
                     android:contentDescription="@string/activities_view_activity_image_description"
                     android:fitsSystemWindows="true"
                     android:scaleType="centerCrop"
-                    app:imageUrl="@{activityViewModel.selectedActivity.imageUrl}"
+                    app:imageUrl="@{activityDetailViewModel.selectedActivity.imageUrl}"
                     app:layout_collapseMode="parallax" />
 
                 <androidx.appcompat.widget.Toolbar
@@ -89,7 +89,7 @@
                     android:layout_marginStart="@dimen/margin_default"
                     android:layout_marginEnd="@dimen/margin_default"
                     android:gravity="center_horizontal"
-                    android:text="@{activityViewModel.selectedActivity.title}"
+                    android:text="@{activityDetailViewModel.selectedActivity.title}"
                     android:textSize="@dimen/large_text_size"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -102,7 +102,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/margin_default"
                     android:minHeight="240dp"
-                    android:text="@{activityViewModel.selectedActivity.description}"
+                    android:text="@{activityDetailViewModel.selectedActivity.description}"
                     android:textIsSelectable="true"
                     android:textSize="@dimen/small_text_size"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -235,7 +235,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_default"
             android:backgroundTint="@color/secondaryDarkColor"
-            android:onClick="@{() -> callback.add(activityViewModel.selectedActivity)}"
+            android:onClick="@{() -> callback.add(activityDetailViewModel.selectedActivity)}"
             app:borderWidth="0dp"
             app:layout_anchor="@id/appbar"
             app:layout_anchorGravity="bottom|end"

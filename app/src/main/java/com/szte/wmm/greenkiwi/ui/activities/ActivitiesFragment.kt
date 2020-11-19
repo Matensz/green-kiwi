@@ -10,10 +10,11 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.chip.Chip
-import com.szte.wmm.greenkiwi.util.InjectorUtils
+import com.szte.wmm.greenkiwi.GreenKiwiApplication
 import com.szte.wmm.greenkiwi.R
 import com.szte.wmm.greenkiwi.databinding.FragmentActivitiesBinding
 import com.szte.wmm.greenkiwi.repository.domain.Category
+import kotlinx.coroutines.Dispatchers
 
 /**
  * Fragment for the activities view.
@@ -21,7 +22,7 @@ import com.szte.wmm.greenkiwi.repository.domain.Category
 class ActivitiesFragment : Fragment() {
 
     private val activitiesViewModel: ActivitiesViewModel by viewModels {
-        InjectorUtils.getActivitiesViewModelFactory(this)
+        ActivitiesViewModelFactory((requireContext().applicationContext as GreenKiwiApplication).activitiesRepository, Dispatchers.IO)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

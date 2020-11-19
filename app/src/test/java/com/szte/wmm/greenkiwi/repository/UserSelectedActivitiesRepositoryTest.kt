@@ -36,7 +36,7 @@ class UserSelectedActivitiesRepositoryTest {
     fun `test getLatestActivity() should delegate to dao method`() {
         // given
         `when`(userSelectedActivitiesDao.getLatestActivity(1L)).thenReturn(createDatabaseActivity(1L, CURRENT_TIME))
-        val underTest = UserSelectedActivitiesRepository(userSelectedActivitiesDao)
+        val underTest = DefaultUserSelectedActivitiesRepository(userSelectedActivitiesDao)
         val expected = createUserSelectedActivity(1L, CURRENT_TIME)
 
         // when
@@ -53,7 +53,7 @@ class UserSelectedActivitiesRepositoryTest {
         userSelectedActivitiesDao.stub {
             onBlocking { getLatestXActivities(2) }.doReturn(listOf(createDatabaseActivity(2L, CURRENT_TIME + 1), createDatabaseActivity(1L, CURRENT_TIME)))
         }
-        val underTest = UserSelectedActivitiesRepository(userSelectedActivitiesDao)
+        val underTest = DefaultUserSelectedActivitiesRepository(userSelectedActivitiesDao)
         val expected = listOf(createUserSelectedActivity(2L, CURRENT_TIME + 1), createUserSelectedActivity(1L, CURRENT_TIME))
 
         // when
@@ -71,7 +71,7 @@ class UserSelectedActivitiesRepositoryTest {
         userSelectedActivitiesDao.stub {
             onBlocking { getLatestXActivitiesWithDetails(2) }.doReturn(listOf(createDatabaseActivityWithDetails(2L), createDatabaseActivityWithDetails(1L)))
         }
-        val underTest = UserSelectedActivitiesRepository(userSelectedActivitiesDao)
+        val underTest = DefaultUserSelectedActivitiesRepository(userSelectedActivitiesDao)
         val expected = listOf(createUserSelectedActivityWithDetails(2L), createUserSelectedActivityWithDetails(1L))
 
         // when
@@ -86,7 +86,7 @@ class UserSelectedActivitiesRepositoryTest {
     @Test
     fun `test insertUserSelectedActivity() should delegate to dao method`() = runBlockingTest {
         // given
-        val underTest = UserSelectedActivitiesRepository(userSelectedActivitiesDao)
+        val underTest = DefaultUserSelectedActivitiesRepository(userSelectedActivitiesDao)
 
         // when
         underTest.insertUserSelectedActivity(createUserSelectedActivity(1L, CURRENT_TIME))
@@ -99,7 +99,7 @@ class UserSelectedActivitiesRepositoryTest {
     @Test
     fun `test deleteAllAddedActivities should delegate to dao method`() = runBlockingTest {
         // given
-        val underTest = UserSelectedActivitiesRepository(userSelectedActivitiesDao)
+        val underTest = DefaultUserSelectedActivitiesRepository(userSelectedActivitiesDao)
 
         // when
         underTest.deleteAllAddedActivities()

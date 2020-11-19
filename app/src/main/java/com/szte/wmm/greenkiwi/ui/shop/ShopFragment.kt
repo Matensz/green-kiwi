@@ -15,11 +15,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.google.android.material.chip.Chip
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.szte.wmm.greenkiwi.GreenKiwiApplication
 import com.szte.wmm.greenkiwi.R
 import com.szte.wmm.greenkiwi.databinding.FragmentShopBinding
 import com.szte.wmm.greenkiwi.repository.domain.ShopCategory
 import com.szte.wmm.greenkiwi.repository.domain.ShopItem
-import com.szte.wmm.greenkiwi.util.InjectorUtils
+import kotlinx.coroutines.Dispatchers
 
 /**
  * Fragment for the shop view.
@@ -40,7 +41,7 @@ class ShopFragment : Fragment() {
 
         application = requireActivity().application
         sharedPref = application.getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE)
-        val shopViewModelFactory = InjectorUtils.getShopViewModelFactory(this, application)
+        val shopViewModelFactory = ShopViewModelFactory((application as GreenKiwiApplication).shopRepository, application, Dispatchers.IO)
         shopViewModel = ViewModelProvider(this, shopViewModelFactory).get(ShopViewModel::class.java)
 
         val binding: FragmentShopBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_shop, container, false)

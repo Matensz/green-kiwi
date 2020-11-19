@@ -4,7 +4,7 @@ import com.szte.wmm.greenkiwi.data.local.ShopDao
 import com.szte.wmm.greenkiwi.data.local.model.asDomainModel
 
 /**
- * Default repository implementation for the Shop related queries.
+ * Default repository implementation for the shop related queries.
  */
 class ShopRepository(private val shopDao: ShopDao) {
 
@@ -14,14 +14,4 @@ class ShopRepository(private val shopDao: ShopDao) {
 
     suspend fun resetPurchaseStatuses(defaultBackgroundName: String, defaultPetImageName: String) = shopDao.resetPurchaseStatuses(defaultBackgroundName, defaultPetImageName)
 
-    companion object {
-
-        // For Singleton instantiation
-        @Volatile private var instance: ShopRepository? = null
-
-        fun getInstance(shopDao: ShopDao) =
-            instance ?: synchronized(this) {
-                instance ?: ShopRepository(shopDao).also { instance = it }
-            }
-    }
 }

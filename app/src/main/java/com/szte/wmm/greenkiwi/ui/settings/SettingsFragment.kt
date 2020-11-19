@@ -14,10 +14,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.szte.wmm.greenkiwi.GreenKiwiApplication
 import com.szte.wmm.greenkiwi.R
 import com.szte.wmm.greenkiwi.databinding.FragmentSettingsBinding
 import com.szte.wmm.greenkiwi.ui.instructions.InstructionsDialogProvider
-import com.szte.wmm.greenkiwi.util.InjectorUtils
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -34,7 +34,8 @@ class SettingsFragment : Fragment() {
         val sharedPref = application.getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE)
         val nightModeSettingKey = getString(R.string.night_mode_setting_key)
 
-        val viewModelFactory = InjectorUtils.getSettingsViewModelFactory(this, application)
+        val viewModelFactory =
+            SettingsViewModelFactory((application as GreenKiwiApplication).userSelectedActivitiesRepository, application.shopRepository, application, Dispatchers.IO)
         settingsViewModel = ViewModelProvider(this, viewModelFactory).get(SettingsViewModel::class.java)
         val binding: FragmentSettingsBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_settings, container, false)
 
