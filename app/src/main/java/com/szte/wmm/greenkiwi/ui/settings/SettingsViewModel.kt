@@ -46,6 +46,19 @@ class SettingsViewModel(
         )
     }
 
+    fun saveNightModeSettings(isChecked: Boolean) {
+        viewModelScope.launch {
+            updateNightModePreferences(isChecked)
+        }
+    }
+
+    private suspend fun updateNightModePreferences(isChecked: Boolean) {
+        withContext(defaultDispatcher) {
+            val nightModeSettingKey = app.getString(R.string.night_mode_setting_key)
+            sharedPref.edit().putBoolean(nightModeSettingKey, isChecked).apply()
+        }
+    }
+
     fun resetUserValues() {
         alarmManager.cancel(notifyPendingIntent)
         viewModelScope.launch {
