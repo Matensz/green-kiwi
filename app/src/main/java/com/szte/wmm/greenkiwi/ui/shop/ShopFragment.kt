@@ -80,7 +80,6 @@ class ShopFragment : Fragment() {
         return binding.root
     }
 
-    // TODO
     private fun createShopItemDialog(shopItem: ShopItem): AlertDialog {
         var builder = MaterialAlertDialogBuilder(requireActivity())
             .setNegativeButton(R.string.shop_item_dialog_negative_button_text) { dialog, _ ->
