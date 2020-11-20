@@ -1,9 +1,6 @@
 package com.szte.wmm.greenkiwi.ui.activitydetail
 
-import android.content.Context
-import android.content.SharedPreferences
 import android.os.Bundle
-import android.os.SystemClock
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,7 +17,6 @@ import com.szte.wmm.greenkiwi.databinding.FragmentActivityDetailBinding
 import com.szte.wmm.greenkiwi.repository.domain.Activity
 import com.szte.wmm.greenkiwi.util.formatNullableDateString
 import com.szte.wmm.greenkiwi.util.isDayBeforeDate
-import com.szte.wmm.greenkiwi.util.isSameDay
 import kotlinx.coroutines.Dispatchers
 
 /**
@@ -32,10 +28,9 @@ class ActivityDetailFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val application = requireNotNull(activity).application
-        val sharedPref = application.getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE)
 
         val viewModelFactory =
-            ActivityDetailViewModelFactory(args.selectedActivity, (requireContext().applicationContext as GreenKiwiApplication).userSelectedActivitiesRepository, Dispatchers.IO)
+            ActivityDetailViewModelFactory(args.selectedActivity, (application as GreenKiwiApplication).userSelectedActivitiesRepository, application, Dispatchers.IO)
         val activityDetailViewModel = ViewModelProvider(this, viewModelFactory).get(ActivityDetailViewModel::class.java)
 
         val binding = DataBindingUtil.inflate<FragmentActivityDetailBinding>(inflater, R.layout.fragment_activity_detail, container, false)
@@ -48,8 +43,8 @@ class ActivityDetailFragment : Fragment() {
                     val currentTime = System.currentTimeMillis()
                     if (activityDetailViewModel.lastAddedDate.value?.isDayBeforeDate(currentTime) != false) {
                         activityDetailViewModel.addActivity(activity.activityId, currentTime)
-                        updatePlayerValue(sharedPref, activity.point, R.integer.default_starting_point, R.string.saved_user_points_key)
-                        val currentDailyCount = updateDailyCounter(sharedPref, currentTime)
+                        activityDetailViewModel.updatePlayerValue(activity.point, R.integer.default_starting_point, R.string.saved_user_points_key)
+                        val currentDailyCount = activityDetailViewModel.getUpdatedDailyCounter(currentTime)
                         var activityAddedMessage = getString(R.string.activity_added_message)
                         var goldAmount = activity.gold
                         if (currentDailyCount == resources.getInteger(R.integer.daily_activity_max_count)) {
@@ -58,7 +53,7 @@ class ActivityDetailFragment : Fragment() {
                             goldAmount += extraGold
                         }
                         Toast.makeText(context, activityAddedMessage, Toast.LENGTH_LONG).show()
-                        updatePlayerValue(sharedPref, goldAmount, R.integer.default_starting_gold, R.string.saved_user_gold_key)
+                        activityDetailViewModel.updatePlayerValue(goldAmount, R.integer.default_starting_gold, R.string.saved_user_gold_key)
                     } else {
                         Toast.makeText(context, getString(R.string.activity_already_added_today_message), Toast.LENGTH_LONG).show()
                     }
@@ -92,35 +87,6 @@ class ActivityDetailFragment : Fragment() {
         })
 
         return binding.root
-    }
-
-    private fun updatePlayerValue(sharedPref: SharedPreferences, valueToAdd: Int, defaultResId: Int, sharedPrefKeyResId: Int) {
-        val defaultValue = resources.getInteger(defaultResId).toLong()
-        val currentValue = sharedPref.getLong(getString(sharedPrefKeyResId), defaultValue)
-        with(sharedPref.edit()) {
-            val updatedValue = currentValue + valueToAdd.toLong()
-            putLong(getString(sharedPrefKeyResId), updatedValue)
-            apply()
-        }
-    }
-
-    private fun updateDailyCounter(sharedPref: SharedPreferences, currentTime: Long): Int {
-        val lastSavedDateKey = getString(R.string.last_saved_activity_date_key)
-        val dailyActivityCounterKey = getString(R.string.daily_activity_counter_key)
-        val defaultLastDate = currentTime - SystemClock.elapsedRealtime()
-        val lastSavedDate = sharedPref.getLong(lastSavedDateKey, defaultLastDate)
-        var count = 0
-        if (lastSavedDate.isDayBeforeDate(currentTime)) {
-            with(sharedPref.edit()) {
-                putLong(lastSavedDateKey, currentTime)
-                putInt(dailyActivityCounterKey, ++count)
-                apply()
-            }
-        } else if (lastSavedDate.isSameDay(currentTime)) {
-            count = sharedPref.getInt(dailyActivityCounterKey, 0)
-            sharedPref.edit().putInt(dailyActivityCounterKey, ++count).apply()
-        }
-        return count
     }
 
     interface Callback {
