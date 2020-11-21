@@ -51,10 +51,14 @@ class HistoryViewModelTest {
     fun `test init should set up live data with repository calls correctly`() = runBlockingTest {
         // given
         userSelectedActivitiesRepository.stub {
-            onBlocking { getLatestXActivities(DAILY_COUNTER_MAX_VALUE) }.doReturn(listOf(createUserSelectedActivity(2L, CURRENT_TIME), createUserSelectedActivity(1L, CURRENT_TIME)))
+            onBlocking {
+                getLatestXActivities(DAILY_COUNTER_MAX_VALUE)
+            }.doReturn(listOf(createUserSelectedActivity(2L, CURRENT_TIME), createUserSelectedActivity(1L, CURRENT_TIME)))
         }
         userSelectedActivitiesRepository.stub {
-            onBlocking { getLatestXActivitiesWithDetails(HISTORY_LIST_LENGTH) }.doReturn(listOf(createUserSelectedActivityWithDetails(2L), createUserSelectedActivityWithDetails(1L)))
+            onBlocking {
+                getLatestXActivitiesWithDetails(HISTORY_LIST_LENGTH)
+            }.doReturn(listOf(createUserSelectedActivityWithDetails(2L), createUserSelectedActivityWithDetails(1L)))
         }
 
         // when
