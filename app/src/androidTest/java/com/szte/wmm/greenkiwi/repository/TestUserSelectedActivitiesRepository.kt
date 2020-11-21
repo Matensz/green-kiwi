@@ -30,7 +30,7 @@ class TestUserSelectedActivitiesRepository : UserSelectedActivitiesRepository {
 
     override suspend fun deleteAllAddedActivities() = activitiesList.clear()
 
-    fun insertUserSelectedActivities(activities: List<UserSelectedActivity>) {
+    fun addUserSelectedActivities(activities: List<UserSelectedActivity>) {
         activitiesList.addAll(activities.reversed())
     }
 

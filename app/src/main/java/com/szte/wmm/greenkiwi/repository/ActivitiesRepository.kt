@@ -1,13 +1,11 @@
 package com.szte.wmm.greenkiwi.repository
 
-import com.szte.wmm.greenkiwi.data.local.ActivitiesDao
-import com.szte.wmm.greenkiwi.data.local.model.asDomainModel
+import com.szte.wmm.greenkiwi.repository.domain.Activity
 
 /**
- * Default repository implementation for the activities related queries.
+ * An interface for the activities related queries.
  */
-class ActivitiesRepository(private val activitiesDao: ActivitiesDao) {
+interface ActivitiesRepository {
 
-    suspend fun getActivities() = activitiesDao.getActivities().map { it.asDomainModel() }
-
+    suspend fun getActivities(): List<Activity>
 }

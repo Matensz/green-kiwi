@@ -1,17 +1,14 @@
 package com.szte.wmm.greenkiwi.repository
 
-import com.szte.wmm.greenkiwi.data.local.ShopDao
-import com.szte.wmm.greenkiwi.data.local.model.asDomainModel
+import com.szte.wmm.greenkiwi.repository.domain.ShopItem
 
 /**
- * Default repository implementation for the shop related queries.
+ * An interface for the shop related queries.
  */
-class ShopRepository(private val shopDao: ShopDao) {
+interface ShopRepository {
+    suspend fun getShopItems(): List<ShopItem>
 
-    suspend fun getShopItems() = shopDao.getShopItems().map { item -> item.asDomainModel() }
+    suspend fun updateShopItemById(itemId: Long, purchased: Boolean): Int
 
-    suspend fun updateShopItemById(itemId: Long, purchased: Boolean) = shopDao.updateShopItemById(itemId, purchased)
-
-    suspend fun resetPurchaseStatuses(defaultBackgroundName: String, defaultPetImageName: String) = shopDao.resetPurchaseStatuses(defaultBackgroundName, defaultPetImageName)
-
+    suspend fun resetPurchaseStatuses(defaultBackgroundName: String, defaultPetImageName: String)
 }

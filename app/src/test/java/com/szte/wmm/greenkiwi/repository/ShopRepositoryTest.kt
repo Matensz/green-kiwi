@@ -36,7 +36,7 @@ class ShopRepositoryTest {
             onBlocking { getShopItems() }.doReturn(listOf(createDatabaseShopItem(1L), createDatabaseShopItem(2L)))
         }
         val expectedResult = listOf(createShopItem(1L, ShopCategory.BACKGROUND, false), createShopItem(2L, ShopCategory.BACKGROUND, false))
-        val underTest = ShopRepository(shopDao)
+        val underTest = DefaultShopRepository(shopDao)
 
         // when
         val actual = underTest.getShopItems()
@@ -54,7 +54,7 @@ class ShopRepositoryTest {
         shopDao.stub {
             onBlocking { updateShopItemById(1L, true) }.doReturn(1)
         }
-        val underTest = ShopRepository(shopDao)
+        val underTest = DefaultShopRepository(shopDao)
 
         // when
         val actual = underTest.updateShopItemById(1L, true)
@@ -68,7 +68,7 @@ class ShopRepositoryTest {
     @Test
     fun `test resetPurchaseStatuses() should delegate to dao method`() = runBlockingTest {
         // given
-        val underTest = ShopRepository(shopDao)
+        val underTest = DefaultShopRepository(shopDao)
 
         // when
         underTest.resetPurchaseStatuses("titleName", "titleName")

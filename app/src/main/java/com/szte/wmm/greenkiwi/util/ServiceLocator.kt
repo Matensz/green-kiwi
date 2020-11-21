@@ -9,6 +9,8 @@ import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import com.szte.wmm.greenkiwi.data.local.ApplicationDatabase
 import com.szte.wmm.greenkiwi.repository.ActivitiesRepository
+import com.szte.wmm.greenkiwi.repository.DefaultActivitiesRepository
+import com.szte.wmm.greenkiwi.repository.DefaultShopRepository
 import com.szte.wmm.greenkiwi.repository.DefaultUserSelectedActivitiesRepository
 import com.szte.wmm.greenkiwi.repository.ShopRepository
 import com.szte.wmm.greenkiwi.repository.UserSelectedActivitiesRepository
@@ -43,7 +45,7 @@ object ServiceLocator {
     }
 
     private fun createActivitiesRepository(context: Context): ActivitiesRepository {
-        val repo = ActivitiesRepository(getDataBase(context).activitiesDao())
+        val repo = DefaultActivitiesRepository(getDataBase(context).activitiesDao())
         activitiesRepository = repo
         return repo
     }
@@ -67,7 +69,7 @@ object ServiceLocator {
     }
 
     private fun createShopRepository(context: Context): ShopRepository {
-        val repo = ShopRepository(getDataBase(context).shopDao())
+        val repo = DefaultShopRepository(getDataBase(context).shopDao())
         shopRepository = repo
         return repo
     }

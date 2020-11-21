@@ -36,7 +36,7 @@ class ActivitiesRepositoryTest {
             onBlocking { getActivities() }.doReturn(listOf(createDatabaseActivity(1L), createDatabaseActivity(2L)))
         }
         val expectedResult = listOf(createActivity(1L, Category.WATER_AND_ENERGY), createActivity(2L, Category.WATER_AND_ENERGY))
-        val underTest = ActivitiesRepository(activitiesDao)
+        val underTest = DefaultActivitiesRepository(activitiesDao)
 
         // when
         val actual = underTest.getActivities()
