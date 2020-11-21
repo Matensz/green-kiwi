@@ -23,6 +23,8 @@ object ServiceLocator {
 
     private const val DATABASE_NAME = "green-kiwi-db"
 
+    private val lock = Any()
+
     @Volatile
     private var database: ApplicationDatabase? = null
 
@@ -92,5 +94,19 @@ object ServiceLocator {
             .build()
         database = db
         return db
+    }
+
+    @VisibleForTesting
+    fun resetRepositories() {
+        synchronized(lock) {
+            database?.apply {
+                clearAllTables()
+                close()
+            }
+            database = null
+            activitiesRepository = null
+            userSelectedActivitiesRepository = null
+            shopRepository = null
+        }
     }
 }

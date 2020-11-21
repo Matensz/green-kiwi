@@ -35,6 +35,7 @@ object InstructionsDialogProvider {
         return builder.create()
     }
 
+    //TODO add full instructions
     private fun getInstructionsTexts(resources: Resources): List<String> =
         listOf(resources.getString(R.string.instructions_first_page), resources.getString(R.string.instructions_second_page))
 
