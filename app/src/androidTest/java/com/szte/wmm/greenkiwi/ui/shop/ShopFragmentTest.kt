@@ -52,6 +52,7 @@ class ShopFragmentTest {
         context = InstrumentationRegistry.getInstrumentation().targetContext
         sharedPrefs = context.getSharedPreferences(context.getString(R.string.preference_file_key), Context.MODE_PRIVATE)
         sharedPrefs.edit().remove(context.getString(R.string.saved_user_gold_key)).apply()
+        sharedPrefs.edit().remove(context.getString(R.string.current_background_key)).apply()
         testRepository = TestShopRepository()
         testRepository.addShopItems(listOf(
             ShopItem(1L, "default_wallpaper_name", "", 1, ShopCategory.BACKGROUND, true),
@@ -66,6 +67,7 @@ class ShopFragmentTest {
     fun cleanupDb() = runBlockingTest {
         ServiceLocator.resetRepositories()
         sharedPrefs.edit().remove(context.getString(R.string.saved_user_gold_key)).apply()
+        sharedPrefs.edit().remove(context.getString(R.string.current_background_key)).apply()
     }
 
     @Test
