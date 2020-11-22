@@ -25,6 +25,7 @@ buildscript {
         recyclerViewVersion = '1.1.0'
         robolectricVersion = '4.3.1'
         roomVersion = '2.2.5'
+        timberVersion = '4.7.1'
         vectorDrawableVersion = '1.1.0'
         viewPagerVersion = '1.0.0'
         workVersion = '2.4.0'

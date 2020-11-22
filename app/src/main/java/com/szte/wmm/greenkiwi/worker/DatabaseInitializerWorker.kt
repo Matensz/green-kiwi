@@ -11,6 +11,7 @@ import com.szte.wmm.greenkiwi.data.local.ApplicationDatabase
 import com.szte.wmm.greenkiwi.data.local.model.Activity
 import com.szte.wmm.greenkiwi.data.local.model.ShopItem
 import kotlinx.coroutines.coroutineScope
+import timber.log.Timber
 import java.io.IOException
 
 /**
@@ -33,10 +34,12 @@ class DatabaseInitializerWorker(
         try {
             database = ApplicationDatabase.getInstance(applicationContext)
             readActivitiesJson()
+            Timber.i("Content of activities.json loaded to database successfully")
             readShopItemsJson()
+            Timber.i("Content of shopitems.json loaded to database successfully")
             Result.success()
         } catch (ex: IOException) {
-            Log.e(TAG, "Error seeding database", ex)
+            Timber.e("Error seeding database: $ex")
             Result.failure()
         }
     }

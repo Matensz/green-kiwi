@@ -78,6 +78,9 @@ dependencies {
     // Instructions dialog
     implementation "androidx.viewpager2:viewpager2:$viewPagerVersion"
 
+    // logging
+    implementation "com.jakewharton.timber:timber:$timberVersion"
+
     // Local unit testing
     testImplementation "junit:junit:$junitVersion"
     testImplementation "org.hamcrest:hamcrest-all:$hamcrestVersion"

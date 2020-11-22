@@ -23,6 +23,7 @@ import com.szte.wmm.greenkiwi.util.getResIdForImageName
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import timber.log.Timber
 import kotlin.math.sqrt
 import kotlin.math.truncate
 
@@ -118,6 +119,7 @@ class HomeViewModel(
                 activitiesRepository.getActivities()
             }
         }
+        Timber.i("Warm up call to database fired")
     }
 
     fun feedPet() {
@@ -190,11 +192,13 @@ class HomeViewModel(
                         _hunger.value = ValuePair(HUNGER_BAR_MIN_VALUE, HUNGER_BAR_MAX_VALUE)
                         _feedButtonVisible.value = true
                         timer.cancel()
+                        Timber.d("Pet hunger timer canceled in CountDownTimer.onTick()")
                     }
                 }
 
                 override fun onFinish() {
                     timer.cancel()
+                    Timber.d("Pet hunger timer canceled in CountDownTimer.onFinish()")
                 }
             }
             timer.start()
@@ -203,6 +207,7 @@ class HomeViewModel(
 
     private fun cancelAlarm() {
         alarmManager.cancel(notifyPendingIntent)
+        Timber.d("Pet hunger notification canceled")
     }
 
     private suspend fun saveTime() =

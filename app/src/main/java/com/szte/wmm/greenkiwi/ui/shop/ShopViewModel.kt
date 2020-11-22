@@ -13,6 +13,7 @@ import com.szte.wmm.greenkiwi.repository.domain.ShopItem
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import timber.log.Timber
 
 /**
  * View model for the shop view.
@@ -69,6 +70,7 @@ class ShopViewModel(
             shopRepository.updateShopItemById(itemId, true)
             shopItems = shopRepository.getShopItems()
         }
+        Timber.d("Updated purchased status of shop item with id ${itemId} to true")
         _filteredItems.value = shopItems.filter { filter.currentValue?.equals(it.category.name) ?: true }
     }
 

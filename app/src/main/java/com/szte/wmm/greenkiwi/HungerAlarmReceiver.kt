@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.core.content.ContextCompat
 import com.szte.wmm.greenkiwi.util.sendNotification
+import timber.log.Timber
 
 /**
  * A receiver for pet hunger related alarms.
@@ -24,5 +25,6 @@ class HungerAlarmReceiver: BroadcastReceiver() {
 
         val notificationManager = ContextCompat.getSystemService(context, NotificationManager::class.java) as NotificationManager
         notificationManager.sendNotification(HUNGER_NOTIFICATION_ID, channelId, text, bigText, context)
+        Timber.i("Hunger notification sent")
     }
 }

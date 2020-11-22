@@ -14,6 +14,7 @@ import com.szte.wmm.greenkiwi.repository.UserSelectedActivitiesRepository
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import timber.log.Timber
 
 /**
  * View model for the settings view.
@@ -81,6 +82,7 @@ class SettingsViewModel(
                 apply()
             }
         }
+        Timber.d("User preferences deleted from shared preferences")
     }
 
     private suspend fun cleanUpDatabase() {
@@ -88,5 +90,6 @@ class SettingsViewModel(
             userSelectedActivitiesRepository.deleteAllAddedActivities()
             shopRepository.resetPurchaseStatuses(DEFAULT_BACKGROUND_RESOURCE_NAME, DEFAULT_PET_IMAGE_RESOURCE_NAME)
         }
+        Timber.d("User selected activities deleted from database")
     }
 }

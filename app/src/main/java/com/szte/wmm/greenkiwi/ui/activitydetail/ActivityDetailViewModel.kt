@@ -2,7 +2,6 @@ package com.szte.wmm.greenkiwi.ui.activitydetail
 
 import android.app.Application
 import android.content.Context
-import android.content.SharedPreferences
 import android.os.SystemClock
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
@@ -17,6 +16,7 @@ import com.szte.wmm.greenkiwi.util.isSameDay
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import timber.log.Timber
 
 /**
  * View model for the activity details view.
@@ -69,6 +69,7 @@ class ActivityDetailViewModel(
         withContext(defaultDispatcher) {
             userSelectedActivitiesRepository.insertUserSelectedActivity(newActivity)
         }
+        Timber.d("New user selected activity with activityId ${newActivity.activityId} inserted to database")
     }
 
     fun updatePlayerValue(valueToAdd: Int, defaultValueResId: Int, keyResId: Int) {
