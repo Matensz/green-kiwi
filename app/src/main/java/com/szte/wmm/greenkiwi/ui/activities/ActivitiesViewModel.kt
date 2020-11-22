@@ -23,8 +23,8 @@ class ActivitiesViewModel(private val activitiesRepository: ActivitiesRepository
     private val _categories = MutableLiveData<List<Category>>()
     val categories: LiveData<List<Category>>
         get() = _categories
-    private val _navigateToSelectedActivity = MutableLiveData<Activity>()
-    val navigateToSelectedActivity: LiveData<Activity>
+    private val _navigateToSelectedActivity = MutableLiveData<Activity?>()
+    val navigateToSelectedActivity: LiveData<Activity?>
         get() = _navigateToSelectedActivity
     private var filter = FilterHolder()
 

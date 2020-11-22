@@ -69,8 +69,8 @@ class HomeViewModel(
     private val _feedButtonVisible = MutableLiveData<Boolean>()
     val feedButtonVisible: LiveData<Boolean>
         get() = _feedButtonVisible
-    private val _navigateToShop = MutableLiveData<Boolean>()
-    val navigateToShop: LiveData<Boolean>
+    private val _navigateToShop = MutableLiveData<Boolean?>()
+    val navigateToShop: LiveData<Boolean?>
         get() = _navigateToShop
 
     private val currentPoints = context.currentPoints

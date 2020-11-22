@@ -84,7 +84,7 @@ class ActivitiesViewModelTest {
         // given
         val expectedValue = createActivity(1L, Category.WATER_AND_ENERGY)
         // empty observer for testing
-        val observer = Observer<Activity> {}
+        val observer = Observer<Activity?> {}
         try {
 
             // observe the live data
@@ -107,7 +107,7 @@ class ActivitiesViewModelTest {
     fun `test displayActivityDetailsComplete() should set up navigation value null`() = coroutineTestRule.runBlockingTest {
         // given
         // empty observer for testing
-        val observer = Observer<Activity> {}
+        val observer = Observer<Activity?> {}
         try {
 
             // observe the live data

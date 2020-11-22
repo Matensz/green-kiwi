@@ -88,7 +88,7 @@ class HomeViewModelTest {
     fun `test navigateToShop() should set up navigation value to true`() = coroutineTestRule.runBlockingTest {
         // given
         // empty observer for testing
-        val observer = Observer<Boolean> {}
+        val observer = Observer<Boolean?> {}
         try {
 
             // observe the live data
@@ -110,7 +110,7 @@ class HomeViewModelTest {
     fun `test navigateToShopComplete() should set up navigation value to null`() = coroutineTestRule.runBlockingTest {
         // given
         // empty observer for testing
-        val observer = Observer<Boolean> {}
+        val observer = Observer<Boolean?> {}
         try {
 
             // observe the live data
