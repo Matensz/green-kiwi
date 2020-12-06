@@ -19,7 +19,7 @@ object InstructionsDialogProvider {
         val builder = MaterialAlertDialogBuilder(activity)
         builder.setIcon(R.drawable.kiwi_green)
             .setTitle(R.string.instructions_title)
-            .setView(activity.layoutInflater.inflate(R.layout.fragment_instructions_dialog, null).let {
+            .setView(activity.layoutInflater.inflate(R.layout.instructions_dialog, null).let {
                 val pager = it.findViewById<ViewPager2>(R.id.instructions_pager)
                 val tabLayout = it.findViewById<TabLayout>(R.id.instructions_tab_layout)
                 pager.adapter = InstructionsTextAdapter(getInstructionsTexts(activity.resources))
@@ -35,7 +35,6 @@ object InstructionsDialogProvider {
         return builder.create()
     }
 
-    //TODO add full instructions
     private fun getInstructionsTexts(resources: Resources): List<String> =
         listOf(resources.getString(R.string.instructions_first_page), resources.getString(R.string.instructions_second_page))
 

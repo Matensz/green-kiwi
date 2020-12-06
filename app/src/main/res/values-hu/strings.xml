@@ -32,9 +32,11 @@
     <string name="instructions_title">Üdvözöl a GreenKiwi!</string>
     <string name="instructions_dismiss">Értettem!</string>
     <string name="instructions_first_page">Ez az alkalmazás azért jött létre, hogy egy virtuális háziállat segítségével sarkalljon a környezettudatosabb életmódra.
-        \nEgy listányi tevékenység közül választhatsz, amelyek mind különböző környezetbarát dolgokhoz kapcsolódnak, teljesítésüket pedig pontokkal honoráljuk.
+        \nEgy listányi tevékenység közül választhatsz, amelyek mind különböző környezetbarát dolgokhoz kapcsolódnak, teljesítésüket pedig pontokkal és arannyal honoráljuk.
         \nMinél több pontot gyűjtesz, annál gyorsabban nő a háziállatod, szóval egy kis lelkesedéssel és szorgalommal egy szempillantás alatt nagyra nő!</string>
-    <string name="instructions_second_page">Placeholder string, to be completed</string>
+    <string name="instructions_second_page">Az összegyűjtött aranyból új színeket és háttereket vásárolhatsz a kiwidnek, de ételt is vásárolhatsz neki ha éhes.
+        \nHa az egész játékot elölről szeretnéd kezdeni, visszaállíthatod a kiinduló állapotba a \'Beállítások\' menüből.
+        \nEzek az instrukciók később is bármikor elérhetők szintén a \'Beállítások\' menüpontból.</string>
 
     <!--Activities view category Chip names-->
     <string name="water_and_energy">Víz és energia</string>

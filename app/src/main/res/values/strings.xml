@@ -32,9 +32,11 @@
     <string name="instructions_title">Welcome to GreenKiwi!</string>
     <string name="instructions_dismiss">Got it!</string>
     <string name="instructions_first_page">This app was created with the purpose to help people live a more environment-friendly life with the help of a virtual pet.
-        \nYou can choose from a long list of green activities, and once completing one, you can mark it done to get points.
+        \nYou can choose from a long list of green activities, and once completing one, you can mark it done to get points and gold.
         \nThe more points you collect, the faster your pet grows, so be enthusiastic and diligent, and it will grow up in no time!</string>
-    <string name="instructions_second_page">Placeholder string, to be completed</string>
+    <string name="instructions_second_page">Use your collected gold to purchase new colors and backgrounds for your kiwi, and also to feed it when it\'s hungry.
+        \nIf you want to start the game over, you can reset it from the \'Settings\' menu.
+        \nYou can also access these instructions later from the \'Settings\' menu if you need.</string>
 
     <!--Activities view category Chip names-->
     <string name="water_and_energy">Water and energy</string>
