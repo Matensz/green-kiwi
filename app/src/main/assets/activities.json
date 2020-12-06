@@ -308,5 +308,25 @@
     "point": 5,
     "gold": 2,
     "categoryId": 6
+  },
+  {
+    "activityId": 32,
+    "title": "Exp teszt",
+    "description": "Ez a tevékenység az exp-hez kapcsolódó logika tesztelését segíti.",
+    "thumbnailUrl": "activities/test.jpg",
+    "imageUrl": "activities/test.jpg",
+    "point": 1000,
+    "gold": 1,
+    "categoryId": 6
+  },
+  {
+    "activityId": 33,
+    "title": "Arany teszt",
+    "description": "Ez a tevékenység az aranyhoz kapcsolódó logika tesztelését segíti.",
+    "thumbnailUrl": "activities/test.jpg",
+    "imageUrl": "activities/test.jpg",
+    "point": 1,
+    "gold": 1000,
+    "categoryId": 6
   }
 ]
