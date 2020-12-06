@@ -5,7 +5,7 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import androidx.test.filters.MediumTest
+import androidx.test.filters.SmallTest
 import com.szte.wmm.greenkiwi.data.local.model.ShopItem
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
@@ -23,9 +23,9 @@ import java.io.IOException
  * Unit tests for ShopDao.
  * @see ShopDao
  */
+@SmallTest
 @ExperimentalCoroutinesApi
 @RunWith(AndroidJUnit4::class)
-@MediumTest
 class ShopDaoTest {
 
     // Executes each task synchronously using Architecture Components.

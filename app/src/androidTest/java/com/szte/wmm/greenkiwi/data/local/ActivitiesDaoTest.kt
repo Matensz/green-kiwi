@@ -5,7 +5,7 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import androidx.test.filters.MediumTest
+import androidx.test.filters.SmallTest
 import com.szte.wmm.greenkiwi.data.local.model.Activity
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
@@ -24,9 +24,9 @@ import java.io.IOException
  * Unit tests for ActivitiesDao.
  * @see ActivitiesDao
  */
+@SmallTest
 @ExperimentalCoroutinesApi
 @RunWith(AndroidJUnit4::class)
-@MediumTest
 class ActivitiesDaoTest {
 
     // Executes each task synchronously using Architecture Components.
