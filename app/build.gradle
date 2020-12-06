@@ -3,6 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: "androidx.navigation.safeargs.kotlin"
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 30
@@ -70,6 +71,7 @@ dependencies {
 
     // Glide
     implementation "com.github.bumptech.glide:glide:$glideVersion"
+    kapt "com.github.bumptech.glide:compiler:$glideVersion"
 
     // Navigation
     implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
@@ -80,6 +82,11 @@ dependencies {
 
     // logging
     implementation "com.jakewharton.timber:timber:$timberVersion"
+
+    //Firebase
+    implementation platform("com.google.firebase:firebase-bom:$firebaseVersion")
+    implementation 'com.google.firebase:firebase-storage-ktx'
+    implementation 'com.firebaseui:firebase-ui-storage:6.4.0'
 
     // Local unit testing
     testImplementation "junit:junit:$junitVersion"

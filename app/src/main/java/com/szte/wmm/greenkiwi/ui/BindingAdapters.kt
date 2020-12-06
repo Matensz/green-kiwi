@@ -1,10 +1,10 @@
 package com.szte.wmm.greenkiwi.ui
 
 import android.widget.ImageView
-import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.ktx.storage
 import com.szte.wmm.greenkiwi.repository.domain.Activity
 import com.szte.wmm.greenkiwi.repository.domain.ShopItem
 import com.szte.wmm.greenkiwi.ui.activities.ActivityAdapter
@@ -20,10 +20,11 @@ fun bindRecyclerViewToList(recyclerView: RecyclerView, data: List<Activity>?) {
 
 @BindingAdapter("imageUrl")
 fun bindImage(imgView: ImageView, imgUrl: String?) {
+    val storageReference = Firebase.storage.reference.child(imgUrl?:"")
+
     imgUrl?.let {
-        val imgUri = imgUrl.toUri().buildUpon().scheme("https").build()
-        Glide.with(imgView.context)
-            .load(imgUri)
+        GlideApp.with(imgView.context)
+            .load(storageReference)
             .into(imgView)
     }
 }

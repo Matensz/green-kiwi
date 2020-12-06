@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "63643412459",
+    "project_id": "green-kiwi",
+    "storage_bucket": "green-kiwi.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:63643412459:android:5406cb3d0242121ad79bae",
+        "android_client_info": {
+          "package_name": "com.szte.wmm.greenkiwi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "63643412459-50hmo695aihuis78ji1fi40kddu5rhi6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDOUEU-HWe_VXpLkiZpfVfOsR6kFvFD74Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "63643412459-50hmo695aihuis78ji1fi40kddu5rhi6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
