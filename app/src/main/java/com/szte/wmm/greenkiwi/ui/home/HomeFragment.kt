@@ -23,7 +23,6 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.szte.wmm.greenkiwi.GreenKiwiApplication
 import com.szte.wmm.greenkiwi.R
 import com.szte.wmm.greenkiwi.databinding.FragmentHomeBinding
-import com.szte.wmm.greenkiwi.ui.home.context.HomeDataContext
 import com.szte.wmm.greenkiwi.util.createNotificationChannel
 import kotlinx.coroutines.Dispatchers
 import java.text.DecimalFormat
@@ -54,10 +53,7 @@ class HomeFragment : Fragment() {
 
         application = requireNotNull(activity).application
         sharedPref = application.getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE)
-        val currentPoints = getPoints()
-        val levelCalculationBase = resources.getInteger(R.integer.exp_base_number)
-        val context = HomeDataContext(currentPoints, levelCalculationBase)
-        val viewModelFactory = HomeViewModelFactory(context, (requireContext().applicationContext as GreenKiwiApplication).activitiesRepository, application, Dispatchers.IO)
+        val viewModelFactory = HomeViewModelFactory((requireContext().applicationContext as GreenKiwiApplication).activitiesRepository, application, Dispatchers.IO)
         homeViewModel = ViewModelProvider(this, viewModelFactory).get(HomeViewModel::class.java)
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
@@ -134,11 +130,6 @@ class HomeFragment : Fragment() {
         )
 
         return binding.root
-    }
-
-    private fun getPoints(): Long {
-        val defaultValue = resources.getInteger(R.integer.default_starting_point).toLong()
-        return sharedPref.getLong(getString(R.string.saved_user_points_key), defaultValue)
     }
 
     private fun calculateStatBar(currentValue: Long, currentMaxValue: Long): Int {

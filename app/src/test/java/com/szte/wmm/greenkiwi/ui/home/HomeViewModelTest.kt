@@ -13,7 +13,6 @@ import com.szte.wmm.greenkiwi.CoroutineTestRule
 import com.szte.wmm.greenkiwi.createActivity
 import com.szte.wmm.greenkiwi.repository.ActivitiesRepository
 import com.szte.wmm.greenkiwi.repository.domain.Category
-import com.szte.wmm.greenkiwi.ui.home.context.HomeDataContext
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.TestCoroutineDispatcher
 import kotlinx.coroutines.test.runBlockingTest
@@ -57,8 +56,7 @@ class HomeViewModelTest {
         activitiesRepository.stub {
             onBlocking { getActivities() }.doReturn(listOf(createActivity(1L, Category.WATER_AND_ENERGY), createActivity(2L, Category.OTHER)))
         }
-        val homeDataContext = HomeDataContext(100L, 25)
-        underTest = HomeViewModel(homeDataContext, activitiesRepository, ApplicationProvider.getApplicationContext(), testDispatcher)
+        underTest = HomeViewModel(activitiesRepository, ApplicationProvider.getApplicationContext(), testDispatcher)
     }
 
     @Test

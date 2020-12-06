@@ -17,7 +17,6 @@ import androidx.lifecycle.viewModelScope
 import com.szte.wmm.greenkiwi.HungerAlarmReceiver
 import com.szte.wmm.greenkiwi.R
 import com.szte.wmm.greenkiwi.repository.ActivitiesRepository
-import com.szte.wmm.greenkiwi.ui.home.context.HomeDataContext
 import com.szte.wmm.greenkiwi.util.cancelNotifications
 import com.szte.wmm.greenkiwi.util.getResIdForImageName
 import kotlinx.coroutines.CoroutineDispatcher
@@ -32,7 +31,6 @@ import kotlin.math.truncate
  */
 @Suppress("TooManyFunctions")
 class HomeViewModel(
-    context: HomeDataContext,
     private val activitiesRepository: ActivitiesRepository,
     private val app: Application,
     private val defaultDispatcher: CoroutineDispatcher
@@ -74,8 +72,7 @@ class HomeViewModel(
     val navigateToShop: LiveData<Boolean?>
         get() = _navigateToShop
 
-    private val currentPoints = context.currentPoints
-    private val expBaseNumber = context.expBaseNumber
+    private val expBaseNumber = app.resources.getInteger(R.integer.exp_base_number)
     private val hungerTimerKey = app.getString(R.string.hunger_timer_key)
     private val playerGoldKey = app.getString(R.string.saved_user_gold_key)
     private val sharedPreferences = app.getSharedPreferences(app.getString(R.string.preference_file_key), Context.MODE_PRIVATE)
@@ -87,6 +84,7 @@ class HomeViewModel(
     init {
         warmUpDatabase()
 
+        val currentPoints = getPoints()
         val levelUps = calculateLevelUpsInExpRange(currentPoints)
         val currentPlayerLevel = levelUps + 1
         val maxExpAtPreviousLevel = calculateMaxExpAtLevel(levelUps)
@@ -128,6 +126,11 @@ class HomeViewModel(
         sharedPreferences.edit().remove(hungerTimerKey).apply()
         subtractFoodPriceFromGold()
         calculatePetHunger()
+    }
+
+    private fun getPoints(): Long {
+        val defaultValue = app.resources.getInteger(R.integer.default_starting_point).toLong()
+        return sharedPreferences.getLong(app.getString(R.string.saved_user_points_key), defaultValue)
     }
 
     @Suppress("MagicNumber") //4 and 2 are the constant numbers of the quadratic formula
