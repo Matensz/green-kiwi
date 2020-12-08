@@ -68,10 +68,16 @@ class ShopViewModel(
     private suspend fun setPurchasedFlagForItem(itemId: Long) {
         withContext(defaultDispatcher) {
             shopRepository.updateShopItemById(itemId, true)
-            shopItems = shopRepository.getShopItems()
+            shopItems = setLastPurchasedFlag(shopRepository.getShopItems(), itemId)
         }
         Timber.d("Updated purchased status of shop item with id ${itemId} to true")
         _filteredItems.value = shopItems.filter { filter.currentValue?.equals(it.category.name) ?: true }
+    }
+
+    private fun setLastPurchasedFlag(items: List<ShopItem>, itemId: Long): List<ShopItem> {
+        return items.map {
+            if (it.itemId == itemId) ShopItem(it.itemId, it.titleResourceName, it.imageResourceName, it.price, it.category, it.purchased, true) else it
+        }
     }
 
     private suspend fun updatePlayerGold(price: Int) {

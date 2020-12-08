@@ -33,6 +33,7 @@ fun bindImage(imgView: ImageView, imgUrl: String?) {
 fun bindRecyclerViewToGrid(recyclerView: RecyclerView, data: List<ShopItem>?) {
     val adapter = recyclerView.adapter as ShopItemGridAdapter
     adapter.submitList(data) {
-        recyclerView.scrollToPosition(0)
+        val lastPurchasedIndex = data?.indexOfFirst { it.lastPurchased }.let { if (it == -1) 0 else it } ?: 0
+        recyclerView.scrollToPosition(lastPurchasedIndex)
     }
 }

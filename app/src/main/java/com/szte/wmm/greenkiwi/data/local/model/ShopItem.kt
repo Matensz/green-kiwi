@@ -29,5 +29,6 @@ fun ShopItem.asDomainModel(): com.szte.wmm.greenkiwi.repository.domain.ShopItem 
         price,
         ShopCategory.values().firstOrNull { it.id == category } ?: ShopCategory.PET_IMAGE,
         purchased,
+        false
     )
 }

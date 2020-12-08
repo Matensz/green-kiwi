@@ -55,10 +55,10 @@ class ShopFragmentTest {
         sharedPrefs.edit().remove(context.getString(R.string.current_background_key)).apply()
         testRepository = TestShopRepository()
         testRepository.addShopItems(listOf(
-            ShopItem(1L, "default_wallpaper_name", "", 1, ShopCategory.BACKGROUND, true),
-            ShopItem(2L, "kiwi_wallpaper_name", "background_kiwi", 1, ShopCategory.BACKGROUND, false),
-            ShopItem(3L, "green_kiwi_name", "kiwi_green", 1, ShopCategory.PET_IMAGE, true),
-            ShopItem(4L, "brown_kiwi_name", "kiwi_brown", 1, ShopCategory.PET_IMAGE, false)
+            ShopItem(1L, "default_wallpaper_name", "", 1, ShopCategory.BACKGROUND, purchased = true, lastPurchased = false),
+            ShopItem(2L, "kiwi_wallpaper_name", "background_kiwi", 1, ShopCategory.BACKGROUND, purchased = false, lastPurchased = false),
+            ShopItem(3L, "green_kiwi_name", "kiwi_green", 1, ShopCategory.PET_IMAGE, purchased = true, lastPurchased = false),
+            ShopItem(4L, "brown_kiwi_name", "kiwi_brown", 1, ShopCategory.PET_IMAGE, purchased = false, lastPurchased = false)
         ))
         ServiceLocator.shopRepository = testRepository
     }

@@ -30,7 +30,7 @@ fun createActivity(id: Long, category: Category): Activity {
  * @return a ShopItem
  */
 fun createShopItem(id: Long, category: ShopCategory, purchased: Boolean): ShopItem {
-    return ShopItem(id, "titleName", "imageName", 1, category, purchased)
+    return ShopItem(id, "titleName", "imageName", 1, category, purchased, false)
 }
 
 /**

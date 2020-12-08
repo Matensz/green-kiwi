@@ -33,6 +33,6 @@ class TestShopRepository : ShopRepository {
     }
 
     private fun createShopItem(current: ShopItem, purchased: Boolean): ShopItem {
-        return ShopItem(current.itemId, current.titleResourceName, current.imageResourceName, current.price, current.category, purchased)
+        return ShopItem(current.itemId, current.titleResourceName, current.imageResourceName, current.price, current.category, purchased, false)
     }
 }

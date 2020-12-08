@@ -9,5 +9,6 @@ data class ShopItem(
     val imageResourceName: String,
     val price: Int,
     val category: ShopCategory,
-    val purchased: Boolean
+    val purchased: Boolean,
+    val lastPurchased: Boolean
 )
