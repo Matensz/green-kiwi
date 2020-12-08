@@ -13,9 +13,7 @@ import com.szte.wmm.greenkiwi.ui.shop.ShopItemGridAdapter
 @BindingAdapter("listData")
 fun bindRecyclerViewToList(recyclerView: RecyclerView, data: List<Activity>?) {
     val adapter = recyclerView.adapter as ActivityAdapter
-    adapter.submitList(data) {
-        recyclerView.scrollToPosition(0)
-    }
+    adapter.submitList(data)
 }
 
 @BindingAdapter("imageUrl")
