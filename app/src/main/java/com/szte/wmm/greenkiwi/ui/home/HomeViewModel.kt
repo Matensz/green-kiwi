@@ -42,9 +42,8 @@ class HomeViewModel(
         private const val EGG_HATCHED_LEVEL = 5
         private const val HUNGER_BAR_MIN_VALUE = 1L
         private const val HUNGER_BAR_MAX_VALUE = 100L
-        //TODO set correct value when done testing
-        private const val ONE_DAY_IN_MILLIS = 60000L
-        private const val ONE_SECOND_IN_MILLIS = 3000L
+        private const val HALF_DAY_IN_MILLIS = 43200000L
+        private const val ONE_MINUTE_IN_MILLIS = 60000L
     }
 
     private val _levelUps = MutableLiveData<Int>()
@@ -167,7 +166,7 @@ class HomeViewModel(
         AlarmManagerCompat.setExactAndAllowWhileIdle(
             alarmManager,
             AlarmManager.ELAPSED_REALTIME_WAKEUP,
-            SystemClock.elapsedRealtime() + ONE_DAY_IN_MILLIS,
+            SystemClock.elapsedRealtime() + HALF_DAY_IN_MILLIS,
             notifyPendingIntent
         )
 
@@ -183,13 +182,13 @@ class HomeViewModel(
     private fun createHungerTimer() {
         viewModelScope.launch {
             val startTime = loadTime()
-            val triggerTime = startTime + ONE_DAY_IN_MILLIS
-            timer = object : CountDownTimer(triggerTime, ONE_SECOND_IN_MILLIS) {
+            val triggerTime = startTime + HALF_DAY_IN_MILLIS
+            timer = object : CountDownTimer(triggerTime, ONE_MINUTE_IN_MILLIS) {
 
                 override fun onTick(millisUntilFinished: Long) {
                     val remainingTime = triggerTime - System.currentTimeMillis()
                     if (remainingTime > 0) {
-                        _hunger.value = ValuePair(remainingTime, ONE_DAY_IN_MILLIS)
+                        _hunger.value = ValuePair(remainingTime, HALF_DAY_IN_MILLIS)
                     } else {
                         cancelAlarm()
                         _hunger.value = ValuePair(HUNGER_BAR_MIN_VALUE, HUNGER_BAR_MAX_VALUE)
