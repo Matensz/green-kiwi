@@ -19,7 +19,7 @@
     <string name="last_added_date_default">Haven\'t added yet</string>
     <string name="pet_nickname_hint">Give a nickname to your kiwi</string>
     <string name="pet_nickname_button_text">Set nickname</string>
-    <string name="pet_nickname_text">Your kiwi, %s loves you!</string>
+    <string name="pet_nickname_text">Your kiwi, %s, loves you!</string>
     <string name="feed_pet_button_text">Feed kiwi</string>
     <string name="feed_pet_dialog_title">Feed your kiwi</string>
     <string name="feed_pet_dialog_text">You can buy some delicious kiwi food for %d golds to make %s happy</string>

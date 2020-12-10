@@ -19,7 +19,7 @@
     <string name="last_added_date_default">Még nem rögzítettél ilyen tevékenységet</string>
     <string name="pet_nickname_hint">Adj egy becenevet a kiwidnek</string>
     <string name="pet_nickname_button_text">Becenév rögzítése</string>
-    <string name="pet_nickname_text">%s, a kiwid imád téged!</string>
+    <string name="pet_nickname_text">%s, a kiwid, imád téged!</string>
     <string name="feed_pet_button_text">Kiwi etetés</string>
     <string name="feed_pet_dialog_title">Kiwi megetetése</string>
     <string name="feed_pet_dialog_text">%d aranyért cserébe vásárolhatsz egy kis ízletes kiwieledelt, %s nagyon boldog lesz tőle</string>
