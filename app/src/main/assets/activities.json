@@ -12,7 +12,7 @@
   {
     "activityId": 2,
     "title": "Nem folyatom feleslegesen a vizet",
-    "description": "A víz a legnagyobb és legértékesebb kincsünk, ezért érdemes takarékoskodni vele. Sokszor csak megnyitjuk a csapot pl. mosogatás vagy fogmosás közben, és ezzel értékes ivóvizet pazarlunk el. Egy kis odafigyeléssel viszont ilyen apró dolgokon is sokat megspórolhatunk. Jelöld be ezt a tevékenységet, ha nem folyattad ma feleslegesen a csapot.",
+    "description": "A víz a legnagyobb és legértékesebb kincsünk, ezért érdemes takarékoskodni vele. Sokszor csak megnyitjuk a csapot pl. mosogatás vagy fogmosás közben, és végig folyatjuk, ezzel értékes ivóvizet pazarlunk el. Egy kis odafigyeléssel viszont ilyen apró dolgokon is sokat megspórolhatunk. Jelöld be ezt a tevékenységet, ha nem folyattad ma feleslegesen a csapot.",
     "thumbnailUrl": "activities/2.jpg",
     "imageUrl": "activities/2.jpg",
     "point": 5,
@@ -22,7 +22,7 @@
   {
     "activityId": 3,
     "title": "Zuhanyzok",
-    "description": "Egy jó meleg fürdő tagadhatatlanul kellemes dolog, azonban rengeteg víz használódik el egy rövid, 3-5 perces tusoláshoz képest. Ha a szürke hétköznapokon utóbbit választod, máris rengeteg ivóvizet megspóroltál. Persze ez nem jelenti az, hogy néha ne férne bele egy kiadós fürő, de minél ritkábban, annál jobb. Jelöld be ezt a tevékenységet, ha ma csak gyorsan letusoltál fürdés helyett.",
+    "description": "Egy jó meleg fürdő tagadhatatlanul kellemes dolog, azonban rengeteg víz használódik el egy rövid, 3-5 perces tusoláshoz képest. Ha a szürke hétköznapokon az utóbbit választod, máris rengeteg ivóvizet megspóroltál. Persze ez nem jelenti az, hogy néha ne férne bele egy kiadós fürő, de minél ritkábban választod, annál jobb. Jelöld be ezt a tevékenységet, ha ma csak gyorsan letusoltál fürdés helyett.",
     "thumbnailUrl": "activities/3.jpg",
     "imageUrl": "activities/3.jpg",
     "point": 1,
@@ -32,7 +32,7 @@
   {
     "activityId": 4,
     "title": "Teli mosógépet indítok el",
-    "description": "Egy mosás rengeteg vizet haszál el, éppen ezért minél kevesebbet mosunk, annál több vizet spórolhatunk meg. Persze ez nem jelenti azt, hogy koszos ruhákat kellene hordani, elég, ha a mosógépet próbáljuk mindig úgy beindítani, hogy teli legyen, amennyire csak lehet. Jelöld be ezt a tevékenséget, ha ma teli mosógépet indítottál be.",
+    "description": "Egy mosás rengeteg vizet haszál el, éppen ezért minél kevesebbet mosunk, annál több vizet spórolhatunk meg. Persze ez nem jelenti azt, hogy koszos ruhákat kellene hordani, elég, ha a mosást próbáljuk mindig úgy elindítani, hogy a gép teli legyen, amennyire csak lehet. Jelöld be ezt a tevékenységet, ha ma teli mosógépet indítottál be.",
     "thumbnailUrl": "activities/4.jpg",
     "imageUrl": "activities/4.jpg",
     "point": 1,
@@ -42,7 +42,7 @@
   {
     "activityId": 5,
     "title": "Nem égetem feleslegesen a villanyt",
-    "description": "Rengeteg áramot használunk el azzal, hogy felesegesen égetjük a villanyt egy szobában, miközben már rég egy másikban vagyunk. Egy kis odafigyeléssel ezt a feleslegesen elhasznált áramot mind megspórolhatjuk. Jelöld be ezt a tevékenységet, ha ma mindig lekapcsoltad a villanyt magad után, ha már nem volt senki a helyiségben.",
+    "description": "Rengeteg áramot használunk el azzal, hogy felesegesen égetjük a villanyt egy szobában, miközben már rég egy másikban vagyunk. Egy kis odafigyeléssel ezt a feleslegesen elhasznált áramot mind megspórolhatjuk. Jelöld be ezt a tevékenységet, ha ma nem égetted feleslegesen a villanyt egyik üres szobádban sem.",
     "thumbnailUrl": "activities/5.jpg",
     "imageUrl": "activities/5.jpg",
     "point": 5,
@@ -52,7 +52,7 @@
   {
     "activityId": 6,
     "title": "Kikapcsolom az elektromos eszközöket",
-    "description": "Ha nem használunk már egy elektromos eszközt, minek hagyjuk azt bekapcsolva, hiszen ezzel is feleslegesen fogyasztjuk az áramot, arról nem is beszélve, hogy néha ők is megérdemelnek egy kis pihenést. Jelöld be ezt a tevékenységet, ha ma kikapcsoltad az elektronikai készülékeidet, mikor már nem volt szükséged rájuk.",
+    "description": "Ha nem használunk már egy elektromos eszközt, minek hagyjuk azt bekapcsolva, hiszen ezzel is feleslegesen fogyasztjuk az áramot, arról nem is beszélve, hogy néha nekik sem árt egy kis pihenés. Jelöld be ezt a tevékenységet, ha ma kikapcsoltad az elektronikai készülékeidet, mikor már nem volt szükséged rájuk.",
     "thumbnailUrl": "activities/6.jpg",
     "imageUrl": "activities/6.jpg",
     "point": 5,
@@ -62,7 +62,7 @@
   {
     "activityId": 7,
     "title": "Nem használok eldobható műanyagokat",
-    "description": "Rengeteg műanyag hulladékot termelünk egyszer használatos, eldobható eszközök használatával, mint szívószálak, zacskók vagy evőeszközök. Ezeket aztán vagy elégetik, ami további káros anyag kibocsájtásával jár, vagy a tengerekbe, óceánokba kerülnek. Legtöbbször pedig nincs is rá szükségünk, vagy kiválthatók egy fenntarthatóbb megoldással. Jelöld be ezt a tevékenységet, ha ma nem használtál eldobható műanyag eszközöket.",
+    "description": "Rengeteg műanyag hulladékot termelünk egyszer használatos, eldobható eszközök használatával, úgymint szívószálak, zacskók vagy evőeszközök. Ezeket aztán vagy elégetik, ami további káros anyag kibocsájtásával jár, vagy a tengerekbe, óceánokba kerülnek. Legtöbbször pedig nincs is rájuk igazán szükségünk, vagy szimplán kiválthatók egy fenntarthatóbb megoldással. Jelöld be ezt a tevékenységet, ha ma nem használtál eldobható műanyag eszközöket.",
     "thumbnailUrl": "activities/7.jpg",
     "imageUrl": "activities/7.jpg",
     "point": 10,
@@ -72,7 +72,7 @@
   {
     "activityId": 8,
     "title": "Szelektíven gyűjtöm a hulladékot",
-    "description": "Sokszor egyszerűbb a kukába dobni minden szemetet, azonban ha szelektíven gyűjtjük amit csak lehet, rengeteg felesleges hulladéktól kíméljük meg környezetünket, ezért megéri az erőfeszítést. Amit csak lehet, ezért próbáljunk meg megtenni! Jelöld be ezt a tevékenységet, ha ma szelektíven gyűjtötted a szemetedet,",
+    "description": "Sokszor egyszerűbb a kukába dobni minden szemetet, azonban ha szelektíven gyűjtjük amit csak lehet, rengeteg felesleges hulladéktól kíméljük meg környezetünket, ezért megéri az erőfeszítést. Amit csak lehet, ezért próbáljunk meg megtenni! Jelöld be ezt a tevékenységet, ha ma szelektíven gyűjtötted a szemetedet vagy visszaváltottad, amit lehetett.",
     "thumbnailUrl": "activities/8.jpg",
     "imageUrl": "activities/8.jpg",
     "point": 10,
@@ -82,7 +82,7 @@
   {
     "activityId": 9,
     "title": "Hulladékmentes napot tartok",
-    "description": "A boltokban nagyon kevés terméket lehet csomagolás nélül kapni, néha okkal, de ma már több alternatíva is létezik a csomagolásmentes vásárlásra. Még a szupermarketekben is kiválthatod a műanyagzacskókat egy vászonzsákkal, de a piacon vagy csomagolásmentes üzletekben még több mindent vehetsz így. Jelöld be ezt a tevékenységet, ha ma hulladékmentesen vásároltál.",
+    "description": "A boltokban nagyon kevés terméket lehet csomagolás nélül kapni, néha okkal, de ma már több megoldás is létezik a csomagolásmentes vásárlásra. Még a szupermarketekben is kiválthatod a műanyagzacskókat egy vászonzsákkal, de a piacon vagy csomagolásmentes üzletekben még több mindent vehetsz így. Jelöld be ezt a tevékenységet, ha ma hulladékmentesen vásároltál.",
     "thumbnailUrl": "activities/9.jpg",
     "imageUrl": "activities/9.jpg",
     "point": 25,
@@ -102,7 +102,7 @@
   {
     "activityId": 11,
     "title": "Elcsomagolom az ételt",
-    "description": "Rengeteg hulladék kerül kidobásra az éttermekben, háztartásokban. Ha viszünk magunkkal egy ételhordó dobozt, akkor viszont elcsomagolhatjuk a maradékot, ami akár egy másik étkezésre is elég lehet még. Ezzel is csökkentjük az elpazarolt étel mennyiségét, és még a plusz étkezés árát is megspóroljuk. Jelöld be ezt a tevékenységet, ha elcsomagoltad a maradékot ahelyett, hogy kidpbtad volna.",
+    "description": "Rengeteg ételhulladék kerül kidobásra az éttermekben, háztartásokban. Ha az étterembe viszünk magunkkal egy ételhordó dobozt, akkor viszont elcsomagolhatjuk a maradékot, ami akár egy másik étkezésre is elég lehet még. Ezzel is csökkentjük az elpazarolt étel mennyiségét, és még a plusz étkezés árát is megspóroljuk. Jelöld be ezt a tevékenységet, ha elcsomagoltad a maradékot ahelyett, hogy kidobtad volna.",
     "thumbnailUrl": "activities/11.jpg",
     "imageUrl": "activities/11.jpg",
     "point": 1,
@@ -122,7 +122,7 @@
   {
     "activityId": 13,
     "title": "Használt tárgyat veszek",
-    "description": "Sokszor használtan is megvehetünk valamit valakitől, akinek nincs már rá szüksége, úgy, hogy ez a valami ugyanolyan jó, mint ha egy újat vettünk volna. Ráadásul többnyire olcsóbban is hozzájuthatunk, mint ha újonnan szerezzük be. Jelöld be ezt a tevékenységet, ha új termék vásárlása helyett haszáltan vettél meg valami.",
+    "description": "Sokszor használtan is megvehetünk valamit valakitől, akinek nincs már rá szüksége, úgy, hogy ez a valami ugyanolyan jó, mint ha egy újat vettünk volna. Ráadásul többnyire olcsóbban is hozzájuthatunk, mintha újonnan szerezzük be. Jelöld be ezt a tevékenységet, ha új termék vásárlása helyett haszáltan vettél meg valami.",
     "thumbnailUrl": "activities/13.jpg",
     "imageUrl": "activities/13.jpg",
     "point": 5,
@@ -132,7 +132,7 @@
   {
     "activityId": 14,
     "title": "Vegetáriánus leszek egy napra",
-    "description": "Ha hús helyett zölségeket, gyümölcsöket vagy egyéb ételeket eszünk, akkor azzal máris jelentősen csökkenthetjük ökológiai lábnyomunkat, ráadásul egy élőlényt is megkímélünk vele. Ezért ha tehetjük, néha próbáljunk meg húsmentesen étkezni. Jelöld be ezt a tevékenységet, ha ma nem ettél semmiféle húst.",
+    "description": "Ha hús helyett zölségeket, gyümölcsöket vagy egyéb húsmentes ételeket eszünk, akkor azzal máris jelentősen csökkenthetjük ökológiai lábnyomunkat, hiszen az állattenyésztés és a hús előállítása is nagy terhet ró a környezetre. Ráadásul egy életet is megkímélünk vele! Ezért ha tehetjük, néha próbáljunk meg húsmentesen étkezni. Jelöld be ezt a tevékenységet, ha ma nem ettél semmiféle húst.",
     "thumbnailUrl": "activities/14.jpg",
     "imageUrl": "activities/14.jpg",
     "point": 25,
@@ -152,7 +152,7 @@
   {
     "activityId": 16,
     "title": "Pálmaolajmentesen vásárolok",
-    "description": "Az élelmiszeripar és a szépségipar is rengeteg termékben használja a pálmaolajat sok előnyös tulajdonsága miatt, azonban az előállítása rengeteg negatív hatással jár mind a környezetre az esőerdők pusztítása miatt, mind pedig sokszor az ott dolgozókra is. Jelöld be ezt a tevékenységet, ha ma pálmaolajmentesen vásároltál-",
+    "description": "Az élelmiszeripar és a szépségipar is rengeteg termékben használja a pálmaolajat sok előnyös tulajdonsága miatt, azonban az előállítása rengeteg negatív hatással jár mind a környezetre az esőerdők pusztítása miatt, mind pedig sokszor az ott dolgozókra is. Jelöld be ezt a tevékenységet, ha ma pálmaolajmentesen vásároltál.",
     "thumbnailUrl": "activities/16.jpg",
     "imageUrl": "activities/16.jpg",
     "point": 10,
@@ -162,7 +162,7 @@
   {
     "activityId": 17,
     "title": "Helyi termelőtől vásárolok",
-    "description": "Ha helyi termelőtől vásárolunk élelmiszert, akkor azzal nem csak a helyi gazdaságot segítjük, de a kevesebb szállítással jelentős károsanyagkibocsájtást, és akár némi csomagolóanyagot is megspórolhatunk. Jelöld be ezt a tevékenységet, ha helyi termelőtől vásároltál ma valamit.",
+    "description": "Ha helyi termelőtől vásárolunk élelmiszert, akkor azzal nem csak a helyi gazdaságot segítjük, de a kevesebb szállítással jelentős károsanyag-kibocsátást, és akár némi csomagolóanyagot is megspórolhatunk. Jelöld be ezt a tevékenységet, ha helyi termelőtől vásároltál ma valamit.",
     "thumbnailUrl": "activities/17.jpg",
     "imageUrl": "activities/17.jpg",
     "point": 5,
@@ -172,7 +172,7 @@
   {
     "activityId": 18,
     "title": "Fenntartható forrásból származó kávét, kakaót veszek",
-    "description": "Fontos, hogy ha kávét vagy kakót vásárolunk, lehetőleg fenntartható forrásból származót vegyünk, hiszen mindkettő elég környezetterheléssel járó luxuscikk, így fontos, hogy legalább ennyivel támogassuk a környzetünk megóvását, ha mindenképp szükségünk van ezekre a termékekre. Ráadásul ezzel a környezettudatos gazdálkodókat is támogatod megélhetésükben. Jelöld be ezt a tevékenységet, ha olyan kávté vagy kakót vásároltál ma, amely fenntartható forrásból származó alapanyagból készült.",
+    "description": "Fontos, hogy ha kávét vagy kakót vásárolunk, lehetőleg fenntartható forrásból származót vegyünk, hiszen mindkettő elég nagy környezetterheléssel járó luxuscikk, így fontos, hogy legalább ennyivel támogassuk a környzetünk megóvását. Ráadásul ezzel a környezettudatos gazdálkodókat is támogatod megélhetésükben. Jelöld be ezt a tevékenységet, ha olyan kávét vagy kakót vásároltál ma, amely fenntartható forrásból származó alapanyagból készült.",
     "thumbnailUrl": "activities/18.jpg",
     "imageUrl": "activities/18.jpg",
     "point": 1,
@@ -192,7 +192,7 @@
   {
     "activityId": 20,
     "title": "Sétálok",
-    "description": "Ha gyalog megyünk valahová, akkor az nem csak egy jó kis testmozgással érhet fel, de megspóroljuk az autózással járó károsanyagkibocsájtást és költségeket is, és a dugók csökkentésében is segíthetünk. Jelöld be ezt a tevékenységet, ha gyalog mentél ma valahová ahelyett, hogy autóba ültél volna.",
+    "description": "Ha gyalog megyünk valahová, akkor az nem csak egy jó kis testmozgással érhet fel, de megspóroljuk az autózással járó károsanyag-kibocsátást és költségeket is, és a dugók csökkentésében is segíthetünk. Jelöld be ezt a tevékenységet, ha gyalog mentél ma valahová ahelyett, hogy autóba ültél volna.",
     "thumbnailUrl": "activities/20.jpg",
     "imageUrl": "activities/20.jpg",
     "point": 5,
@@ -202,7 +202,7 @@
   {
     "activityId": 21,
     "title": "Biciklizek",
-    "description": "Biciklivel könnyen és gyorsan megtehetünk akár nagyobb távolságokat is, mindeközben pedig mozgunk is, és ezzel az egészségünkért is teszünk. Ráadásul nem jár semmiféle károsanyagkibocsájtással sem. Jelöld be ezt a tevékenységet, ha ma a biciklizést választottad egy úticélod eléréséhez.",
+    "description": "Biciklivel könnyen és gyorsan megtehetünk akár nagyobb távolságokat, mindeközben pedig mozgunk is, és ezzel az egészségünkért is teszünk. Ráadásul nem jár semmiféle károsanyag-kibocsátással sem. Jelöld be ezt a tevékenységet, ha ma a biciklizést választottad egy úticélod eléréséhez.",
     "thumbnailUrl": "activities/21.jpg",
     "imageUrl": "activities/21.jpg",
     "point": 5,
@@ -212,7 +212,7 @@
   {
     "activityId": 22,
     "title": "Tömegközlekedést használok",
-    "description": "A tömegközlekedés használatával kevesebb károsanyagkibocsájtással érhetünk el célunkhoz, mintha autóba ülnénk, ráadásul így egy autóval kevesebb jár az utakon és foglalja a helyet a dugóban. Jelöld be ezt a tevékenységet, ha ma tömegközlekedéssel jutottál el egy úticélodhoz.",
+    "description": "A tömegközlekedés használatával kevesebb károsanyag-kibocsátással érhetünk el célunkhoz, mintha autóba ülnénk, ráadásul így egy autóval kevesebb jár az utakon és foglalja a helyet a dugóban. Jelöld be ezt a tevékenységet, ha ma tömegközlekedéssel jutottál el egy úticélodhoz.",
     "thumbnailUrl": "activities/22.jpg",
     "imageUrl": "activities/22.jpg",
     "point": 5,
@@ -222,7 +222,7 @@
   {
     "activityId": 23,
     "title": "Elektromos autót vezetek",
-    "description": "Az autó a legkényelmesebb módja a városon belüli közlekedésnek, de rengeteg negatívummal jár cserébe. Elektromos autó használatával legalább tehetünk egy lépést a városok levegőjének tisztábbá tétele felé anélkül, hogy ebből a kényekemből engedni kellene. Jelöld be ezt a tevékenységet, ha elektromos autót használtál ma dízel vagy benzines autó helyett.",
+    "description": "Az autó a legkényelmesebb módja a városon belüli közlekedésnek, de rengeteg negatívummal jár cserébe. Elektromos autó használatával legalább tehetünk egy lépést a városok levegőjének tisztábbá tétele felé anélkül, hogy ebből a kényelemből bármit is engedni kellene. Jelöld be ezt a tevékenységet, ha elektromos autót használtál ma dízel vagy benzines autó helyett.",
     "thumbnailUrl": "activities/23.jpg",
     "imageUrl": "activities/23.jpg",
     "point": 10,
@@ -237,12 +237,12 @@
     "imageUrl": "activities/24.jpg",
     "point": 5,
     "gold": 2,
-    "categoryId": 4
+    "categoryId": 5
   },
   {
     "activityId": 25,
     "title": "Időtállóbb ledes izzó",
-    "description": "Ha hagyományos izzókhoz képest a ledes izzók nem csak időtállóbak, de energiatakarékosabbak is. Jelöld be ezt a tevékenységet, ha ma új, ledes izzót szereltél be.",
+    "description": "A hagyományos izzókhoz képest a ledes izzók nem csak időtállóbbak, de energiatakarékosabbak is. Jelöld be ezt a tevékenységet, ha ma új, ledes izzót szereltél be hagyományos izzó helyett.",
     "thumbnailUrl": "activities/25.jpg",
     "imageUrl": "activities/25.jpg",
     "point": 5,
@@ -272,7 +272,7 @@
   {
     "activityId": 28,
     "title": "Méhecskehotel",
-    "description": "Egy kisebb farönk vagy fadarabba néhány 2-10 mm átmérőjű lyukat kell fúrni, és kész is a darázsgarázs vagy méhecskehotel. A magányosan élő méhek, darazsak nagyon fontos szerepet játszanak a beporzásban, és egy február végén kihelyezett rovarhotellel sokat segíthetünk nekik. Jelöld be ezt a tevékenységet, ha te is elkészítettél és kihelyeztél egy rovarhotelt, hogy megkönnyítsd szorgos barátaink életét.",
+    "description": "Egy kisebb farönkbe vagy fadarabba néhány 2-10 mm átmérőjű lyukat kell fúrni, és kész is a darázsgarázs, vagy más néven méhecskehotel. A magányosan élő méhek, darazsak nagyon fontos szerepet játszanak a beporzásban, és egy február végén kihelyezett rovarhotellel sokat segíthetünk nekik. Jelöld be ezt a tevékenységet, ha te is elkészítettél és kihelyeztél egy rovarhotelt, hogy megkönnyítsd szorgos barátaink életét.",
     "thumbnailUrl": "activities/28.jpg",
     "imageUrl": "activities/28.jpg",
     "point": 10,
@@ -282,7 +282,7 @@
   {
     "activityId": 29,
     "title": "Szemetet szedek",
-    "description": "Akár egyedül, akár többedmagunkkal, akár spontán, akár szervezett esemény keretében, de a szemétszedéssel hozzájárulhatunk ahhoz, hogy környezetünk élhetőbb és tisztább legyen. Jelöld be ezt a tevékenységet, ha szemétszedésen vettél részt, legyen az bármilyen formában.",
+    "description": "Akár egyedül, akár többedmagunkkal, akár spontán, akár szervezett esemény keretében, de a szemétszedéssel hozzájárulhatunk ahhoz, hogy környezetünk élhetőbb és tisztább legyen. Jelöld be ezt a tevékenységet, ha szemétszedésen vettél részt, legyen az bármilyen formája is.",
     "thumbnailUrl": "activities/29.jpg",
     "imageUrl": "activities/29.jpg",
     "point": 25,
@@ -302,7 +302,7 @@
   {
     "activityId": 31,
     "title": "Saját tevékenység",
-    "description": "Jelöld be ezt a tevékenységet, ha bármilyen olyan dolgot csináltál ma, ami a környezetvédelemhez kapcsolódik, és nincs felsorolva az alkalmazásban, hiszen attól még egy jó dolgot cselekedtél, és emgérdemled a jutalmat.",
+    "description": "Jelöld be ezt a tevékenységet, ha bármilyen olyan dolgot csináltál ma, ami a környezetvédelemhez kapcsolódik, és nincs felsorolva az alkalmazásban, hiszen attól még egy jó dolgot cselekedtél, és megérdemled a jutalmat.",
     "thumbnailUrl": "activities/31.jpg",
     "imageUrl": "activities/31.jpg",
     "point": 5,
@@ -312,7 +312,7 @@
   {
     "activityId": 32,
     "title": "Exp teszt",
-    "description": "Ez a tevékenység az exp-hez kapcsolódó logika tesztelését segíti.",
+    "description": "Ez a teszt tevékenység az exp-hez kapcsolódó logika tesztelését segíti.",
     "thumbnailUrl": "activities/test.jpg",
     "imageUrl": "activities/test.jpg",
     "point": 1000,
@@ -322,7 +322,7 @@
   {
     "activityId": 33,
     "title": "Arany teszt",
-    "description": "Ez a tevékenység az aranyhoz kapcsolódó logika tesztelését segíti.",
+    "description": "Ez a teszt tevékenység az aranyhoz kapcsolódó logika tesztelését segíti.",
     "thumbnailUrl": "activities/test.jpg",
     "imageUrl": "activities/test.jpg",
     "point": 1,
